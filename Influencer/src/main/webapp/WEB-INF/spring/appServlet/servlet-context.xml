@@ -7,10 +7,11 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+	
+	<!-- @Controller가 달려있는 클래스 파일들만 읽을 수 있는 태그 -->
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<!-- @Controller가 달려있는 클래스 파일들만 읽을 수 있게끔 하는 태그 -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -23,19 +24,18 @@
 	</beans:bean>
 	
 	<!-- 파일 업로드 관련 설정 -->
-	<beans:bean id = "multipartResolver" 
-	    class = "org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <beans:property name="maxUploadSize" value="52428800"/>
 	    <beans:property name="maxInMemorySize" value="100000"/>
 	    <beans:property name="defaultEncoding" value="utf-8"/>
 	</beans:bean>
 	
-	
-	
-	<!-- Controller(POJO)가 있는 패키지를 전부 스캔해라 -->
+	<!-- Controller(POJO)가 있는 패키지를 전부 스캔해라-->
 	<context:component-scan base-package="kr.smhrd.web" />
 	<context:component-scan base-package="kr.smhrd.service" />
 	
 	
 	
+	
 </beans:beans>
+

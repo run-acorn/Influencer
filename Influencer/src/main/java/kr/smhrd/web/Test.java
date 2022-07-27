@@ -1,3 +1,4 @@
+package kr.smhrd.web;
 
 public class Test {
 
