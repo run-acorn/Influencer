@@ -20,4 +20,6 @@ public interface BagMapper {
 	public List<New_BagVO> new_bag_detail();
 
 	public List<Used_BagVO> used_bag_detail();
+
+	public Map<String, Object> getimage(int bag_no);
 }
