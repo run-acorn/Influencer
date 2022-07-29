@@ -3,7 +3,7 @@ package kr.smhrd.model;
 import lombok.Data;
 
 @Data
-public class review {
+public class Review {
 	
 	private int review_no;
 	private String bag_no;

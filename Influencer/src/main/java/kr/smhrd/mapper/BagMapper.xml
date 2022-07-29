@@ -2,8 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.smhrd.mapper.BagMapper">
     
+    <select id="bagSearch" resultType="kr.smhrd.model.BagVO">
+        select * from bag where bag_brand=#{bag_brand}
+    </select>
+
+    <select id="new_bag_detail" resultType="kr.smhrd.model.New_BagVO">
+        select new_mall, new_price from new_bag order by new_price limit 5;
+    </select>
     
     
-    
+    <select id="used_bag_detail" resultType="kr.smhrd.model.Used_BagVO">
+        select used_mall, used_price from used_bag order by used_price limit 5;
+    </select>
     
 </mapper>

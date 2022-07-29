@@ -3,7 +3,7 @@ package kr.smhrd.model;
 import lombok.Data;
 
 @Data
-public class used_bagVO {
+public class Used_BagVO {
 
 	private int used_bag_no;
 	private int bag_no;
