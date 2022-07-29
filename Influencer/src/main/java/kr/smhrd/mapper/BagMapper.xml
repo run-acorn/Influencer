@@ -15,7 +15,12 @@
         select used_mall, used_price from used_bag order by used_price limit 5;
     </select>
     
-    <select id="getimage" resultType="map">
-        select new_img from new_bag where bag_no=#{bag_no};
-    </select>
+ 	<!-- <select id="selectimage" resultType="map">
+ 	    select new_img from new_bag where bag_no = #{bag_no};
+ 	    
+ 	</select> -->
+ 	
+ 	<select id="selectimage" resultType="kr.smhrd.model.New_BagVO">
+ 	    select * from new_bag where bag_no = #{bag_no}; 	    
+ 	</select>
 </mapper>

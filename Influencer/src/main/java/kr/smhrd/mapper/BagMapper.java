@@ -21,5 +21,7 @@ public interface BagMapper {
 
 	public List<Used_BagVO> used_bag_detail();
 
-	public Map<String, Object> getimage(int bag_no);
+	//public Map<String, Object> selectimage(int bag_no);
+
+	public New_BagVO selectimage(int bag_no);
 }

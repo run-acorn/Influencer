@@ -25,7 +25,7 @@
 <table>
 <c:forEach var = "vo" items="${list}">
             <tr>
-            <td><a href="${cpath}/detail.do">${vo.bag_no}</a></td>
+            <td><a href="${cpath}/selectimage.do?bag_no=${vo.bag_no}">${vo.bag_no}</a></td>
             <td>${vo.bag_name}</td>
             <td>${vo.bag_brand}</td>
             <td>${vo.bag_type}</td>

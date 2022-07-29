@@ -10,15 +10,16 @@
 </head>
 <body>
 
-<tr>
-<td><a onclick="location.href='${cpath}/new_bag_detail.do'">새상품</a></td>
-</tr>
+<a onclick="location.href='${cpath}/new_bag_detail.do'">새상품</a>
 
-<tr>
-<td><a onclick="location.href='${cpath}/used_bag_detail.do'">중고상품</a></td>
-</tr>
 
-<br>
+<a onclick="location.href='${cpath}/used_bag_detail.do'">중고상품</a>
+
+
+
+<img src="${cpath}/getByteImage.do?bag_no=${bag_no}"/>
+
+
 <c:forEach var = "vo" items="${list}">
             <tr>
             <td>${vo.new_mall}</td>
@@ -32,6 +33,7 @@
             <td>${vo.used_price}</td>
             </tr>
             </c:forEach>
+
 </table>
 
 </body>
