@@ -15,5 +15,9 @@
 <button type="submit">검색</button>
 
 </form>
+
+<form action="${cpath}/goboard.do" method="post">
+<button type="submit">게시판가기</button>
+</form>
 </body>
 </html>

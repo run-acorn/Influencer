@@ -23,4 +23,22 @@
  	<select id="selectimage" resultType="kr.smhrd.model.New_BagVO">
  	    select * from new_bag where bag_no = #{bag_no}; 	    
  	</select>
+ 	
+ 	<insert id="boardinsert" parameterType="kr.smhrd.model.BoardVO">
+		insert into board(board_nick,board_pw,board_content,board_head)
+		values(#{board_nick},#{board_pw},#{board_content},#{board_head})	    
+ 	</insert>
+ 	
+ 	<select id="boardList" resultType="kr.smhrd.model.BoardVO">
+		select * from board; 	    
+ 	</select>
+ 	
+ 	<select id="boardView" resultType="kr.smhrd.model.BoardVO">
+ 	    select * from board where board_no=#{board_no};
+ 	</select>
+ 	
+ 	<select id="updateval" resultType="String">
+		select board_pw from board where board_nick=#{board_nick}; 	    
+ 	</select>
+ 	
 </mapper>

@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.sun.xml.internal.ws.wsdl.writer.document.Service;
 
 import kr.smhrd.mapper.BagMapper;
 import kr.smhrd.model.BagVO;
+import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.New_BagVO;
 import kr.smhrd.model.Used_BagVO;
 import kr.smhrd.service.FileService;
@@ -52,11 +54,31 @@ public class BagController {
 		return "bag_list";
 	}
 
-	// @RequestMapping("detail.do")
-	// public String detail() {
-	// return "detail";
-	// }
-
+	@RequestMapping("/goboard.do")
+	public String goboard() {
+		return "board";
+	}
+	
+	@RequestMapping("/goboardinsert.do")
+	public String goboardinsert() {
+		return "boardinsert";
+	}
+	
+	@RequestMapping("/boardinsert.do")
+	public String boardinsert(Model model, String board_pw_re, BoardVO vo) {
+		int cnt = 0;
+		if(vo.getBoard_pw().equals(board_pw_re)) {
+			cnt = mapper.boardinsert(vo);
+			if(cnt>0) {
+				return "board";
+			}
+		} else{
+			model.addAttribute("msg","비밀번호를 확인해 주세요");
+			return "alert";
+		}
+		return "boardinsert";
+	}
+	
 	@RequestMapping("/new_bag_detail.do")
 	public String new_bag(Model model) {
 		List<New_BagVO> list = mapper.new_bag_detail();
@@ -88,7 +110,33 @@ public class BagController {
 		return "detail";
 
 	}
-
+	
+	@RequestMapping("/boardView.do")
+	public String boardView(int board_no, Model model) {
+		List<BoardVO> list = mapper.boardView(board_no);
+		model.addAttribute("list",list);
+		return "boardview";
+	}
+	
+	@RequestMapping("/updateval.do")
+	public String updateval(String board_pw_re, Model model, String board_nick) {
+		String board_pw = mapper.updateval(board_nick);
+		if(board_pw.equals(board_pw_re)) {
+			return "boardupdate";
+		}else {
+			return "boardview";
+		}
+		
+	}
+	
+	@RequestMapping("/boardList.do")
+	@ResponseBody
+	public List<BoardVO> boardList() {
+		List<BoardVO> list = mapper.boardList();
+		return list;
+	}
+	
+	
 	@Autowired
 	private FileService service;
 
