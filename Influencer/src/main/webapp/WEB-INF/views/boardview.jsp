@@ -51,7 +51,7 @@
 				      		</div>
 				      		
 				      				<c:forEach var="list" items="${list}">
-									<form action="${cpath}/updateval.do?board_pw_re=${board_pw_re}" method="POST" id="updateval" name="updateval" class="contactForm">
+									<form action="${cpath}/updateval.do" method="POST" id="" name="" class="contactForm">
 										<div class="row">
 											<div class="col-md-4"> 
 												<div class="form-group">
@@ -66,7 +66,7 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="label" for="name">닉네임</label>
-													<input type="text" class="form-control" name="board_nick" id="board_nick" value="${list.board_nick}" readonly>
+													<input type="text" class="form-control" name="nick" id="nick" value="${list.nick}" readonly>
 												</div>
 											</div>
 											<br>
@@ -88,18 +88,18 @@
 												</div>
 											</div>
 											<br>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="label" for="subject">수정 비밀번호</label>
-													<input type="password" class="form-control" name="board_pw_re" id="board_pw_re" placeholder="수정 비밀번호 확인">
-												</div>
-											</div>
+											<%
+											String nick = (String)session.getAttribute("nick");
+											%>
+											
+										<c:if test="${list.nick=='${nick}'}">
 											<div class="col-md-12">
 												<div class="form-group">
 													<input type="submit" value="글 수정" class="btn btn-primary">
 													<div class="submitting"></div>
 												</div>
 											</div>
+										</c:if>
 										</div>
 									</form>
 									</c:forEach>

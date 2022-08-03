@@ -98,7 +98,7 @@
 								blist += "<td class='table-light' style='padding-left:40px;'>" + board.board_no + "</td>"
 								blist += "<td class='table-light' style='padding-left:30px;'>" + board.board_head + "</td>"
 								blist += "<td class='table-light' style='padding-left:25px;'><a href='${cpath}/boardView.do?board_no="+board.board_no+"'>" + board.board_content + "</a></td>"
-								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_nick + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.nick + "</td>"
 								blist += "</tr>"
 							})
 							$('.heading').after(blist);
