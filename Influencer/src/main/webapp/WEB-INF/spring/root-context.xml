@@ -18,7 +18,7 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 	    <!-- setter메소드 사용 -->
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
-	    <property name="jdbcUrl" value="jdbc:mysql://project-db-stu.ddns.net:3307/zeus"/> 
+	    <property name="jdbcUrl" value="jdbc:mysql://project-db-stu.ddns.net:3307/zeus?useSSL=false"/> 
 	    <property name="username" value="zeus"/> 
 	    <property name="password" value="zeus"/> 
 	</bean>
