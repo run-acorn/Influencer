@@ -31,6 +31,12 @@ public interface BagMapper {
 	public List<BoardVO> boardList();
 
 	public List<BoardVO> boardView(int board_no);
+	
+	public BoardVO goboardUpdate(int board_no);
 
-	public String updateval(String board_pw_re);
+	public void boardUpdate(BoardVO vo);
+
+	public void boardDelete(int board_no);
+
+	
 }

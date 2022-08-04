@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -38,10 +39,11 @@
 							<thead class="thead-primary">
 								<tr class="heading">
 									<th>번호</th>
-									<th>머리글</th>
+									<th>제목</th>
 									<th>글 내용</th>
+									<th>머리글</th>
 									<th>작성자</th>
-									<th>total</th>
+									<th>작성시간</th>
 									<th>&nbsp;</th>
 								</tr>
 							</thead>
@@ -73,6 +75,7 @@
 								</tr>
 							
 						<script type="text/javascript">
+						
 						$(document).ready(function(){
 							loadList();
 						})
@@ -96,17 +99,15 @@
 							$.each(data, function(index, board){
 								blist += "<tr class='innerContent'>"
 								blist += "<td class='table-light' style='padding-left:40px;'>" + board.board_no + "</td>"
-								blist += "<td class='table-light' style='padding-left:30px;'>" + board.board_head + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_title + "</td>"
 								blist += "<td class='table-light' style='padding-left:25px;'><a href='${cpath}/boardView.do?board_no="+board.board_no+"'>" + board.board_content + "</a></td>"
-								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_nick + "</td>"
+								blist += "<td class='table-light' style='padding-left:30px;'>" + board.board_head + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.nick + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_date + "</td>"
 								blist += "</tr>"
 							})
 							$('.heading').after(blist);
 						}
-						
-						
-						
-						
 						
 						
 						</script>

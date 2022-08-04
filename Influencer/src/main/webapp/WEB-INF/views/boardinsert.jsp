@@ -47,6 +47,7 @@
 				      		<div id="form-message-success" class="mb-4">
 				            Your message was sent, thank you!
 				      		</div>
+				      		
 									<form action="${cpath}/boardinsert.do" method="POST" id="boardinsert" name="boardinsert" class="contactForm">
 										<div class="row">
 											<div class="col-md-4"> 
@@ -62,32 +63,28 @@
 										
 											<div class="col-md-12">
 												<div class="form-group">
-													<label class="label" for="name">닉네임</label>
-													<input type="text" class="form-control" name="board_nick" id="board_nick" placeholder="닉네임을 입력하세요">
+													<label class="label" for="name">제목</label>
+													<input type="text" class="form-control" name="board_title" id="board_title" placeholder="제목을 입력하세요">
 												</div>
 											</div>
-											<div class="col-md-6"> 
+											
+											<div class="col-md-12">
 												<div class="form-group">
-													<label class="label" for="email">비밀번호</label>
-													<input type="password" class="form-control" name="board_pw" id="board_pw" placeholder="비밀번호를 입력하세요">
+												<label class="label" for="name">닉네임</label>
+													<input type=text class="form-control" name="nick" id="nick" placeholder="Subject" value="${mvo.nick}" readonly>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="label" for="subject">비밀번호 확인</label>
-													<input type="password" class="form-control" name="board_pw_re" id="board_pw_re" placeholder="비밀번호를 입력하세요">
-												</div>
-											</div>
-												<div class="col-md-12">
+											
+											<div class="col-md-12">
 												<div class="form-group">
 													<label class="label" for="subject">이미지 등록</label>
-													<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+													<input type="text" class="form-control" name="board_img" id="board_img" placeholder="Subject">
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="label" for="#">글내용</label>
-													<textarea name="board_content" class="form-control" id="board_content" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
+													<textarea name="board_content" class="form-control" id="board_content" cols="30" rows="20" placeholder="내용을 입력하세요"></textarea>
 												</div>
 											</div>
 											<div class="col-md-12">

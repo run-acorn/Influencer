@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -60,23 +61,16 @@ public class BagController {
 	}
 	
 	@RequestMapping("/goboardinsert.do")
-	public String goboardinsert() {
+	public String goboardinsert(HttpSession session) {
+		session.getAttribute("mvo");	
 		return "boardinsert";
 	}
 	
 	@RequestMapping("/boardinsert.do")
-	public String boardinsert(Model model, String board_pw_re, BoardVO vo) {
-		int cnt = 0;
-		if(vo.getBoard_pw().equals(board_pw_re)) {
-			cnt = mapper.boardinsert(vo);
-			if(cnt>0) {
-				return "board";
-			}
-		} else{
-			model.addAttribute("msg","비밀번호를 확인해 주세요");
-			return "alert";
-		}
-		return "boardinsert";
+	public String boardinsert(Model model, BoardVO vo,HttpSession session) {
+		session.getAttribute("mvo");
+		int cnt = mapper.boardinsert(vo);
+		return "board";
 	}
 	
 	@RequestMapping("/new_bag_detail.do")
@@ -94,15 +88,6 @@ public class BagController {
 		return "detail";
 	}
 
-//	public Map<String,Object> selectimage(int bag_no, @RequestParam Map<String, String> param){
-//		int data = Integer.valueOf(param.get("bag_no"));
-//		Map<String, Object> result = mapper.selectimage(bag_no);
-//		byte arr[] = (byte[]) result.get("new_img");
-//		if(arr.length >0 && arr != null) {
-//			
-//		}
-//		 return null;
-//	}
 
 	@RequestMapping("/selectimage.do")
 	public String selectimage(int bag_no, Model model) {
@@ -112,21 +97,35 @@ public class BagController {
 	}
 	
 	@RequestMapping("/boardView.do")
-	public String boardView(int board_no, Model model) {
+	public String boardView(int board_no, Model model, HttpSession session) {
 		List<BoardVO> list = mapper.boardView(board_no);
 		model.addAttribute("list",list);
+		session.getAttribute("mvo");
 		return "boardview";
 	}
 	
-	@RequestMapping("/updateval.do")
-	public String updateval(String board_pw_re, Model model, String board_nick) {
-		String board_pw = mapper.updateval(board_nick);
-		if(board_pw.equals(board_pw_re)) {
-			return "boardupdate";
-		}else {
-			return "boardview";
+	@RequestMapping("/returnBoard.do")
+	public String returnBoard() {
+		return "board";
+	}
+	
+	@RequestMapping("/goboardUpdate.do")
+	public String goboardUpdate(int board_no, Model model) {
+		BoardVO vo = mapper.goboardUpdate(board_no);
+		model.addAttribute("vo",vo);
+		return "boardupdate";
+	}
+	
+	@RequestMapping("/boardUpdate.do")
+	public String boardUpdate (BoardVO vo, Model model) {
+		mapper.boardUpdate(vo);
+			return "forward:/boardView.do";
 		}
 		
+	@RequestMapping("/boardDelete.do")
+	public String boardDelete(int board_no) {
+		mapper.boardDelete(board_no);
+		return "redirect:/goboard.do";
 	}
 	
 	@RequestMapping("/boardList.do")
