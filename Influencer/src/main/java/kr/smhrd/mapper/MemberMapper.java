@@ -16,7 +16,13 @@ public interface MemberMapper {
 
 	public void memberInsert(MemberVO mvo);
 
-	public void memberLogin(MemberVO mvo);
+	public MemberVO memberLogin(MemberVO mvo);
+
+	public void changePw(MemberVO mvo);
+
+	public void changeNick(MemberVO mvo);
+
+	public void deleteMember(MemberVO mvo);
 
 
 }

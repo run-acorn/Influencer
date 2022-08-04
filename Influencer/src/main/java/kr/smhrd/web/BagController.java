@@ -42,7 +42,7 @@ public class BagController {
 
 	// 글쓰기 페이지로 이동만 하는 메소드
 	@RequestMapping("/") // 동일한 url이지만 다른 전송방식을 사용하면 다음과 같이
-	public String boardInsert() { // 같은 Mapping(명?url?)으로 전송방식에 따른이동이 가능하다
+	public String goMain() { // 같은 Mapping(명?url?)으로 전송방식에 따른이동이 가능하다
 		return "Main";
 	}
 

@@ -14,34 +14,9 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Write</title>
 </head>
 <body>
-
-	<%
-		MemberVO vo=(MemberVO)session.getAttribute("vo");
-	%>
-	
-	<c:if test="${!empty vo}">
-		<label>${vo.nick}님 환영합니다!</label>
-		<a href="${cpath}/goMyPage.do" class="btn btn-primary btn-sm">내 정보</a>
-		<a href="${cpath}/logout.do" class="btn btn-danger btn-sm">로그아웃</a>
-	</c:if>
-	
-	<form action="${cpath}/bagSearch.do" method="post">
-		<input type="text" name="bag_brand">
-		<button type="submit">검색</button>
-	</form>
-		
-	<form action="${cpath}/goboard.do" method="post">
-		<button type="submit">게시판가기</button>
-	</form>
-	
-	<c:if test="${empty vo}">
-		<a href="${cpath}/goLogin.do" class="btn btn-primary btn-sm">로그인</a>
-	
-		<a href="${cpath}/goJoin.do" class="btn btn-primary btn-sm">회원가입</a> 
-	</c:if>
 	
 </body>
 </html>
