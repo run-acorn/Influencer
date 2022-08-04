@@ -25,8 +25,8 @@
  	</select>
  	
  	<insert id="boardinsert" parameterType="kr.smhrd.model.BoardVO">
-		insert into board(board_content,board_head,board_title)
-		values(#{board_content},#{board_head},#{board_title})	    
+		insert into board(board_content,board_head,board_title,nick)
+		values(#{board_content},#{board_head},#{board_title},#{nick})	    
  	</insert>
  	
  	<select id="boardList" resultType="kr.smhrd.model.BoardVO">
@@ -37,8 +37,17 @@
  	    select * from board where board_no=#{board_no};
  	</select>
  	
- 	<select id="updateval" resultType="String">
-		select board_pw from board where board_nick=#{board_nick}; 	    
+ 	<select id="goboardUpdate" resultType="kr.smhrd.model.BoardVO">
+ 	    select * from board where board_no=#{board_no};
  	</select>
+ 	
+ 	<update id="boardUpdate" parameterType="kr.smhrd.model.BoardVO">
+		update board set board_head=#{board_head}, board_date=now(),
+		board_content=#{board_content} where board_no=#{board_no}; 	    
+ 	</update>
+ 	
+ 	<delete id="boardDelete" parameterType="int">
+ 	    delete from board where board_no=#{board_no};
+ 	</delete>
  	
 </mapper>

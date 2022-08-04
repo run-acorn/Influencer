@@ -11,4 +11,5 @@ public class BoardVO {
 	private String board_img;
 	private String board_head;
 	private String board_title;
+	private String board_date;
 }

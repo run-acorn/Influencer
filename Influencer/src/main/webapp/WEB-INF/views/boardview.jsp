@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -50,8 +51,10 @@
 				            Your message was sent, thank you!
 				      		</div>
 				      		
+				      		<button type="button" onclick="location.href='${cpath}/returnBoard.do'" class="btn btn-primary">뒤로가기</button>
+				      		<br>
 				      				<c:forEach var="list" items="${list}">
-									<form action="${cpath}/updateval.do" method="POST" id="" name="" class="contactForm">
+									<form action="${cpath}/goboardUpdate.do?board_no=${list.board_no}" method="POST" id="boardUpdate" name="boardUpdate" class="contactForm">
 										<div class="row">
 											<div class="col-md-4"> 
 												<div class="form-group">
@@ -72,10 +75,18 @@
 											<br>
 											<br>
 											
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="name">작성시간</label>
+													<span class="form-control">${list.board_date}</span>
+												</div>
+											</div>
+											<br>
+											<br>
 												<div class="col-md-12">
 												<div class="form-group">
 													<label class="label" for="subject">이미지 등록</label>
-													<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+													<input type="text" class="form-control" name="board_img" id="board_img" placeholder="Subject">
 												</div>
 											</div>
 											<br>
@@ -88,11 +99,8 @@
 												</div>
 											</div>
 											<br>
-											<%
-											String nick = (String)session.getAttribute("nick");
-											%>
 											
-										<c:if test="${list.nick=='${nick}'}">
+										<c:if test="${list.nick == mvo.nick}">
 											<div class="col-md-12">
 												<div class="form-group">
 													<input type="submit" value="글 수정" class="btn btn-primary">
@@ -102,6 +110,16 @@
 										</c:if>
 										</div>
 									</form>
+									
+									<c:if test="${list.nick == mvo.nick}">
+									<div class="col-md-12">
+												<div class="form-group">
+												<a href="${cpath}/boardDelete.do?board_no=${list.board_no}"><input type="submit" value="글 삭제" class="btn btn-primary"></a>
+													<div class="submitting"></div>
+												</div>
+											</div>
+									</c:if>
+								
 									</c:forEach>
 								</div>
 							</div>

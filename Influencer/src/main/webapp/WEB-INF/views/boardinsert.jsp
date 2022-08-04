@@ -47,6 +47,7 @@
 				      		<div id="form-message-success" class="mb-4">
 				            Your message was sent, thank you!
 				      		</div>
+				      		
 									<form action="${cpath}/boardinsert.do" method="POST" id="boardinsert" name="boardinsert" class="contactForm">
 										<div class="row">
 											<div class="col-md-4"> 
@@ -67,10 +68,17 @@
 												</div>
 											</div>
 											
-												<div class="col-md-12">
+											<div class="col-md-12">
+												<div class="form-group">
+												<label class="label" for="name">닉네임</label>
+													<input type=text class="form-control" name="nick" id="nick" placeholder="Subject" value="${mvo.nick}" readonly>
+												</div>
+											</div>
+											
+											<div class="col-md-12">
 												<div class="form-group">
 													<label class="label" for="subject">이미지 등록</label>
-													<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+													<input type="text" class="form-control" name="board_img" id="board_img" placeholder="Subject">
 												</div>
 											</div>
 											<div class="col-md-12">

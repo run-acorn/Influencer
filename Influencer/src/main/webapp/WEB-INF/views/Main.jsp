@@ -19,5 +19,12 @@
 <form action="${cpath}/goboard.do" method="post">
 <button type="submit">게시판가기</button>
 </form>
+
+<a href="${cpath}/goLogin.do" class="button primary">로그인</a>
+
+<a href="${cpath}/goJoin.do" class="button">회원가입</a>
+
+
+
 </body>
 </html>

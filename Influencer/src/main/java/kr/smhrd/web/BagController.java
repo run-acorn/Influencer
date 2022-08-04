@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -41,7 +42,7 @@ public class BagController {
 	private BagMapper mapper;
 
 	// 글쓰기 페이지로 이동만 하는 메소드
-	@RequestMapping("/Main.do") // 동일한 url이지만 다른 전송방식을 사용하면 다음과 같이
+	@RequestMapping("/") // 동일한 url이지만 다른 전송방식을 사용하면 다음과 같이
 	public String boardInsert() { // 같은 Mapping(명?url?)으로 전송방식에 따른이동이 가능하다
 		return "Main";
 	}
@@ -60,12 +61,14 @@ public class BagController {
 	}
 	
 	@RequestMapping("/goboardinsert.do")
-	public String goboardinsert() {
+	public String goboardinsert(HttpSession session) {
+		session.getAttribute("mvo");	
 		return "boardinsert";
 	}
 	
 	@RequestMapping("/boardinsert.do")
-	public String boardinsert(Model model, BoardVO vo) {
+	public String boardinsert(Model model, BoardVO vo,HttpSession session) {
+		session.getAttribute("mvo");
 		int cnt = mapper.boardinsert(vo);
 		return "board";
 	}
@@ -94,21 +97,35 @@ public class BagController {
 	}
 	
 	@RequestMapping("/boardView.do")
-	public String boardView(int board_no, Model model) {
+	public String boardView(int board_no, Model model, HttpSession session) {
 		List<BoardVO> list = mapper.boardView(board_no);
 		model.addAttribute("list",list);
+		session.getAttribute("mvo");
 		return "boardview";
 	}
 	
-	@RequestMapping("/updateval.do")
-	public String updateval(String board_pw_re, Model model, String board_nick) {
-		String board_pw = mapper.updateval(board_nick);
-		if(board_pw.equals(board_pw_re)) {
-			return "boardupdate";
-		}else {
-			return "boardview";
+	@RequestMapping("/returnBoard.do")
+	public String returnBoard() {
+		return "board";
+	}
+	
+	@RequestMapping("/goboardUpdate.do")
+	public String goboardUpdate(int board_no, Model model) {
+		BoardVO vo = mapper.goboardUpdate(board_no);
+		model.addAttribute("vo",vo);
+		return "boardupdate";
+	}
+	
+	@RequestMapping("/boardUpdate.do")
+	public String boardUpdate (BoardVO vo, Model model) {
+		mapper.boardUpdate(vo);
+			return "forward:/boardView.do";
 		}
 		
+	@RequestMapping("/boardDelete.do")
+	public String boardDelete(int board_no) {
+		mapper.boardDelete(board_no);
+		return "redirect:/goboard.do";
 	}
 	
 	@RequestMapping("/boardList.do")
