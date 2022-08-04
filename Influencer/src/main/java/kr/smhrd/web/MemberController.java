@@ -30,9 +30,9 @@ public class MemberController {
 	
 	// 회원가입
 	@RequestMapping("/memberInsert.do")
-	public String memberInsert(MemberVO mvo) {
+	public String memberInsert(MemberVO vo) {
 		
-		mapper.memberInsert(mvo);
+		mapper.memberInsert(vo);
 		
 		
 		return "redirect:/goLogin.do";
@@ -40,13 +40,13 @@ public class MemberController {
 	
 	// 로그인
 	@RequestMapping("/login.do")
-	public String Login(MemberVO mvo, HttpSession session) {
+	public String login(MemberVO vo, HttpSession session) {
 		
-		MemberVO vo = mapper.memberLogin(mvo);
+		MemberVO mvo = mapper.memberLogin(vo);
 		
-		session.setAttribute("vo", vo);
+		session.setAttribute("mvo", mvo);
 		
-		return "redirect:/";
+		return "Main";
 	}
 	
 	// 로그아웃
@@ -55,7 +55,7 @@ public class MemberController {
 		
 		session.invalidate(); // 무효화
 		
-		return "redirect:/";
+		return "Main";
 	}
 	
 	// 내정보 페이지 이동
@@ -72,11 +72,11 @@ public class MemberController {
 	
 	// 비밀번호 변경
 	@RequestMapping("/changePw.do")
-	public String changePw(MemberVO mvo, HttpSession session) {
+	public String changePw(MemberVO vo, HttpSession session) {
 		
-		System.out.println(mvo);
+		System.out.println(vo);
 		
-		mapper.changePw(mvo);
+		mapper.changePw(vo);
 		
 		session.invalidate();
 		
@@ -91,11 +91,11 @@ public class MemberController {
 	
 	// 닉네임 변경
 	@RequestMapping("/changeNick.do")
-	public String changeNick(MemberVO mvo, HttpSession session) {
+	public String changeNick(MemberVO vo, HttpSession session) {
 		
-		System.out.println(mvo);
+		System.out.println(vo);
 		
-		mapper.changeNick(mvo);
+		mapper.changeNick(vo);
 		
 		session.invalidate();
 		
@@ -108,11 +108,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/deleteMember.do")
-	public String deleteMember(MemberVO mvo, HttpSession session) {
+	public String deleteMember(MemberVO vo, HttpSession session) {
 		
-		System.out.println(mvo);
+		System.out.println(vo);
 		
-		mapper.deleteMember(mvo);
+		mapper.deleteMember(vo);
 		
 		session.invalidate();
 		

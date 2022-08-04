@@ -14,15 +14,15 @@ import kr.smhrd.model.Used_BagVO;
 
 public interface MemberMapper {
 
-	public void memberInsert(MemberVO mvo);
+	public void memberInsert(MemberVO vo);
 
-	public MemberVO memberLogin(MemberVO mvo);
+	public MemberVO memberLogin(MemberVO vo);
 
-	public void changePw(MemberVO mvo);
+	public void changePw(MemberVO vo);
 
-	public void changeNick(MemberVO mvo);
+	public void changeNick(MemberVO vo);
 
-	public void deleteMember(MemberVO mvo);
+	public void deleteMember(MemberVO vo);
 
 
 }

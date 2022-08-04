@@ -33,7 +33,7 @@
 			<ul class="features">
 				<li>
 				<span style="text-align: left" style="font-size:20px">계정 비밀번호</span>
-				<input type="hidden" name="id" value="<%=vo.getId()%>">
+				<input type="hidden" name="id" value="${mvo.getId()}">
 				<input type="password" id="pw" name="pw" placeholder="계정 비밀번호">
 				<br>
 				※탈퇴 후 개인정보 데이터가 삭제됩니다.
@@ -59,8 +59,8 @@
 			if(pw.value.length<1){
 				alert("비밀번호를 입력해주세요")
 			}else{
-				if(pw.value != "<%=(String)vo.getPw()%>" ){
-					alert('기존 비밀번호를 잘못 입력하셨습니다')
+				if(pw.value != "${mvo.getPw()}" ){
+					alert('비밀번호를 잘못 입력하셨습니다')
 				}else{
 					alert('회원 탈퇴 되었습니다')
 		        	console.log($('input#ip').attr('type','submit'))

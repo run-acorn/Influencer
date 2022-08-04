@@ -18,11 +18,6 @@
 </head>
 <body>
 
-	<%
-		MemberVO vo=(MemberVO)session.getAttribute("vo");
-		
-	%>
-
 
 
 		<section id="first" class="main special">
@@ -36,8 +31,8 @@
 				<ul class="features">
 					<li>
 						<span style="text-align: left" style="font-size:20px">닉네임</span>
-						<input type="hidden" name="id" value="<%=vo.getId()%>">
-						<input type="text" id="nick" name="nick" placeholder=<%=(String)vo.getNick()%>>
+						<input type="hidden" name="id" value="${mvo.getId()}">
+						<input type="text" id="nick" name="nick" placeholder="${mvo.getNick()}">
 						<input type="button" id="cn" value="닉네임변경"	class="button fit" onclick="changeNICK()">
 						
 						<br><br>

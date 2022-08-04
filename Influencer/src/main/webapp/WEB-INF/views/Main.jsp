@@ -18,12 +18,8 @@
 </head>
 <body>
 
-	<%
-		MemberVO vo=(MemberVO)session.getAttribute("vo");
-	%>
-	
-	<c:if test="${!empty vo}">
-		<label>${vo.nick}님 환영합니다!</label>
+	<c:if test="${!empty mvo}">
+		<label>${mvo.nick}님 환영합니다!</label>
 		<a href="${cpath}/goMyPage.do" class="btn btn-primary btn-sm">내 정보</a>
 		<a href="${cpath}/logout.do" class="btn btn-danger btn-sm">로그아웃</a>
 	</c:if>
@@ -37,7 +33,7 @@
 		<button type="submit">게시판가기</button>
 	</form>
 	
-	<c:if test="${empty vo}">
+	<c:if test="${empty mvo}">
 		<a href="${cpath}/goLogin.do" class="btn btn-primary btn-sm">로그인</a>
 	
 		<a href="${cpath}/goJoin.do" class="btn btn-primary btn-sm">회원가입</a> 

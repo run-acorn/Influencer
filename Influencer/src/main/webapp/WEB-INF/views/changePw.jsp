@@ -18,12 +18,6 @@
 </head>
 <body>
 
-	<%
-		MemberVO vo=(MemberVO)session.getAttribute("vo");
-		
-	%>
-
-
 	<div id="wrapper" align="center">
 
 		<section id="first" class="main special">
@@ -35,7 +29,7 @@
 			<form action="${cpath}/changePw.do" method="post">
 				<ul class="features">
 					<li>
-					<input type="hidden" name="id" value="<%=vo.getId()%>">
+					<input type="hidden" name="id" value="${mvo.getId()}">
 					<span style="text-align: left">기존 비밀번호</span>
 					<input type="password" id="pw3" name="pw3" placeholder="기존 비밀번호">
 					
@@ -74,7 +68,7 @@
 			}else{
 			
 			if(pw.value == pw2.value){
-				if(pw3.value != "<%=(String)vo.getPw()%>" ){
+				if(pw3.value != "${mvo.getPw()}" ){
 					alert('기존 비밀번호를 잘못 입력하셨습니다')
 				}else{
 					alert('비밀번호가 변경되었습니다')

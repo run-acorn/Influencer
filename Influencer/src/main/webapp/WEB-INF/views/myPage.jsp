@@ -17,9 +17,6 @@
 <title>My Page</title>
 </head>
 <body>
-	<%
-	MemberVO vo=(MemberVO)session.getAttribute("vo");
-	%>
 
 	<div id="wrapper" align="center" style="width:20em">
 	

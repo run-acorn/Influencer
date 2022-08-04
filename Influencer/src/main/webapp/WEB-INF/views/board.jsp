@@ -121,6 +121,8 @@
 								<a href="${cpath}/goboardinsert.do">게시판 글쓰기</a>
 							</button>
 						</div>
+						
+						<a href="${cpath}/">메인으로</a>
 					</div>
 
 				</div>
