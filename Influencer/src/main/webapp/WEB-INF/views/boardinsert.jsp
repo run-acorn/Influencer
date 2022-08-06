@@ -48,13 +48,13 @@
 				            Your message was sent, thank you!
 				      		</div>
 				      		
-									<form action="${cpath}/boardinsert.do" method="POST" id="boardinsert" name="boardinsert" class="contactForm">
+									<form action="${cpath}/boardinsert.do" method="POST" id="boardinsert" name="boardinsert" enctype="multipart/form-data" class="contactForm">
 										<div class="row">
 											<div class="col-md-4"> 
 												<div class="form-group">
 													<label class="label" for="email">머리글</label>
 													<select name="board_head" class="selectpicker" data-style="btn btn-success">
-													<option value="">머리글</option>
+													<option value="자유">자유</option>
 													<option value="질문">질문</option>
 													<option value="리뷰">리뷰</option>
 													</select>
@@ -78,7 +78,7 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="label" for="subject">이미지 등록</label>
-													<input type="text" class="form-control" name="board_img" id="board_img" placeholder="Subject">
+													<input type="file" class="form-control" name="board_img" id="board_img" placeholder="Subject">
 												</div>
 											</div>
 											<div class="col-md-12">
