@@ -54,24 +54,6 @@ public class BagController {
 
 		return "bag_list";
 	}
-
-	@RequestMapping("/goboard.do")
-	public String goboard() {
-		return "board";
-	}
-	
-	@RequestMapping("/goboardinsert.do")
-	public String goboardinsert(HttpSession session) {
-		session.getAttribute("mvo");	
-		return "boardinsert";
-	}
-	
-	@RequestMapping("/boardinsert.do")
-	public String boardinsert(Model model, BoardVO vo,HttpSession session) {
-		session.getAttribute("mvo");
-		int cnt = mapper.boardinsert(vo);
-		return "board";
-	}
 	
 	@RequestMapping("/new_bag_detail.do")
 	public String new_bag(Model model) {
@@ -88,51 +70,11 @@ public class BagController {
 		return "detail";
 	}
 
-
 	@RequestMapping("/selectimage.do")
 	public String selectimage(int bag_no, Model model) {
 		model.addAttribute("bag_no", bag_no);
 		return "detail";
 
-	}
-	
-	@RequestMapping("/boardView.do")
-	public String boardView(int board_no, Model model, HttpSession session) {
-		List<BoardVO> list = mapper.boardView(board_no);
-		model.addAttribute("list",list);
-		session.getAttribute("mvo");
-		return "boardview";
-	}
-	
-	@RequestMapping("/returnBoard.do")
-	public String returnBoard() {
-		return "board";
-	}
-	
-	@RequestMapping("/goboardUpdate.do")
-	public String goboardUpdate(int board_no, Model model) {
-		BoardVO vo = mapper.goboardUpdate(board_no);
-		model.addAttribute("vo",vo);
-		return "boardupdate";
-	}
-	
-	@RequestMapping("/boardUpdate.do")
-	public String boardUpdate (BoardVO vo, Model model) {
-		mapper.boardUpdate(vo);
-			return "forward:/boardView.do";
-		}
-		
-	@RequestMapping("/boardDelete.do")
-	public String boardDelete(int board_no) {
-		mapper.boardDelete(board_no);
-		return "redirect:/goboard.do";
-	}
-	
-	@RequestMapping("/boardList.do")
-	@ResponseBody
-	public List<BoardVO> boardList() {
-		List<BoardVO> list = mapper.boardList();
-		return list;
 	}
 	
 	

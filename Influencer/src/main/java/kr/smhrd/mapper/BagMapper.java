@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.smhrd.model.BagVO;
-import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.New_BagVO;
 import kr.smhrd.model.Used_BagVO;
 
@@ -22,21 +21,8 @@ public interface BagMapper {
 
 	public List<Used_BagVO> used_bag_detail();
 
-	//public Map<String, Object> selectimage(int bag_no);
-
 	public New_BagVO selectimage(int bag_no);
 
-	public int boardinsert(BoardVO vo);
-
-	public List<BoardVO> boardList();
-
-	public List<BoardVO> boardView(int board_no);
-	
-	public BoardVO goboardUpdate(int board_no);
-
-	public void boardUpdate(BoardVO vo);
-
-	public void boardDelete(int board_no);
 
 	
 }

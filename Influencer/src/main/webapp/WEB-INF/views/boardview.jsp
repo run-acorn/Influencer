@@ -102,9 +102,8 @@
 												<br> <br>
 												<div class="col-md-12">
 													<div class="form-group">
-														<label class="label" for="subject">이미지 등록</label> <input
-															type="text" class="form-control" name="board_img"
-															id="board_img" placeholder="Subject">
+														<label class="label" for="subject">이미지</label>
+														<span><img src='${cpath}/img_display?fileName=${list.board_uploadPath}/${list.board_fileName}'></span>
 													</div>
 												</div>
 												<br> <br>
@@ -149,98 +148,111 @@
 	<!-- Comments section-->
 
 	<section class="container">
-	<table>
-		<div class="card bg-light">
-			<div class="container">
-			<tr class="heading">
-			
-				<script type="text/javascript">
-					$(document).ready(function() {
-						loadList();
-					})
+		<table>
+			<div class="card bg-light">
+				<div class="container">
+					<tr class="heading">
 
-					function loadList() {
-						$.ajax({
-							url : '${cpath}/commentList.do',
-							dataType : 'json',
-							data : {"board_no" : "${list.board_no}"},
-							type : 'get',
-							success : listView,
-							error : function() {
-								alert('실패');
+						<script type="text/javascript">
+							$(document).ready(function() {
+								loadList();
+							})
+
+							function loadList() {
+								$.ajax({
+									url : '${cpath}/commentList.do',
+									dataType : 'json',
+									data : {
+										"board_no" : "${list.board_no}"
+									},
+									type : 'get',
+									success : listView,
+									error : function() {
+										alert('실패');
+									}
+
+								})
+							}
+							function listView(data) {
+								var blist = "<tr class = 'innerContent'>";
+								blist += '<c:if test="${!empty mvo.nick}">';
+								blist += '<td><textarea id="txt" class="form-control" rows="3">';
+								blist += '</textarea></td><td><button type="button" onclick = "commentInsert('
+										+ data.comment_no
+										+ ')" class = "btn-sm btn-danger btn">';
+								blist += '댓글등록</button></td></c:if>';
+								blist += "</tr>"
+								$
+										.each(
+												data,
+												function(index, comment) {
+													blist += "<tr class ='innerContent'>";
+													blist += "<td>"
+													blist += "<div class='d-flex'>"
+													blist += "<div class='flex-shrink-0'>"
+															+ comment.nick
+															+ "<div class='ms-3'>"
+													if (comment.nick == "${mvo.nick}") {
+
+														blist += "<button type='button' onclick = 'commentDelete("
+																+ comment.comment_no
+																+ ")' class = 'btn-sm btn-danger btn'>삭제</button>"
+
+													}
+													blist += "<div class='ms-3'>";
+													blist += "<div class='fw-bold'>"
+															+ comment.comment_date
+															+ "</div>"
+													blist += comment.comment_content
+															+ "</div>"
+													blist += "</div></div></div>"
+													blist += "</td>"
+													blist += "</tr>"
+												})
+								$('.heading').after(blist);
+
 							}
 
-						})
-					}
-					function listView(data) {
-						var	blist = "<tr class = 'innerContent'>";
-							blist += '<c:if test="${!empty mvo.nick}">';
-							blist += '<td><textarea id="txt" class="form-control" rows="3">';
-							blist += '</textarea></td><td><button type="button" onclick = "commentInsert('+data.comment_no+')" class = "btn-sm btn-danger btn">';
-							blist += '댓글등록</button></td></c:if>';
-							blist += "</tr>"
-						$.each(data, function(index, comment) {
-							blist += "<tr class ='innerContent'>";
-							blist += "<td>"
-							blist += "<div class='d-flex'>"
-							blist += "<div class='flex-shrink-0'>"
-									+ comment.nick + "<div class='ms-3'>"
-							if(comment.nick=="${mvo.nick}"){
-							
-							blist += "<button type='button' onclick = 'commentDelete("+comment.comment_no+")' class = 'btn-sm btn-danger btn'>삭제</button>"
-							
+							function commentInsert() {
+								var comment_content = $('#txt').val()
+								$.ajax({
+									url : '${cpath}/commentInsert.do',
+									data : {
+										'comment_content' : comment_content,
+										'nick' : "${mvo.nick}",
+										'board_no' : "${list.board_no}"
+									},
+									type : 'post',
+									success : loadList,
+									error : function() {
+										alert('에러');
+									}
+								})
+								$('#txt').val('');
+								$('.innerContent').remove();
 							}
-							blist += "<div class='ms-3'>";
-							blist += "<div class='fw-bold'>"
-									+ comment.comment_date + "</div>"
-							blist += comment.comment_content + "</div>"
-							blist += "</div></div></div>"
-							blist += "</td>"
-							blist += "</tr>"
-						})
-						$('.heading').after(blist);
-						
-					}
 
-					function commentInsert() {
-						var comment_content = $('#txt').val()
-						$.ajax({
-							url : '${cpath}/commentInsert.do',
-							data : {
-								'comment_content' : comment_content,
-								'nick' : "${mvo.nick}",
-								'board_no' : "${list.board_no}"
-							},
-							type : 'post',
-							success :loadList,
-							error : function() {
-								alert('에러');
+							function commentDelete(comment_no) {
+								$.ajax({
+									url : '${cpath}/commentDelete.do',
+									data : {
+										'comment_no' : comment_no
+									},
+									type : 'post',
+									success : loadList,
+									error : function() {
+										alert('에러');
+									}
+								})
+								$('.innerContent').remove();
 							}
-						})
-						$('#txt').val('');
-						$('.innerContent').remove();
-					}
-					
-					
-					function commentDelete(comment_no){
-						$.ajax({
-							url : '${cpath}/commentDelete.do',
-							data : {'comment_no' : comment_no},
-							type : 'post',
-							success : loadList,
-							error : function(){
-								alert('에러');
-							}
-						})
-						$('.innerContent').remove();
-					}
-				</script>
+						</script>
 
-				</tr>
-			
-				
+					</tr>
+
+
+				</div>
 			</div>
-		</div>
 		</table>
 	</section>
 

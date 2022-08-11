@@ -23,11 +23,12 @@ public class FileService {
 		Enumeration<String> data = multipart.getParameterNames();
 		
 		Map map = new HashMap();
-		// Map형을  HashMap형으로 업캐스팅해서 써야한다.
+		// HashMap의 부모인 Map은 인터페이스라 객체생성이 불가능해서 HashMap형으로 객체 생성 후  Map형으로 업캐스팅해서 써야한다.  
 		
 		// 2. data안에는 parametername값들이 하나씩 들어가 있을 거다
+		// hasMoreElements() : 읽어올 요소가 남아있는지 확인. 있으면 true, 없으면 false. Iterator의 hasNext()와 같음
 		while(data.hasMoreElements()) {
-			String key = data.nextElement();   // name
+			String key = data.nextElement();   // name,  nextElement() : 다음 요소를 읽어 옴. Iterator의 next()와 같음
 			String value = multipart.getParameter(key);   // name의  value값
 			
 			map.put(key, value);
