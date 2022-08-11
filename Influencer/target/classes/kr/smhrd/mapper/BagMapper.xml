@@ -50,5 +50,17 @@
  	    delete from board where board_no=#{board_no};
  	</delete>
  	
- 	
+ 	<!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+        select count(*) from board
+    </select>
+	
+ 	<!-- 게시물 목록(페이징) -->
+    <select id="getListPaging" parameterType="kr.smhrd.model.Criteria" resultType="kr.smhrd.model.BoardVO">
+        select * from (
+                select board_no, board_title, board_head, nick, board_date
+                from board order by board_no desc) as T1 
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+        limit #{skip}, #{amount}
+    </select>
 </mapper>

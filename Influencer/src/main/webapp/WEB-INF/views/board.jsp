@@ -46,7 +46,7 @@
 									<th>작성시간</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="boardBody">
 							<tr class="alert" role="alert">
 									<td><label class="checkbox-wrap checkbox-primary">
 											<input type="checkbox" checked> <span
@@ -73,17 +73,18 @@
 									</td>
 								</tr>
 							
-						<script type="text/javascript">
+ 			<script type="text/javascript">
 						
 						$(document).ready(function(){
-							loadList();
+							loadList(1);
 						})
 						
 						
-						function loadList(){
+						function loadList(pageNum){
 							$.ajax({
-								url : '${cpath}/boardList.do',
+								url : '${cpath}/getListPaging.do',
 								type : 'get',
+								data : {'pageNum' : pageNum},
 								dataType : 'json',
 								success : listView,
 								error : function(){
@@ -95,7 +96,10 @@
 						function listView(data){
 							var blist = "";
 							
-							$.each(data, function(index, board){
+							
+							$('#boardBody').html("")
+							
+							$.each(data.list, function(index, board){
 								blist += "<tr class='innerContent'>"
 								blist += "<td class='table-light' style='padding-left:40px;'>" + board.board_no + "</td>"
 								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_title + "</td>"
@@ -105,23 +109,42 @@
 								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_date + "</td>"
 								blist += "</tr>"
 							})
-							$('.heading').after(blist);
+							
+							
+							blist += "<tr><td colspan=6 align='center'>"
+								if(data.pageMake.prev){
+									blist += "<a href='javascript:loadList("+(data.pageMake.startPage-1)+")'>"
+									blist += "이전 "
+									blist += "</a>"
+								}
+							
+								for(var i=data.pageMake.startPage; i<=data.pageMake.endPage; i++){
+									blist += "<a href='javascript:loadList("+(i)+")'>"
+									blist += i+" "
+									blist += "</a>"
+								}
+								
+								if(data.pageMake.next){
+									blist += "<a href='javascript:loadList("+(data.pageMake.endPage+1)+")'>"
+									blist += " 다음"
+									blist += "</a>"
+								}
+							blist += "</td></tr>"
+							
+							$('#boardBody').append(blist);
+							
 						}
-						
 						
 						</script>
 						
-
+						
 							</tbody>
 
 						</table>
-						<div class="col-lg-6 col-sm-12" style="text-align: center;">
-							<button class="btn btn-success float-right">
-								<a href="${cpath}/goboardinsert.do">게시판 글쓰기</a>
-							</button>
-						</div>
 						
 						<a href="${cpath}/">메인으로</a>
+						
+						<a href="${cpath}/goboardinsert.do">작성하기</a>
 					</div>
 
 				</div>
@@ -133,6 +156,8 @@
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/main.js"></script>
+	
+	
 
 </body>
 </html>

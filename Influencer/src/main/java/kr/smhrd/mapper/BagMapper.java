@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.smhrd.model.BagVO;
 import kr.smhrd.model.BoardVO;
+import kr.smhrd.model.Criteria;
 import kr.smhrd.model.New_BagVO;
 import kr.smhrd.model.Used_BagVO;
 
@@ -38,5 +39,10 @@ public interface BagMapper {
 
 	public void boardDelete(int board_no);
 
+	/* 페이징 */
+	public List<BoardVO> getListPaging(Criteria cri);
+	
+	/* 게시판 총 개수 */
+	public int getTotal();
 	
 }
