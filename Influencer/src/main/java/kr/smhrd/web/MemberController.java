@@ -1,6 +1,8 @@
 package kr.smhrd.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,13 +15,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.mapper.MemberMapper;
 import kr.smhrd.model.BoardVO;
+import kr.smhrd.model.Criteria;
 import kr.smhrd.model.MemberVO;
+import kr.smhrd.model.PageMakeDTO;
+import kr.smhrd.service.BoardService;
 
 @Controller
 public class MemberController {
 	
 	@Autowired
 	private MemberMapper mapper;
+	
+	@Autowired
+	private BoardService service;
 	
 	// 로그인 페이지 이동
 	@RequestMapping("/goLogin.do")
@@ -163,16 +171,23 @@ public class MemberController {
 	// 내가 쓴글 ajax로 출력
 	@RequestMapping("/myWrite.do")
 	@ResponseBody
-	public List<BoardVO> myWriteList(HttpSession session) {
+	public Map myWriteList(HttpSession session, Criteria cri) {
+		
+		Map map = new HashMap();
 		
 		MemberVO vo = (MemberVO)session.getAttribute("mvo");
 		
-		List<BoardVO> bvo = mapper.myWriteList(vo.getNick());
+		List<BoardVO> list = service.myWriteList(vo.getNick());
 		
+		int total = service.getTotal();
 		
-		return bvo;
+		PageMakeDTO pageMake = new PageMakeDTO(cri, total);
+		
+		map.put("list", list);
+		map.put("pageMake", pageMake);
+		
+		return map;
 	}
-	
 	
 	// 아이디 중복체크
 	@RequestMapping("/idCheck.do")

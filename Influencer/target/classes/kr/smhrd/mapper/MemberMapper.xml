@@ -42,13 +42,6 @@
 		and pw=#{pw}
 	</delete>
 	
-	<!-- 내 게시글 -->
-	<select id="myWriteList" resultType="kr.smhrd.model.BoardVO">
-		select * from board
-	    where nick = #{nick}
-	    order by board_date desc
-	</select>
-	
 	<!-- 아이디 중복 확인 -->
 	<select id="idCheck" resultType="int">
 		select count(*) from member where id=#{id}

@@ -23,26 +23,7 @@ public interface BagMapper {
 
 	public List<Used_BagVO> used_bag_detail();
 
-	//public Map<String, Object> selectimage(int bag_no);
-
 	public New_BagVO selectimage(int bag_no);
 
-	public int boardinsert(BoardVO vo);
 
-	public List<BoardVO> boardList();
-
-	public List<BoardVO> boardView(int board_no);
-	
-	public BoardVO goboardUpdate(int board_no);
-
-	public void boardUpdate(BoardVO vo);
-
-	public void boardDelete(int board_no);
-
-	/* 페이징 */
-	public List<BoardVO> getListPaging(Criteria cri);
-	
-	/* 게시판 총 개수 */
-	public int getTotal();
-	
 }

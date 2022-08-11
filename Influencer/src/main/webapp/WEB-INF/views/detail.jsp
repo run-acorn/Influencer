@@ -10,13 +10,13 @@
 </head>
 <body>
 
-<a onclick="location.href='${cpath}/new_bag_detail.do'">새상품</a>
+<a onclick="location.href='${cpath}/new_bag_detail.do?bag_no="+list.bag_no+"'">새상품</a>
 
 
 <a onclick="location.href='${cpath}/used_bag_detail.do'">중고상품</a>
 
 
-
+<!-- by지민, Blob형태로 DB에 저장된 이미지를 화면에 출력 -->
 <img src="${cpath}/getByteImage.do?bag_no=${bag_no}"/>
 
 

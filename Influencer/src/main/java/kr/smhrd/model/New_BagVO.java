@@ -9,7 +9,6 @@ public class New_BagVO {
 	private int bag_no;
 	private byte[] new_img;
 	private int new_price;
-	private String new_mall;
 	private String new_link;
 
 }

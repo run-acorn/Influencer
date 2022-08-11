@@ -8,7 +8,7 @@ public class BagVO {
 	private int bag_no;
 	private String bag_name;
 	private String bag_brand;
-	private String bag_type;
+	private byte[] bag_type;
 
 
 }

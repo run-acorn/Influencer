@@ -6,6 +6,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style type="text/css">
+	#result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+	#result_card {
+		position: relative;
+	}
+	.imgDeleteBtn{
+	    position: absolute;
+	    top: 0;
+	    right: 5%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
+	
+</style>
 <title>Table 06</title>
 <!-- jQuery library -->
 <script
@@ -141,10 +171,15 @@
 							</tbody>
 
 						</table>
-						
+
+						<c:if test="${! empty mvo}">
+						<div class="col-lg-6 col-sm-12" style="text-align: center;">
+							<button class="btn btn-success float-right">
+								<a href="${cpath}/goboardinsert.do">게시판 글쓰기</a>
+							</button>
+						</div>
+						</c:if>
 						<a href="${cpath}/">메인으로</a>
-						
-						<a href="${cpath}/goboardinsert.do">작성하기</a>
 					</div>
 
 				</div>

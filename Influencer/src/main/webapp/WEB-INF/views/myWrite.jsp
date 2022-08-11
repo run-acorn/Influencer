@@ -68,7 +68,7 @@
 							
 						<script type="text/javascript">
 						
-						$(document).ready(function(){
+<!-- 						$(document).ready(function(){
 							loadList();
 						})
 						
@@ -102,7 +102,67 @@
 							$('.heading').after(blist);
 						}
 						
+						-->
 						
+						$(document).ready(function(){
+							loadList(1);
+						})
+						
+						
+						function loadList(pageNum){
+							$.ajax({
+								url : '${cpath}/myWrite.do',
+								type : 'get',
+								data : {'pageNum' : pageNum},
+								dataType : 'json',
+								success : listView,
+								error : function(){
+									alert('실패');
+								}
+							})
+						}
+						
+						function listView(data){
+							var blist = "";
+							
+							
+							$('#boardBody').html("")
+							
+							$.each(data.list, function(index, board){
+								blist += "<tr class='innerContent'>"
+								blist += "<td class='table-light' style='padding-left:40px;'>" + board.board_no + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_title + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'><a href='${cpath}/boardView.do?board_no="+board.board_no+"'>" + board.board_content + "</a></td>"
+								blist += "<td class='table-light' style='padding-left:30px;'>" + board.board_head + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.nick + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_date + "</td>"
+								blist += "</tr>"
+							})
+							
+							
+							blist += "<tr><td colspan=6 align='center'>"
+								if(data.pageMake.prev){
+									blist += "<a href='javascript:loadList("+(data.pageMake.startPage-1)+")'>"
+									blist += "이전 "
+									blist += "</a>"
+								}
+							
+								for(var i=data.pageMake.startPage; i<=data.pageMake.endPage; i++){
+									blist += "<a href='javascript:loadList("+(i)+")'>"
+									blist += i+" "
+									blist += "</a>"
+								}
+								
+								if(data.pageMake.next){
+									blist += "<a href='javascript:loadList("+(data.pageMake.endPage+1)+")'>"
+									blist += " 다음"
+									blist += "</a>"
+								}
+							blist += "</td></tr>"
+							
+							$('#boardBody').append(blist);
+							
+						}
 						</script>
 						
 
