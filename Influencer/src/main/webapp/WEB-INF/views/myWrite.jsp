@@ -17,6 +17,111 @@
 <title>My Write</title>
 </head>
 <body>
+
+			<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-4">
+					<h2 class="heading-section">내가 쓴글</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+							<thead class="thead-primary">
+								<tr class="heading">
+									<th>번호</th>
+									<th>제목</th>
+									<th>글 내용</th>
+									<th>머리글</th>
+									<th>작성자</th>
+									<th>작성시간</th>
+								</tr>
+							</thead>
+							<tbody>
+							<tr class="alert" role="alert">
+									<td><label class="checkbox-wrap checkbox-primary">
+											<input type="checkbox" checked> <span
+											class="checkmark"></span>
+									</label></td>
+									 <td>$89.98</td>	
+									<td>
+										<div class="email">
+											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
+												voluptates quasi nemo, ipsa perferendis</span>
+										</div>
+									</td>
+									<td>$44.99</td>
+								
+									<td>
+										<div class="img"
+											style="background-image: url(resources/images/product-1.png);"></div>
+									</td>
+									<td>
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true"><i class="fa fa-close"></i></span>
+										</button>
+									</td>
+								</tr>
+							
+						<script type="text/javascript">
+						
+						$(document).ready(function(){
+							loadList();
+						})
+						
+						
+						function loadList(){
+							
+							$.ajax({
+								url : '${cpath}/myWrite.do',
+								type : 'get',
+								success : listView,
+								error : function(){
+									alert('실패');
+								}
+							})
+						}
+						
+						function listView(data){
+							
+							var blist = "";
+							
+							$.each(data, function(index, board){
+								blist += "<tr class='innerContent'>"
+								blist += "<td class='table-light' style='padding-left:40px;'>" + board.board_no + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_title + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'><a href='${cpath}/boardView.do?board_no="+board.board_no+"'>" + board.board_content + "</a></td>"
+								blist += "<td class='table-light' style='padding-left:30px;'>" + board.board_head + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.nick + "</td>"
+								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_date + "</td>"
+								blist += "</tr>"
+							})
+							$('.heading').after(blist);
+						}
+						
+						
+						</script>
+						
+
+							</tbody>
+
+						</table>
+						<div class="col-lg-6 col-sm-12" style="text-align: center;">
+							<button class="btn btn-success float-right">
+								<a href="${cpath}/goboardinsert.do">게시판 글쓰기</a>
+							</button>
+						</div>
+						
+						<a href="${cpath}/">메인으로</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
 	
 </body>
 </html>

@@ -29,6 +29,9 @@
 					<div class="spotlight">
 							<ul style="list-style: none !important;">
 								<li style="padding-bottom:0.5em">
+									<a href="${cpath}/goMyWrtie.do" style="border-bottom: none">내가 쓴 글</a>
+								</li>
+								<li style="padding-bottom:0.5em">
 									<a href="${cpath}/goChangePw.do" style="border-bottom: none">비밀번호 변경</a>
 								</li>
 								<li style="padding-bottom:0.5em">

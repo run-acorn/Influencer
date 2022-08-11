@@ -1,13 +1,18 @@
 package kr.smhrd.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.mapper.MemberMapper;
+import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.MemberVO;
 
 @Controller
@@ -34,10 +39,27 @@ public class MemberController {
 		
 		mapper.memberInsert(vo);
 		
-		
 		return "redirect:/goLogin.do";
+		
 	}
 	
+	// 회원가입 중복확인
+	@RequestMapping("/memberInsertCheck.do")
+	@ResponseBody
+	public String memberInsertCheck(MemberVO vo) {
+		
+		MemberVO mvo = mapper.memberInsertCheck(vo);
+		
+		String result = "false";
+		
+		if(mvo != null) {
+			result = "true";
+		}
+		
+		return result;
+		
+	}
+
 	// 로그인
 	@RequestMapping("/login.do")
 	public String login(MemberVO vo, HttpSession session) {
@@ -46,7 +68,21 @@ public class MemberController {
 		
 		session.setAttribute("mvo", mvo);
 		
-		return "Main";
+		return "redirect:/";
+	}
+	
+	// 로그인 비밀번호 일치 여부 확인
+	@RequestMapping("/loginCheck.do")
+	@ResponseBody
+	public String loginCheck(MemberVO vo) {
+
+		MemberVO mvo = mapper.memberLogin(vo);
+		String result = "false";
+		
+		if(mvo != null) {
+			result = "true";
+		}
+		return result;
 	}
 	
 	// 로그아웃
@@ -55,7 +91,7 @@ public class MemberController {
 		
 		session.invalidate(); // 무효화
 		
-		return "Main";
+		return "redirect:/";
 	}
 	
 	// 내정보 페이지 이동
@@ -74,13 +110,12 @@ public class MemberController {
 	@RequestMapping("/changePw.do")
 	public String changePw(MemberVO vo, HttpSession session) {
 		
-		System.out.println(vo);
 		
 		mapper.changePw(vo);
 		
 		session.invalidate();
 		
-		return "Main";
+		return "redirect:/";
 	}
 	
 	// 닉네임 변경페이지 이동
@@ -93,29 +128,70 @@ public class MemberController {
 	@RequestMapping("/changeNick.do")
 	public String changeNick(MemberVO vo, HttpSession session) {
 		
-		System.out.println(vo);
 		
 		mapper.changeNick(vo);
 		
 		session.invalidate();
 		
-		return "Main";
+		return "redirect:/";
 	}
 	
+	// 회원탈퇴 페이지 이동
 	@RequestMapping("/goDeleteMember.do")
 	public String goDeleteMember() {
 		return "deleteMember";
 	}
 	
+	// 회원탈퇴
 	@RequestMapping("/deleteMember.do")
 	public String deleteMember(MemberVO vo, HttpSession session) {
 		
-		System.out.println(vo);
 		
 		mapper.deleteMember(vo);
 		
 		session.invalidate();
 		
-		return "Main";
+		return "redirect:/";
+	}
+	
+	// 내가 쓴글 페이지 이동
+	@RequestMapping("/goMyWrtie.do")
+	public String goMyWrite() {
+		return "myWrite";
+	}
+	
+	// 내가 쓴글 ajax로 출력
+	@RequestMapping("/myWrite.do")
+	@ResponseBody
+	public List<BoardVO> myWriteList(HttpSession session) {
+		
+		MemberVO vo = (MemberVO)session.getAttribute("mvo");
+		
+		List<BoardVO> bvo = mapper.myWriteList(vo.getNick());
+		
+		
+		return bvo;
+	}
+	
+	
+	// 아이디 중복체크
+	@RequestMapping("/idCheck.do")
+	@ResponseBody
+	public int idCheck(MemberVO vo) {
+		
+		int result = mapper.idCheck(vo);
+		
+		return result;
+	}
+	
+	
+	// 닉네임 중복체크
+	@RequestMapping("/nickCheck.do")
+	@ResponseBody
+	public int nickCheck(MemberVO vo) {
+		
+		int result = mapper.nickCheck(vo);
+		
+		return result;
 	}
 }

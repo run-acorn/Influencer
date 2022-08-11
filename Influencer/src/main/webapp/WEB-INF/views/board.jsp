@@ -74,7 +74,6 @@
 									<th>머리글</th>
 									<th>작성자</th>
 									<th>작성시간</th>
-									<th>&nbsp;</th>
 								</tr>
 							</thead>
 							<tbody>
