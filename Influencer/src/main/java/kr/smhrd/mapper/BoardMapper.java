@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.Criteria;
+import kr.smhrd.model.MemberVO;
 
 public interface BoardMapper {
 
@@ -24,7 +25,12 @@ public interface BoardMapper {
 	
 	/* 게시판 총 개수 */
 	public int getTotal();
-
-	public List<BoardVO> myWriteList(String nick);
+	
+	// 내 게시글 페이징
+	public List<BoardVO> myWriteList(MemberVO vo);
+	
+	// 내 게시글 총 개수
+	public int getMyTotal(String nick);
+	
 	
 }

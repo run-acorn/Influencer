@@ -163,12 +163,12 @@ public class MemberController {
 	}
 	
 	// 내가 쓴글 페이지 이동
-	@RequestMapping("/goMyWrtie.do")
+	@RequestMapping("/goMyWrite.do")
 	public String goMyWrite() {
 		return "myWrite";
 	}
 	
-	// 내가 쓴글 ajax로 출력
+	// 내가 쓴글 페이징
 	@RequestMapping("/myWrite.do")
 	@ResponseBody
 	public Map myWriteList(HttpSession session, Criteria cri) {
@@ -177,9 +177,11 @@ public class MemberController {
 		
 		MemberVO vo = (MemberVO)session.getAttribute("mvo");
 		
-		List<BoardVO> list = service.myWriteList(vo.getNick());
+		vo.setPageNum(cri.getPageNum());
 		
-		int total = service.getTotal();
+		List<BoardVO> list = service.myWriteList(vo);
+		
+		int total = service.getMyTotal(vo.getNick());
 		
 		PageMakeDTO pageMake = new PageMakeDTO(cri, total);
 		

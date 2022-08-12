@@ -33,7 +33,6 @@ import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.Criteria;
 import kr.smhrd.model.New_BagVO;
 import kr.smhrd.model.PageMakeDTO;
-import kr.smhrd.model.PageVO;
 import kr.smhrd.model.Used_BagVO;
 import kr.smhrd.service.FileService;
 

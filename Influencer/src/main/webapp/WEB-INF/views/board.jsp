@@ -77,31 +77,6 @@
 								</tr>
 							</thead>
 							<tbody id="boardBody">
-							<tr class="alert" role="alert">
-									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked> <span
-											class="checkmark"></span>
-									</label></td>
-									 <td>$89.98</td>	
-									<td>
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
-										</div>
-									</td>
-									<td>$44.99</td>
-								
-									<td>
-										<div class="img"
-											style="background-image: url(resources/images/product-1.png);"></div>
-									</td>
-									<td>
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-									</td>
-								</tr>
 							
  			<script type="text/javascript">
 						

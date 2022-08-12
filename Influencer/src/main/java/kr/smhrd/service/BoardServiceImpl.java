@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.smhrd.mapper.BoardMapper;
 import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.Criteria;
+import kr.smhrd.model.MemberVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -25,19 +26,19 @@ public class BoardServiceImpl implements BoardService {
     }
 	
     @Override
-    public List<BoardVO> boardList() {
-		
-		return mapper.boardList();
-	}
-    
-    @Override
     public int getTotal() {
 		
 		return mapper.getTotal();
 	}
     
     @Override
-    public List<BoardVO> myWriteList(String nick){
-    	return mapper.myWriteList(nick);
+    public List<BoardVO> myWriteList(MemberVO vo){
+    	return mapper.myWriteList(vo);
     }
+    
+    @Override
+    public int getMyTotal(String nick) {
+		
+		return mapper.getMyTotal(nick);
+	}
 }

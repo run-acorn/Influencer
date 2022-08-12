@@ -24,16 +24,12 @@ public interface MemberMapper {
 
 	public void deleteMember(MemberVO vo);
 
-	public List<BoardVO> myWriteList();
-
-	public List<BoardVO> myWriteList(String id);
-
 	public int idCheck(MemberVO vo);
 
 	public int nickCheck(MemberVO vo);
 
 	public MemberVO memberInsertCheck(MemberVO vo);
-	
+
 	
 
 }

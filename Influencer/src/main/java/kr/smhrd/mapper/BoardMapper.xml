@@ -7,10 +7,6 @@
 		values(#{board_content},#{board_head},#{board_title},#{nick},#{board_fileName},#{board_uploadPath})	    
  	</insert>
  	
- 	<select id="boardList" resultType="kr.smhrd.model.BoardVO">
-		select * from board; 	    
- 	</select>
- 	
  	<select id="boardView" resultType="kr.smhrd.model.BoardVO">
  	    select * from board where board_no=#{board_no};
  	</select>
@@ -29,11 +25,20 @@
  	</delete>
  	
  	<!-- 내 게시글 -->
-	<select id="myWriteList" resultType="kr.smhrd.model.BoardVO">
-		select * from board
-	    where nick = #{nick}
-	    order by board_date desc
+	<select id="myWriteList" parameterType="kr.smhrd.model.MemberVO" resultType="kr.smhrd.model.BoardVO">
+		select * 
+		from board
+		where nick = #{nick}
+		order by board_no desc
+		limit #{skip}, #{amount}
 	</select>
+	
+	<!-- 내 게시글 총 개수 -->
+ 	<select id="getMyTotal" parameterType="kr.smhrd.model.MemberVO" resultType="int">
+        select count(*) 
+        from board
+        where nick = #{nick} 
+    </select>
  	
  	<!-- 게시물 총 개수 -->
     <select id="getTotal" resultType="int">
@@ -42,9 +47,9 @@
 	
  	<!-- 게시물 목록(페이징) -->
     <select id="getListPaging" parameterType="kr.smhrd.model.Criteria" resultType="kr.smhrd.model.BoardVO">
-        select * from (
-                select board_no, board_title, board_head, nick, board_date
-                from board order by board_no desc) as T1 
+        select * 
+        from board
+        order by board_no desc
         limit #{skip}, #{amount}
     </select>
     

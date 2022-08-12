@@ -17,6 +17,8 @@ public class PageMakeDTO {
     /* 현재 페이지, 페이지당 게시물 표시수 정보 */
     private Criteria cri;
     
+    private MemberVO mvo;
+    
     /* 생성자 */
     public PageMakeDTO(Criteria cri, int total) {
         
