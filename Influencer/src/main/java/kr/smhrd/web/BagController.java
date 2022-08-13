@@ -55,9 +55,18 @@ public class BagController {
 		return "bag_list";
 	}
 	
+	@RequestMapping("/bagsearch_detail.do")
+	@ResponseBody
+	public List<New_BagVO> new_bag(int bag_no) {
+		List<New_BagVO> list = mapper.new_bag_detail(bag_no);
+		return list;
+
+	}
+	
+	
 	@RequestMapping("/new_bag_detail.do")
-	public String new_bag(Model model) {
-		List<New_BagVO> list = mapper.new_bag_detail();
+	public String new_bag(Model model,int bag_no) {
+		List<New_BagVO> list = mapper.new_bag_detail(bag_no);
 		model.addAttribute("list", list);
 		return "detail";
 
@@ -99,21 +108,28 @@ public class BagController {
 		headers.setContentType(MediaType.IMAGE_PNG);
 		return new ResponseEntity<byte[]>(vo.getNew_img(), headers, HttpStatus.OK);
 	}
-
-	// 파일 업로드하는 기능 수행
-	@RequestMapping("/upload.do")
-	public String upload(MultipartHttpServletRequest multipart, HttpServletRequest request, Model model) {
-		// multipart : form태그에서 보내주는 데이터가 담겨져있는 것
-		// request : 저장할 경로를 현재 프로젝트 경로로 잡아주려고 받아오는 것
-
-		// 1. 저장 할 경로 지정
-		String path = request.getServletContext().getRealPath("resources/file");
-		System.out.println("경로 : " + path);
-
-		Map map = service.upload(multipart, path);
-		model.addAttribute("map", map);
-
-		return "Main";
+	
+	@RequestMapping("/search_answer.do")
+	@ResponseBody
+	public String search_answer(String bag_name_new) {
+		int bag_no = mapper.search_answer(bag_name_new);
+		return bag_no+"";
 	}
+
+	// 파일 업로드하는 기능 수행 - Flask 서버로 보낼꺼라 필요 없음
+//	@RequestMapping("/upload.do")
+//	public String upload(MultipartHttpServletRequest multipart, HttpServletRequest request, Model model) {
+//		// multipart : form태그에서 보내주는 데이터가 담겨져있는 것
+//		// request : 저장할 경로를 현재 프로젝트 경로로 잡아주려고 받아오는 것
+//
+//		// 1. 저장 할 경로 지정
+//		String path = request.getServletContext().getRealPath("resources/file");
+//		System.out.println("경로 : " + path);
+//
+//		Map map = service.upload(multipart, path);
+//		model.addAttribute("map", map);
+//
+//		return "Main";
+//	}
 
 }

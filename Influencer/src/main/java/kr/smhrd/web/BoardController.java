@@ -2,8 +2,13 @@ package kr.smhrd.web;
 //by. 지민
 
 import java.util.Date;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -20,8 +25,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.smhrd.mapper.BoardMapper;
 import kr.smhrd.model.BoardVO;
@@ -45,8 +52,6 @@ public class BoardController {
 		session.getAttribute("mvo");	
 		return "boardinsert";
 	}
-	@Autowired
-	private FileService service;
 	
 	//@RequestMapping("/boardinsert.do")
 	//public String boardinsert(Model model, BoardVO vo,HttpSession session, HttpServletRequest request,
@@ -85,6 +90,8 @@ public class BoardController {
 //		int cnt = mapper.boardinsert(vo);
 //		return "board";
 //	}
+	
+
 	
 	@RequestMapping("/boardinsert.do")
 	public String boardinsert(BoardVO vo, HttpSession session) {
@@ -217,6 +224,5 @@ public class BoardController {
 		List<BoardVO> list = mapper.boardList();
 		return list;
 	}
-	
 	
 }

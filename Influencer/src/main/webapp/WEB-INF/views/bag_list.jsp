@@ -35,14 +35,72 @@
 
 <tr> 
 <td>
-<form action="${cpath}/upload.do" method="post" enctype="multipart/form-data">
-<input type="file" name="file"></td>
-<button type="submit">업로드</button>
+<form id="send_img" method="post" enctype="multipart/form-data">
+<input type="file" name="file" id="file"></td>
+<button type="button" id="send_img_btn">업로드</button>
 </form>
 
 </tr>
 
 
 
+<script type="text/javascript">
+$(function(){
+	
+	$('#send_img_btn').on('click',function(){
+		send_img_ajax();
+	});
+});
+
+function send_img_ajax(){
+	let form = $('#send_img')[0];
+	let formData = new FormData(form);
+	
+	$.ajax({
+		url : 'http://172.30.1.42:3500',
+		type : 'POST',
+		contentType : false,
+		processData : false,
+		async : false,
+		data : formData,
+		success : answer_bag_name,
+		error : function(){
+			alert('이미지 검색 불가 다른사진을 넣어주세요');
+		}
+	})
+	
+}
+
+function answer_bag_name(res){
+	console.log('flask에서 넘어오는 값',res);
+	$.ajax({
+		url : '${cpath}/search_answer.do',
+		type : 'POST',
+		data : {"bag_name_new":res},
+		success : function(bag_no){
+			location.href='${cpath}/new_bag_detail.do?bag_no='+bag_no;
+		},
+		error : function(){
+			alert('이미지 서칭실패');
+		}
+	})
+}
+
+//function answer_bag_no(data){
+//	console.log(data)
+//	$.ajax({
+//		url : '${cpath}/bagsearch_detail.do',
+//		type : 'POST',
+//		data : {"bag_no":data},
+//		success : function(bag_no){
+			
+//		},
+//		error : function(){
+//			alert('안들어오나')
+//		}
+//	})
+//}
+
+</script>
 </body>
 </html>

@@ -17,11 +17,13 @@ public interface BagMapper {
 
 	public Map upload(MultipartHttpServletRequest multipart, String path);
 
-	public List<New_BagVO> new_bag_detail();
+	public List<New_BagVO> new_bag_detail(int bag_no);
 
 	public List<Used_BagVO> used_bag_detail();
 
 	public New_BagVO selectimage(int bag_no);
+
+	public int search_answer(String bag_name_new);
 
 
 	
