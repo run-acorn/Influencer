@@ -70,19 +70,19 @@ public class BoardController {
 		File checkfile = new File(board_upload_file.getOriginalFilename());
 		String type = null;
 		
-//		try {// Files 클래스의 probeContentType() 메서드를 통해  Mimze Type을 반환해준다
-//			type = Files.probeContentType(checkfile.toPath());
-//		} catch (IOException e1) {
-//			e1.printStackTrace();
-//		}
+		try {// Files 클래스의 probeContentType() 메서드를 통해  Mimze Type을 반환해준다
+			type = Files.probeContentType(checkfile.toPath());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		// 이미지 타입은 Mime Type으로 반환시 시작문자가 image/gif,png....등등이다
-//		if(!type.startsWith("image")) {
-//			
-//			BoardVO vo = null;
-//			// 상태 코드가 400인 ResponseEntity 객체를 인스턴스화 하여 이를 반환
-//			return new ResponseEntity<>(vo, HttpStatus.BAD_REQUEST);
-//		}
+		if(!type.startsWith("image")) {
+			
+			BoardVO vo = null;
+			// 상태 코드가 400인 ResponseEntity 객체를 인스턴스화 하여 이를 반환
+			return new ResponseEntity<>(vo, HttpStatus.BAD_REQUEST);
+		}
 		
 		// c:upload 안에 날짜별 폴더를 생성해서 저장
 		String uploadFolder = "C:\\upload";
