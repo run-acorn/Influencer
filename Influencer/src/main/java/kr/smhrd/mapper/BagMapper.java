@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.smhrd.model.BagVO;
+import kr.smhrd.model.BoardVO;
+import kr.smhrd.model.Criteria;
 import kr.smhrd.model.New_BagVO;
 import kr.smhrd.model.Used_BagVO;
 
@@ -26,5 +28,4 @@ public interface BagMapper {
 	public int search_answer(String bag_name_new);
 
 
-	
 }

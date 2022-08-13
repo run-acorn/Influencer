@@ -7,10 +7,6 @@
 		values(#{board_content},#{board_head},#{board_title},#{nick},#{board_fileName},#{board_uploadPath})	    
  	</insert>
  	
- 	<select id="boardList" resultType="kr.smhrd.model.BoardVO">
-		select * from board; 	    
- 	</select>
- 	
  	<select id="boardView" resultType="kr.smhrd.model.BoardVO">
  	    select * from board where board_no=#{board_no};
  	</select>
@@ -20,7 +16,7 @@
  	</select>
  	
  	<update id="boardUpdate" parameterType="kr.smhrd.model.BoardVO">
-		update board set board_head=#{board_head}, board_date=now(),
+		update board set board_title=#{board_title}, board_head=#{board_head}, board_date=now(),
 		board_content=#{board_content} where board_no=#{board_no}; 	    
  	</update>
  	
@@ -28,7 +24,34 @@
  	    delete from board where board_no=#{board_no};
  	</delete>
  	
+ 	<!-- 내 게시글 -->
+	<select id="myWriteList" parameterType="kr.smhrd.model.MemberVO" resultType="kr.smhrd.model.BoardVO">
+		select * 
+		from board
+		where nick = #{nick}
+		order by board_no desc
+		limit #{skip}, #{amount}
+	</select>
+	
+	<!-- 내 게시글 총 개수 -->
+ 	<select id="getMyTotal" parameterType="kr.smhrd.model.MemberVO" resultType="int">
+        select count(*) 
+        from board
+        where nick = #{nick} 
+    </select>
  	
+ 	<!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+        select count(*) from board
+    </select>
+	
+ 	<!-- 게시물 목록(페이징) -->
+    <select id="getListPaging" parameterType="kr.smhrd.model.Criteria" resultType="kr.smhrd.model.BoardVO">
+        select * 
+        from board
+        order by board_no desc
+        limit #{skip}, #{amount}
+    </select>
     
     
 </mapper>

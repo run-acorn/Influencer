@@ -3,6 +3,7 @@ package kr.smhrd.web;
 
 import java.util.Date;
 import java.io.BufferedReader;
+import java.util.HashMap;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,6 +13,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -32,7 +34,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.smhrd.mapper.BoardMapper;
 import kr.smhrd.model.BoardVO;
-import kr.smhrd.service.FileService;
+import kr.smhrd.model.Criteria;
+import kr.smhrd.model.PageMakeDTO;
+import kr.smhrd.service.BoardService;
 
 @Controller
 public class BoardController {
@@ -41,6 +45,8 @@ public class BoardController {
 	@Autowired // DI기법 사용, 자동 연결
 	private BoardMapper mapper;
 	
+	@Autowired
+	private BoardService service;
 	
 	@RequestMapping("/goboard.do")
 	public String goboard() {
@@ -53,43 +59,6 @@ public class BoardController {
 		return "boardinsert";
 	}
 	
-	//@RequestMapping("/boardinsert.do")
-	//public String boardinsert(Model model, BoardVO vo,HttpSession session, HttpServletRequest request,
-	//		MultipartHttpServletRequest multipart) throws IllegalStateException, IOException {
-		
-	//	String path = request.getServletContext().getRealPath("resources/images");
-	//	System.out.println("경로 : " + path);
-
-	//	Map map = service.upload(multipart, path);
-	//	System.out.println(map);
-	//	session.setAttribute("map", map);
-	//	session.getAttribute("mvo");
-	//	int cnt = mapper.boardinsert(vo);
-	//	return "board";
-	//}
-	
-	
-//	@RequestMapping("/boardinsert.do")
-//	public String boardinsert(@RequestParam("board_upload_file") Model model, BoardVO vo,HttpSession session,
-//			MultipartFile multipartFile, HttpServletRequest request){ 
-//		String uploadFilePath = request.getServletContext().getRealPath("resources/images");
-//		String prefix = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf(".")+1, multipartFile.getOriginalFilename().length());
-//		
-//		String filename = UUID.randomUUID().toString() + "." + prefix;
-//		
-//		String pathname = uploadFilePath + filename;
-//		File dest = new File(pathname);
-//		try {
-//			multipartFile.transferTo(dest);
-//		} catch (IllegalStateException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		session.getAttribute("mvo");
-//		int cnt = mapper.boardinsert(vo);
-//		return "board";
-//	}
 	
 
 	
@@ -110,7 +79,7 @@ public class BoardController {
 		File checkfile = new File(board_upload_file.getOriginalFilename());
 		String type = null;
 		
-		try {// Files 클래스의 probeContentType() 메서드를 통해  Mime Type을 반환해준다
+		try {// Files 클래스의 probeContentType() 메서드를 통해  Mimze Type을 반환해준다
 			type = Files.probeContentType(checkfile.toPath());
 		} catch (IOException e1) {
 			e1.printStackTrace();
@@ -218,11 +187,23 @@ public class BoardController {
 		return "redirect:/goboard.do";
 	}
 	
-	@RequestMapping("/boardList.do")
-	@ResponseBody
-	public List<BoardVO> boardList() {
-		List<BoardVO> list = mapper.boardList();
-		return list;
-	}
+	/* 게시판 목록 페이지 접속(페이징 적용) */
+    @RequestMapping("/getListPaging.do")
+    @ResponseBody
+    public Map boardListGET(Criteria cri) {
+        
+    	Map map = new HashMap();
+    	
+        List<BoardVO> list = service.getListPaging(cri);
+        
+        int total = service.getTotal();
+        
+        PageMakeDTO pageMake = new PageMakeDTO(cri, total);
+        
+        map.put("list", list);
+        map.put("pageMake", pageMake);
+        
+        return map;
+    }
 	
 }

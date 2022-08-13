@@ -39,45 +39,21 @@
 									<th>작성시간</th>
 								</tr>
 							</thead>
-							<tbody>
-							<tr class="alert" role="alert">
-									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked> <span
-											class="checkmark"></span>
-									</label></td>
-									 <td>$89.98</td>	
-									<td>
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
-										</div>
-									</td>
-									<td>$44.99</td>
-								
-									<td>
-										<div class="img"
-											style="background-image: url(resources/images/product-1.png);"></div>
-									</td>
-									<td>
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-									</td>
-								</tr>
+							<tbody id='boardBody'>
 							
-						<script type="text/javascript">
+		<script type="text/javascript">
 						
 						$(document).ready(function(){
-							loadList();
+							loadList(1);
 						})
 						
 						
-						function loadList(){
-							
+						function loadList(pageNum){
 							$.ajax({
 								url : '${cpath}/myWrite.do',
 								type : 'get',
+								data : {'pageNum' : pageNum},
+								dataType : 'json',
 								success : listView,
 								error : function(){
 									alert('실패');
@@ -86,10 +62,13 @@
 						}
 						
 						function listView(data){
-							
 							var blist = "";
 							
-							$.each(data, function(index, board){
+							console.log(data)
+							
+							$('#boardBody').html("")
+							
+							$.each(data.list, function(index, board){
 								blist += "<tr class='innerContent'>"
 								blist += "<td class='table-light' style='padding-left:40px;'>" + board.board_no + "</td>"
 								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_title + "</td>"
@@ -99,11 +78,32 @@
 								blist += "<td class='table-light' style='padding-left:25px;'>" + board.board_date + "</td>"
 								blist += "</tr>"
 							})
-							$('.heading').after(blist);
+							
+							
+							blist += "<tr><td colspan=6 align='center'>"
+								if(data.pageMake.prev){
+									blist += "<a href='javascript:loadList("+(data.pageMake.startPage-1)+")'>"
+									blist += "이전 "
+									blist += "</a>"
+								}
+							
+								for(var i=data.pageMake.startPage; i<=data.pageMake.endPage; i++){
+									blist += "<a href='javascript:loadList("+(i)+")'>"
+									blist += i+" "
+									blist += "</a>"
+								}
+								
+								if(data.pageMake.next){
+									blist += "<a href='javascript:loadList("+(data.pageMake.endPage+1)+")'>"
+									blist += " 다음"
+									blist += "</a>"
+								}
+							blist += "</td></tr>"
+							
+							$('#boardBody').append(blist);
+							
 						}
-						
-						
-						</script>
+		</script>
 						
 
 							</tbody>

@@ -1,18 +1,12 @@
 package kr.smhrd.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Data
-public class MemberVO {
 
-	private String id;
-	private String pw;
-	private String nick;
-
-	/* 현재 페이지 */
+public class Criteria {
+    /* 현재 페이지 */
     private int pageNum;
     
     /* 한 페이지 당 보여질 게시물 갯수 */
@@ -22,13 +16,13 @@ public class MemberVO {
     private int skip;
     
     /* 기본 생성자 -> 기봅 세팅 : pageNum = 1, amount = 10 */
-    public MemberVO() {
+    public Criteria() {
         this(1,10);
         this.skip = 0;
     }
     
     /* 생성자 => 원하는 pageNum, 원하는 amount */
-    public MemberVO(int pageNum, int amount) {
+    public Criteria(int pageNum, int amount) {
         this.pageNum = pageNum;
         this.amount = amount;
         this.skip = (pageNum-1)*amount;
@@ -66,6 +60,7 @@ public class MemberVO {
     
 	@Override
 	public String toString() {
-		return "MemberVO [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip +"]";
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip +"]";
 	}
+    
 }

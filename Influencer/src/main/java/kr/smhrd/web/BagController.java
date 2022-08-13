@@ -18,19 +18,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import com.sun.xml.internal.ws.wsdl.writer.document.Service;
 
 import kr.smhrd.mapper.BagMapper;
 import kr.smhrd.model.BagVO;
 import kr.smhrd.model.BoardVO;
+import kr.smhrd.model.Criteria;
 import kr.smhrd.model.New_BagVO;
+import kr.smhrd.model.PageMakeDTO;
 import kr.smhrd.model.Used_BagVO;
 import kr.smhrd.service.FileService;
 
@@ -40,6 +42,7 @@ public class BagController {
 	// DB 쿼리문을 수행 할 수 있는 인터페이스 생성
 	@Autowired // DI기법 사용, 자동 연결
 	private BagMapper mapper;
+	@Autowired
 
 	// 글쓰기 페이지로 이동만 하는 메소드
 	@RequestMapping("/") // 동일한 url이지만 다른 전송방식을 사용하면 다음과 같이
@@ -62,7 +65,6 @@ public class BagController {
 		return list;
 
 	}
-	
 	
 	@RequestMapping("/new_bag_detail.do")
 	public String new_bag(Model model,int bag_no) {
@@ -96,13 +98,13 @@ public class BagController {
 		return "uploadForm";
 	}
 
-	// blob to  image형태로 변환을 도와주는 controller
+	// blob to image형태로 변환을 도와주는 controller
 	@RequestMapping("/getByteImage.do")
-	public ResponseEntity<byte[]> getByteImage(int bag_no){
-		
+	public ResponseEntity<byte[]> getByteImage(int bag_no) {
+
 		// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
 		// https://~~~~~?bt=[B@
-		
+
 		New_BagVO vo = mapper.selectimage(bag_no);
 		final HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.IMAGE_PNG);

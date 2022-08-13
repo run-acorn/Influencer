@@ -1,29 +1,21 @@
-package kr.smhrd.mapper;
+package kr.smhrd.service;
+
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.Criteria;
 import kr.smhrd.model.MemberVO;
 
-public interface BoardMapper {
-
-	public int boardinsert(BoardVO vo);
-
-	public List<BoardVO> boardList();
-
-	public List<BoardVO> boardView(int board_no);
-
-	public BoardVO goboardUpdate(int board_no);
-
-	public void boardUpdate(BoardVO vo);
-
-	public void boardDelete(int board_no);
+@Service
+public interface BoardService {
 	
-	/* 페이징 */
+	// 게시판 페이징
 	public List<BoardVO> getListPaging(Criteria cri);
 	
-	/* 게시판 총 개수 */
+	// 게시판 총 개수
 	public int getTotal();
 	
 	// 내 게시글 페이징
@@ -31,6 +23,6 @@ public interface BoardMapper {
 	
 	// 내 게시글 총 개수
 	public int getMyTotal(String nick);
-	
+
 	
 }
