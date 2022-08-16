@@ -6,22 +6,60 @@
         select * from bag where bag_brand=#{bag_brand}
     </select>
 
+    <!-- 쿼리 바꿈 -->
     <select id="new_bag_detail" resultType="kr.smhrd.model.New_BagVO">
         select * from new_bag where bag_no=#{bag_no} order by new_price limit 5;
     </select>
     
-    
+    <!-- 쿼리 바꿈 -->
     <select id="used_bag_detail" resultType="kr.smhrd.model.Used_BagVO">
-        select * from used_bag order by used_price limit 5;
+        select * from used_bag where bag_no=#{bag_no} order by used_price limit 5;
     </select>
     
  	<select id="selectimage" resultType="kr.smhrd.model.New_BagVO">
  	    select * from new_bag where bag_no = #{bag_no}; 	    
  	</select>
  	
- 	<select id="search_answer" resultType="int">
- 	    select bag_no from bag where bag_name_new like concat('%',#{bag_name_new},'%');
+ 	<!-- 목록 이미지 들고오기 -->
+ 	<select id="selectallimage" resultType="kr.smhrd.model.BagVO">
+ 	    select * from bag where bag_no = #{bag_no}; 	    
  	</select>
  	
+ 	<!-- bagname가져오기 -->
+ 	<select id="bagname" resultType="kr.smhrd.model.BagVO">
+ 	    select * from bag where bag_no = #{bag_no}; 	    
+ 	</select>
+ 	
+ 	<!-- main 이미지 들고오기 -->
+ 	<select id="selectmainimage" resultType="kr.smhrd.model.BagVO">
+ 	    select * from bag where bag_no = #{bag_no}; 	    
+ 	</select>
+ 	
+ 	<!-- mall 이미지 들고오기 -->
+ 	<select id="selectmallimage" resultType="kr.smhrd.model.New_BagVO">
+ 	    select * from new_bag where new_bag_no = #{new_bag_no}; 	    
+ 	</select>
+ 	
+ 	<!-- used 이미지 들고오기 -->
+ 	<select id="selectusedimage" resultType="kr.smhrd.model.Used_BagVO">
+ 	    select * from used_bag where used_bag_no = #{used_bag_no}; 	    
+ 	</select>
+ 	
+ 	<!-- usde mall 이미지 들고오기 -->
+ 	<select id="selectusdemallimage" resultType="kr.smhrd.model.Used_BagVO">
+ 	    select * from used_bag where used_bag_no = #{used_bag_no}; 	    
+ 	</select>
+ 	
+ 	
+ 	<!-- 리뷰들 가져오기 -->
+ 	<select id="review" resultType="kr.smhrd.model.Review">
+ 	    select * from review where bag_no=#{bag_no};
+ 	</select>
+ 	
+ 	<!-- 리뷰 이미지 들고오기 -->
+ 	
+ 	<select id="selectreviewimage" resultType="kr.smhrd.model.Review">
+ 	    select * from review where bag_no=#{bag_no};
+ 	</select>
  	
 </mapper>
