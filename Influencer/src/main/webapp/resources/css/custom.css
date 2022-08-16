@@ -1,0 +1,1209 @@
+/*
+Custom Css
+*/
+
+a { text-decoration:none !important }
+a:hover { text-decoration:none !important }
+
+
+/*폰트*/
+@font-face {
+	font-family: 'SUIT-Medium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*폰트 링크*/
+@import
+	"//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+@font-face {
+	font-family: 'MICEMyungjo';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEMyungjo.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+
+@font-face {
+	font-family: 'S-CoreDream-2ExtraLight'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; 
+	}
+
+
+.Mainh1 {
+	font-family: 'Cafe24Ssurround';
+	font-size: 38px;
+	color: #59ab6e
+}
+
+.MainP {
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 20px;
+	text-align: center;
+}
+
+
+.MainP1 {
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 15px;
+	
+}
+
+
+
+
+
+
+/*비밀번호 변경 글꼴*/
+
+.chpw{
+	
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 14px;
+	text-align: left;
+	
+}
+
+
+.chpw2{
+	
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 15px;
+	text-align: left;
+	color: red;
+}
+
+
+
+.chP{
+	
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 22px;
+	text-align: center;
+	
+}
+
+.chpwP_1{
+	
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 15px;
+	text-align: center;
+	
+}
+
+
+
+
+
+.MainP2 {
+	font-family: 'Cafe24Ssurround';
+	font-size: 18px; ! important;
+	font-weight: 2px;
+}
+
+.MainSt {
+	font-family: 'Cafe24Ssurround';
+	font-size: 18px;
+	font-weight: bold;
+	!
+	important;
+}
+
+/* 메인 화면 박스 사이즈*/
+* {
+	box-sizing: border-box;
+}
+
+.weegle {
+	width: 400px;
+	display: block;
+	text-align: center;
+	margin: auto;
+}
+
+.search {
+	left: 25%;
+    position: absolute;
+    text-align: center;
+    width: 38%;
+    top: 19%;
+}
+
+
+input {
+	width: 100%;
+	border-radius: 20px;
+	border: 1px solid #bbb;
+	margin: 10px 0;
+	padding: 10px 12px;
+	font-family: SUIT-Medium;
+}
+
+/* 검색창 돋보기 모양 */
+input::placeholder {
+	color: #bbb;
+	font-family: fontAwesome;
+}
+
+.fa-search {
+	position: absolute;
+	left: 15px;
+	top: 20px;
+	margin: 0;
+}
+
+.fa-file-circle-plus {
+	position: absolute;
+	right: 29px;
+	top: 16px;
+	color: #000000;
+}
+
+.fa-solid2 {
+	position: absolute;
+	right: 7px;
+	top: 16px;
+	color: #000000;
+}
+
+
+/* 모달 창  닫기 버튼*/
+
+.close_btn{
+	
+	position: absolute;
+    right: -2%;
+    top: -1%;
+	
+}
+
+.close_i{
+    font-size: 30px;
+    color: black;
+}
+
+
+
+/*사진 업로드 버튼*/
+
+
+.w-btn-outline {
+    position: relative;
+    padding: 1px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    position: relative;
+    left: 5%;
+}
+
+
+.w-btn-skin-outline {
+    border: 2px solid #00000000;
+    color: #00000000;
+}
+
+
+
+
+/*모달창 내부*/
+#my_modal {
+	
+    display: none;
+    padding: 20px 60px;
+    background-color: #fefefe;
+    height: 60%;
+               }
+      
+      
+#my_modal .modal_close_btn {
+    position: absolute;
+    top: -9px;
+    right: -7px;
+
+    }
+
+#Changepw_Modal{
+	
+	   display: none;
+       padding: 50px 65px;
+   	   background-color: #fefefe;
+       height: 60%;
+	   overflow: visible;
+}
+
+
+#Changenick{
+	
+	display: none;
+       padding: 50px 65px;
+   	   background-color: #fefefe;
+       height: 35%;
+       overflow: visible;
+	
+}
+
+
+#delete_Member{
+	
+	   display: none;
+       padding: 50px 65px;
+   	   background-color: #fefefe;
+       height: 400px;
+	   overflow: visible;
+}
+
+
+
+
+#preview{
+	
+	height: 500px;
+    width: 100%;
+}
+
+.modal_close_btn{
+	
+	font-family: SUIT-Medium;
+}
+
+
+#Login_Modal{
+	
+	border-radius: 2%;
+	display: none;
+    padding: 50px 65px;
+    background-color: #fefefe;    
+	width: 26%;
+	
+	
+}
+
+#joinModal{
+		border-radius: 2%;
+		display: none;
+        padding: 20px 60px;
+        background-color: #fefefe;
+        height: 47%;
+		width: 28%;
+}
+
+.join_in {
+    position: absolute;
+    width: 73%;
+    right: 12%;
+    top: 8%;
+}
+
+
+
+#chang_PW_Modal{
+	
+		display: none;
+        padding: 20px 60px;
+        background-color: #fefefe;
+        height: 50%;
+	
+	
+}
+
+
+#my_page{
+	display: none;
+        padding: 20px 60px;
+        background-color: #fefefe;
+        height: 50%;
+}
+
+
+/* 사진 첨부 모달 부분 */
+#root {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.title {
+    font-family: 'S-CoreDream-2ExtraLight';
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+
+.contents {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.contents .upload-box {
+  width: 100%;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents .upload-box .drag-file {
+  left: 2%;
+  position: relative;
+  width: 100%;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed #a4a4a4;
+}
+.contents .upload-box .drag-file.highlight {
+  border: 3px dashed red;
+}
+.contents .upload-box .drag-file .image {
+  width: 40px;
+}
+.contents .upload-box .drag-file .message {
+  margin-bottom: 0;
+}
+.contents .upload-box .drag-file .preview {
+  display: none;
+  position: absolute;
+  left: 0;
+  height: 0;
+  width: 100%;
+  height: 100%;
+}
+.contents .upload-box .file-label {
+  margin-top: 30px;
+  background-color: #5b975b;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  width: 65%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.contents .upload-box .file {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .contents {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+  .contents .upload-box {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 0;
+  }
+  .contents .upload-box .drag-file {
+    height: 150px;
+  }
+  .contents .files {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 0;
+    overflow: initial;
+  }
+}
+
+
+
+
+/*메인 사진첨부 부분*/
+
+.file-import {
+    font-family: 'S-CoreDream-2ExtraLight';
+    position: absolute;
+    color: #fff;
+    font-size: 80%;
+    left: 64%;
+    top: 28%;
+    background: #fff;
+    width: 9%;
+    height: 58%;
+}
+
+
+/*게시판 사진첨부 */
+
+.file-import2 {
+    font-family: 'S-CoreDream-2ExtraLight';
+    position: relative;
+    color: #000;
+    font-size: 80%;
+    top: 28%;
+    background: #fff;
+    width: 150px;
+    height: 60px;
+}
+
+
+/* 모달 검색 버튼*/
+
+.Mo-button{
+	width:120px;
+	height: 40px;
+	color:#fff;
+	background: #717fe0;
+	font-size: 16px;
+	border:none;
+	border-radius: 20px;
+	box-shadow: 0 4px 16px rgba(0,79,255,0.3);
+	transition:0.3s;
+	position: absolute;
+	left:50%;
+	top:89%;
+	transform: translate(-50%,-50%);
+}
+
+
+
+
+
+.Mo-button:focus {
+	outline:0;
+}
+.Mo-button:hover{
+	background: rgba(0,79,255,0.9);
+	cursor: pointer;
+	box-shadow: 0 2px 4px rgba(0,79,255,0.6);
+}
+
+/*검색 버튼 */
+
+.hover-1 {
+  background: linear-gradient(#717fe0 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+  transition: 0.4s, background-position 0s;
+}
+.hover-1:hover {
+  --p: 100%;
+  color: #fff;
+}
+
+
+/*메인 게시판으로 가기 버튼 */
+.mainsub{
+	color: white;
+	font-family: S-CoreDream-2ExtraLight;
+}
+
+
+.mainLoginInput {
+	height: 50px;
+	padding: 7px;
+	font-size: 30px;
+	margin: 5px 0;
+}
+
+/*--------------*/
+.mainLoginInput::-webkit-input-placeholder {
+	font-family: FontAwesome;
+	font-weight: normal;
+	overflow: visible;
+	vertical-align: top;
+	display: inline-block !important;
+	padding-left: 5px;
+	padding-top: 2px;
+	color: rgb(0, 0, 0);
+}
+
+.mainLoginInput::-moz-placeholder {
+	font-family: FontAwesome;
+	font-weight: normal;
+	overflow: visible;
+	vertical-align: top;
+	display: inline-block !important;
+	padding-left: 5px;
+	padding-top: 2px;
+	color: rgb(0, 0, 0);
+}
+
+.mainLoginInput:-ms-input-placeholder {
+	font-family: FontAwesome;
+	font-weight: normal;
+	overflow: visible;
+	vertical-align: top;
+	display: inline-block !important;
+	padding-left: 5px;
+	padding-top: 2px;
+	color: hsl(9, 40%, 60%);
+}
+
+#input-file {
+	display: none;
+}
+#input-file2 {
+	display: none;
+}
+
+#input-search{
+	display: none;
+	
+}
+
+
+#input-login {
+	display: none;
+}
+#input_sub {
+	display: none;
+}
+
+#input-join{
+	display: none;
+	
+}
+
+
+@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+
+@font-face {
+	font-family: 'TmonMonsori';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*���»� �κ� */
+.wrap {
+	display: flex;
+	width: 40%;
+	right: 50%;
+	justify-content: space-between;
+	position: relative;
+	left: 30%;
+	top: 50px;
+	color: #000000;
+}
+
+.item {
+	width: 110%;
+	height: 90%;
+	border-radius: 30%;
+	flex: 1;
+}
+
+.item>img {
+	width: 80%;
+	height: 90%;
+	border-radius: 50%
+}
+
+.bannerImg {
+	width: 120%;
+	height: 120%;
+	position: relative;
+	right: 20%
+}
+
+.carousel-item>img {
+	width: 70%;
+	height: 70%;
+	position: relative;
+	right: -8%;
+	top: -45px;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 50%;
+	height: 100%;
+	background-image: url("");
+}
+
+.wrapper>img {
+	position: relative;
+}
+
+/* 머리글 부분 */
+#header-wrap {
+	height: 135px;
+	border-bottom: 2px #000 solid;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background: #fff;
+	margin-top: constant(safe-area-inset-top);
+	margin-top: env(safe-area-inset-top);
+}
+
+#header.new {
+	height: 135px;
+}
+
+/*검색바 부분*/
+.maininput1 {
+	width: 100%;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    padding: 10px 12px;
+    font-family: SUIT-Medium;
+    font-size: 120%;
+}
+
+#fix {
+	padding-left: 10%;
+	left: 30%;
+	top: 0.5%;
+	position: fixed;
+	width: 100%;
+}
+
+/*로그인 , 조인 버튼*/
+
+
+.logbtn {
+	color: #fff;
+	background: #0000;
+	border: none;
+	font-family: S-CoreDream-2ExtraLight
+}
+
+.joinbtn {
+	color: #fff;
+	background: #0000;
+	border: none;
+	font-family: S-CoreDream-2ExtraLight
+}
+
+.logbtn2 {
+	color: #000;
+	background: #0000;
+	border: none;
+	font-family: S-CoreDream-2ExtraLight
+}
+
+.joinbtn2 {
+	color: #000;
+	background: #0000;
+	border: none;
+	font-family: S-CoreDream-2ExtraLight
+}
+
+
+
+.logoutbtn {
+	color: #fff;
+	background: #0000;
+	border: none;
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 15px;
+}
+
+/*게시판 쪽 */
+.logoutbtn2 {
+	color: #000;
+	background: #0000;
+	border: none;
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 15px;
+}
+
+.pw_change {
+	color: #fff;
+	background: #0000;
+	border: none;
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 15px;
+}
+
+
+.myPagetbtn {
+	color: #fff;
+	background: #0000;
+	border: none;
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 15px;
+}
+
+
+.mainhr {
+	color: black;
+	size: 3px;
+}
+
+.header-div {
+	position: relative;
+	width: 100%;
+	left: 50%;
+	align-content: center;
+	
+	
+}
+
+
+.log-div {
+    
+    right: 5%;
+	text-align: center; 
+    position: absolute;
+}
+
+
+/* 로그인 */
+
+.mainnick{
+	
+	color: white;
+}
+/*게시판 쪽*/
+.mainnick2{
+	
+	right: 34px;
+    color: black;
+    position: relative;
+    top: 32px;
+}
+
+
+
+/* 비밀번호 변경 */
+
+
+#Changepw .login_wrap {
+    bottom: 30%;
+    left: 34%;
+    width: 26%;
+    margin: 0 auto;
+    padding: 24px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 5px;
+    height: 50%;
+    position: absolute;
+}
+      
+      
+
+
+      #Changepw .login_wrap input {
+        display: block;
+        margin-bottom: 20px;
+        width: 100%;
+        line-height: 40px;
+        padding: 0 10px;
+        outline: none;
+    }
+    
+    #Changepw .login_wrap .btn_submit {
+        display: block;
+        height: 40px;
+        background: #777;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        transition: all 0.5s;
+    }
+
+    #Changepw .login_wrap .btn_submit.on {
+        background: pink;
+    }
+
+    .Mo-ChangPw-btn{
+	width:120px;
+	height: 40px;
+	color:#fff;
+	background: #004fff;
+	font-size: 16px;
+	border:none;
+	border-radius: 20px;
+	box-shadow: 0 4px 16px rgba(0,79,255,0.3);
+	transition:0.3s;
+	position: absolute;
+	left:50%;
+	top:80%;
+	transform: translate(-50%,-50%);
+}
+
+#h5_pw1{
+	font-family: S-CoreDream-2ExtraLight;
+	color: red;
+	text-align: center;
+}
+
+#h5_pw2 {
+	font-family: S-CoreDream-2ExtraLight;
+    color: blue;
+    text-align: center;
+}
+
+/* 닉네임 변경*/
+
+/* #Changenick .nick_wrap {
+    bottom: 35%;
+    left: 34%;
+    width: 26%;
+    margin: 0 auto;
+    padding: 24px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 5px;
+    height: 32%;
+    position: absolute;
+}
+*/
+
+.nick_ch{
+	
+	text-align: center;
+    position: relative;
+    top: 3%;
+	
+}
+
+/*닉네임 변경 버튼 */
+
+.nick_ch_btn{
+	
+	background: linear-gradient(#717fe0 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+  transition: 0.4s, background-position 0s;
+	
+}
+
+.nick_ch_btn:hover {
+  --p: 100%;
+  color: #fff;
+}
+
+
+
+/*회원 탈퇴*/
+.mvo_delete{
+	
+	    text-align: center;
+    position: relative;
+    top: -8%;
+}
+
+/*회원 탈퇴 버튼*/
+
+.mv_dltbtn{
+  background: linear-gradient(#cd4542ba 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+  transition: 0.4s, background-position 0s;
+}
+.mv_dltbtn:hover {
+  --p: 100%;
+  color: #fff;
+}
+
+
+
+/*게시판 */
+
+input#nick {
+    
+    background-color: white;
+    border: none;
+    font-family: S-CoreDream-2ExtraLight; 
+   
+} 
+
+
+.a_tag_ceter {
+    top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+
+.boad_P{
+	
+	font-family: 'S-CoreDream-2ExtraLight';
+	font-size: 20px;
+	text-align: center;
+	
+}
+
+input#board_title {
+    border: none;
+    font-family: 'S-CoreDream-2ExtraLight';
+}
+
+label.label {
+    font-size: 14px;
+    font-weight: 1000;
+    font-family: 'S-CoreDream-2ExtraLight';
+}
+
+
+ /*게시판 쪽 로그인*/ 
+ 
+ .board_nick {
+    color: black;
+}    
+
+/*게시판*/
+
+
+.nick_board{
+	
+	font-family: 'S-CoreDream-2ExtraLight';
+    font-size: 14px;
+	
+}
+
+
+/*게시판 상세보기 */
+
+.board_ceter_view {
+    width: 40%;
+    bottom: 141px;
+    left: 54%;
+    text-align: center;
+    position: relative;
+}
+
+
+.a_tag_ceter_view {
+    text-align: center;
+    position: relative;
+    right: -9.5%;
+    bottom: 63px;
+}
+
+input.button.fit.boder_update_btn {
+    width: 50%;
+}
+
+.boder_update_btn{
+	
+	background: linear-gradient(#717fe0 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+  transition: 0.4s, background-position 0s;
+	
+}
+
+
+
+/*댓글*/
+
+
+
+textarea#txt {
+    position: relative;
+    width: 550%;
+    left: 36%;
+}
+
+
+button.btn-sm.btn-danger.btn {
+    position: relative;
+    bottom: 5px;
+    right: 200px;
+    top: 19px;
+}
+
+
+button.btn-sm.btn-danger.btn.delete_btn {
+    position: relative;
+    bottom: 11px;
+    top: 33px;
+    left: 176px;
+}
+
+p.comment_p {
+    position: relative;
+    top: 30px;
+    left: 29px;
+}
+
+
+/* 검색바 부분 */
+
+<!-- 한글 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+	rel="stylesheet">
+
+</head>
+
+<style>
+/* 사이드 사이트 바 div */
+.quickmenu {
+	position: fixed;
+	right: 50%;
+	top: 200px;
+	margin-right: -950px;
+	text-align: center;
+	width: 180px;
+	height: 600px;
+	box-shadow: 2px 2px 10px 5px #dcdcdc;
+	border-radius: 10px;
+}
+/* 사이드 사이트 이미지 div */
+.siteIcon {
+	position: relative;
+	top: 20px;
+	margin-top: 30px;
+}
+
+/* 사이드 사이트 이미지, 링크 */
+.siteBar {
+	font-family: 'Noto Sans KR', sans-serif !important;
+	width: 70px;
+	height: 60px;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: 10px;
+	color: black;
+}
+
+.listBtn {
+	font-size: 20px;
+}
+
+#new {
+	height: 50px;
+	width: 100% !important;
+	background-color: #f5f5f5;
+	color: black;
+	border: none;
+}
+
+#used {
+	height: 50px;
+	width: 100% !important;
+	background-color: #ffffff;
+	color: black;
+	border: none;
+}
+
+.p-b-10.item {
+	border: 1px solid black;
+	height: 335px;
+}
+
+
+
+/*검색바 부분*/
+.maininput {
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #000;
+	margin: 14px 0;
+	padding: 10px 12px;
+	font-family: SUIT-Medium;
+}
+
+.mainBar {
+	width: 600px;
+}
+
+#mainBar {
+	margin: 0 !important;
+}
+
+#main-main {
+	height: 130px !important;
+	border-bottom: 2px solid black;
+}
+
+
+/* 내정보 드롭다운 */
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	width: 120px;
+	height:50px;
+	text-align: center;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	z-index: 1; /*다른 요소들보다 앞에 배치*/
+}
+
+.dropdown-content a {
+	display: block;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content {
+	width: 120px !important;
+}
+
+/* My Menu 상자*/
+#myMainBar{
+	width:120px;
+	height:50px;
+	text-align: center;
+	padding:10px;
+	
+}
+
+#myMainBar2{
+	width:120px;
+	height:50px;
+	text-align: center;
+	padding:10px;
+	color: white;
+	font-family: S-CoreDream-2ExtraLight;
+}
+
+
+/* 리스트 a태그들*/
+.myBar{
+	text-decoration: none;
+	color:inherit; 
+	display:block;
+	text-decoration:none; 
+}
+
+.myBar:hover{
+	color:#dcdcdc;
+}
+
+/* My menu 리스트들*/
+.myBarList{
+	padding:10px;
+	text-align: center;
+}
+
+.myBarList2{
+	padding:10px;
+	text-align: center;
+	color: white;
+}
+
+.myBarList:hover{
+	background-color: #000000;
+	color:#dcdcdc;
+}
+
+#myBars{
+	position: absolute;
+    width: 100px;
+    right: 150px;
+}
+
+
+/* 내정보 div*/
+
+.My_info{
+	
+	width: 200%;
+}
