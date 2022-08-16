@@ -94,7 +94,7 @@ public class BoardController {
 		}
 		
 		// c:upload 안에 날짜별 폴더를 생성해서 저장
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "C:\\";
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 		Date date = new Date();
 		
@@ -135,7 +135,7 @@ public class BoardController {
 	@RequestMapping("img_display")
 	public ResponseEntity<byte[]> getImage(String fileName){
 		// 특수문자\를 인식할 수 있도록 이스케이프 문자 사용(\\)
-		File file = new File("C:\\upload\\" + fileName.replace("\\", "/"));
+		File file = new File("C:\\" + fileName.replace("\\", "/"));
 		//file = file.replace(/\/g,"/");
 		ResponseEntity<byte[]> result = null;
 		

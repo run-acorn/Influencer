@@ -62,4 +62,7 @@
  	    select * from review where bag_no=#{bag_no};
  	</select>
  	
+ 	<select id="search_answer" resultType="int">
+ 	    select bag_no from bag where bag_name_new like concat('%',#{bag_name_new},'%');
+ 	</select>
 </mapper>

@@ -1178,7 +1178,7 @@ function answer_bag_name(res){
 		type : 'POST',
 		data : {"bag_name_new":res},
 		success : function(bag_no){
-			location.href='${cpath}/new_bag_detail.do?bag_no='+bag_no;
+			location.href='${cpath}/selectimage.do?bag_no='+bag_no;
 		},
 		error : function(){
 			alert('이미지 서칭실패');

@@ -229,7 +229,13 @@ public class BagController {
 								return list;
 										
 									}
-
+							
+							@RequestMapping("/search_answer.do")
+							@ResponseBody
+							public String search_answer(String bag_name_new) {
+								int bag_no = mapper.search_answer(bag_name_new);
+								return bag_no+"";
+							}
 		
 
 	}

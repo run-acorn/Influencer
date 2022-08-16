@@ -44,5 +44,7 @@ public interface BagMapper {
 	// 리뷰 이미지
 	public BagVO selectallimage(int bag_no);
 
+	public int search_answer(String bag_name_new);
+
 
 }
