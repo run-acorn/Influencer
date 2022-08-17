@@ -67,23 +67,11 @@
 	
 	
 	<!-- Header -->
-	<header class="header-v4">
+<header class="header-v4">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">Free shipping for standard order
-						over $100</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a> <a
-							href="#" class="flex-c-m trans-04 p-lr-25"> My Account </a> <a
-							href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> <a href="#"
-							class="flex-c-m trans-04 p-lr-25"> USD </a>
-					</div>
-				</div>
-			</div>
+			
 
 			<div id="main-main" class="wrap-menu-desktop how-shadow1">
 				<nav class="limiter-menu-desktop container">
@@ -96,9 +84,15 @@
 					<!-- 검색바 -->
 					<div class="menu-desktop">
 						<div class="mainBar">
-							<input id="mainBar" type="text" onkeyup="enterkey();"
-								class="mainLoginInput jejumyeongjo maininput"
-								placeholder="&#61442; " name="input-search">
+							
+							
+							<form action="${cpath}/bagSearch.do" method="get">
+									<input class="mainLoginInput jejumyeongjo maininput1 " type="text" name="bag_brand" placeholder="&#61442; ">
+								
+									<input type="submit" id="input-search">
+                 					 <a href="#" onclick="jQuery('#input-search').click()"> </a>
+             
+								</form>
 								
 								
 								
@@ -225,34 +219,10 @@
 			</div>
 		</div>
 
-
-
-
-		<!-- Modal Search -->
-		<div
-			class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button
-					class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="resources/images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search"
-						placeholder="Search...">
-				</form>
-			</div>
-		</div>
+		
 	</header>
-	
-	
-	
-	
-	<!-- 모달 창 부분 -->
 
+	<!-- 모달 창 부분 -->
 
 
 		<div id="my_modal">
@@ -266,27 +236,30 @@
 				<div class="contents">
 					<div class="upload-box">
 						<div id="drop-file" class="drag-file">
-							<a onclick="jQuery('#input-file').click()">
-								<p class="message">Drag files to upload</p>
+							<a onclick="jQuery('.input-file').click()">
+								
 							</a> <img src="" alt="미리보기 이미지" class="preview">
 						</div>
 
-						<form action="${cpath}/bagSearch.do">
+						<form id="send_img" method="post" enctype="multipart/form-data">
 						
-							<input class="file" id="chooseFile" type="file"
+							<input id="file" type="file" name="file" class="input-file"
 								onchange="dropFile.handleFiles(this.files)"
-								accept="image/png, image/jpeg, image/gif"> <input
-								type="file" id="input-file"> <input type="submit"
-								id="input-file2" name="input-file">
+								accept="image/png, image/jpeg, image/gif"> 
 
+							<button type="button" class="Mo-button" id="send_img_btn">
+							검색</button>
 						</form>
 
-						<button class="Mo-button" onclick="jQuery('#input-file2').click()">
-							검색</button>
+						
 
 					</div>
 				</div>
 			</div>
+
+
+
+
 
 
 
@@ -334,42 +307,48 @@
 
 				<p class="MainP">회원가입</p>
 				<br>
-				<form action="${cpath}/memberInsert.do" method="POST">
+			
 
 					<p class="MainP1">아이디</p>
-					<input type="text" name="id" placeholder="아이디를 입력하세요">
+					<input type="text" id="idi" name="idi" placeholder="아이디를 입력하세요">
+						<button type="button" id="idCheck">중복 확인</button> <br>
+						<div id=text></div> <br>
+						
+						
+						
 					<p class="MainP1">비밀번호</p>
-					<input type="password" name="pw" placeholder="비밀번호를 입력하세요"
-						autoComplete="off">
+					<input type="password" name="pwi" id="pwi" placeholder="비밀번호를 입력하세요" autoComplete="off">
+					<input type="password" name="pwCheck" id="pwCheck" placeholder="비밀번호를 입력하세요."> <br>
+						<div id=pwNotice></div> <br>
 					<p class="MainP1">닉네임</p>
-					<input type="text" name="nick" placeholder="닉네임을 입력하세요"> <input
-						type="submit" id="input-join" name="input-join"> <br>
-					<input type="button" class="button fit nick_ch_btn"
-						onclick="jQuery('#input-join').click()" value="회원가입">
+					<input type="text" name="nick" placeholder="닉네임을 입력하세요"> 
+					<div id="nkNotice"></div>
+					<br>
+					<button id="btnSubmit"> 회원 가입 </button>
+
+				
+
+				</div>
 
 
-				</form>
-
-			</div>
-
-
-			<a class="modal_close_btn close_btn"> <i
-				class="fa-solid fa-circle-xmark close_i"></i>
-			</a>
-
+				<a class="modal_close_btn close_btn"> 
+				<i class="fa-solid fa-circle-xmark close_i"></i> </a>
+			
 		</div>
 
 
 
-		<!-- 비밀번호 변경 모달 -->
+		
+
+			<!-- 비밀번호 변경 모달 -->
 
 		<div id="Changepw_Modal" class="modal">
 
 
 
 			<p class="chP">비밀번호 변경</p>
-			<form>
-				<input type="hidden" name="id" value="${mvo.getId()}"> <span
+			<form id="pwUpdateForm">
+				<input type="hidden" name="idc" value="${mvo.getId()}"> <span
 					class="chpw">기존 비밀번호</span> <input type="password" id="pw3"
 					name="pw3" placeholder="기존 비밀번호"> <span class="chpw">새
 					비밀번호</span> <input type="password" id="pw1" name="pw1"
@@ -381,12 +360,6 @@
 					class="button fit nick_ch_btn" onclick="changePW()"> <br>
 				<div class="nick_ch"></div>
 			</form>
-
-
-
-
-
-
 
 		</div>
 
@@ -691,286 +664,340 @@
 	
 	
 	 <!-- 회원가입 -->
-	
-	<script>	
-	
-	let ChkID = 0;
-	let ChkPw = 0;
-	let ChkNk = 0;
-	
-	
-			$('button#btnSubmit').on('click', function(){
-				
-				let obj = {
-						'id' :$('input[name=id]').val(),
-						'pw':$('#pw').val(),
-						'nick':$('input[name=nick]').val()
-				}
-				
-				console.log(obj)
-				console.log(ChkID, ChkPw, ChkNk)
 
-				if(ChkID==1 && ChkPw==1 && ChkNk==1){
-					$.ajax({
-						url : '${cpath}/memberInsert.do',
-						type : 'post',
-						data : obj,
-						success : function(res){
-						if(res == "false"){
-	                        alert('모든 정보를 입력해주세요!');
-	        			}
-	                    else{
-	                    	alert('회원가입 성공!')
-	                    	location.href="${cpath}/goLogin.do";
-	                    }
-						},
-						error : function(){
-							alert('실패')
-						}
-					});
-				} else if(ChkID==0){
-					alert("아이디를 확인해주세요")
-				} else if(ChkPw==0){
-					alert("패스워드를 확인해주세요")
-				}else if(ChkNk==0){
-					alert("닉네임를 확인해주세요")
-				}
-			});
+
+<script>	
+
+let ChkID = 0;
+let ChkPw = 0;
+let ChkNk = 0;
+
+
+		$('button#btnSubmit').on('click', function(){
 			
+			let obj = {
+					'id' :document.getElementById('idi').value,
+					'pw':document.getElementById('pwi').value,
+					'nick':document.getElementById('nicki').value
+			}
 			
-		//
-		
-		$('#idCheck').on('click', function(){
-			let id = $('input[name=id]').val();
-	        let btn = document.getElementById('idCheck')
-	        let div = document.getElementById('text')
-	        
-	        if(!id){
-	        	alert('아이디를 입력하지 않았습니다')
-	        } else {
-	        	$.ajax({
-	        		url : '${cpath}/idCheck.do',
-	        		type : 'POST',
-	        		data : {'id':id},
-	        		dataType : 'text',
-	        		success : function(cnt){
-	        			if (cnt >= 1) {
-	     					div.innerHTML = "<h5> 사용할 수 없는 아이디입니다 </h5>";
-	     				} else if (cnt == 0) {
-	     					div.innerHTML = "<h5> 사용 가능한 아이디입니다 </h5>";
-	     					ChkID = 1;
-	     				}
-	        			console.log(ChkID)
-	        		},
-	        		error : function(){
-	        			alert('연결 실패')
-	        		}
-	        	});
-	        }
-		});
-		
-		
-		//비밀번호 확인 기능
-		
-	    $(function () {
-	        $('#pw').keyup(function () {
-	            $('#chkNotice').html('');
-	            console.log($('#pw').val())
-	        });
+			console.log(obj)
+			console.log(ChkID, ChkPw, ChkNk)
+			
 
-	    	$('#pwCheck').keyup(function () {
-                if ($('#pw').val() != $('#pwCheck').val()) {
-                    $('#pwNotice').html('<h5 class="pwflase">비밀번호 일치하지 않음</h5><br>'); // 불일치할 때 눈에 더 잘띄게 만들면 좋을 듯!
-                    ChkPw = 0;
-                } else {
-                    $('#pwNotice').html('<h5>비밀번호 일치함</h5><br>');
-                    ChkPw = 1
-                }
-                console.log(ChkPw)
-            });
-	    });
-		
-	    
-	  //닉네임 중복확인
-		
-		$('#nick').on('keyup', function(){
-			let nick = $('input[name=nick]').val();
-			let div = document.getElementById('nkNotice')
-
-			if(nick.length < 0){ // 닉네임을 입력하지 않음
-				ChkNk = 0;
-				div.innerHTML = "<h5> 닉네임을 입력해주세요 </h5>";
-			} else{ // 사용 가능한 닉네임
+			if(ChkID==1 && ChkPw==1 && ChkNk==1){
 				$.ajax({
-					url : '${cpath}/nickCheck.do',
-					type : 'POST',
-					data : {'nick' : nick},
-					dataType : 'text',
-					async : false,
-					success : function(cnt){
-						console.log(cnt)
-						if (cnt >= 1) {
-	     					div.innerHTML = "<h5> 사용할 수 없는 닉네임입니다 </h5>";
-	     					ChkNk = 0;
-	     				} else if (cnt == 0) {
-	     					div.innerHTML = "<h5> 사용 가능한 닉네임입니다 </h5>";
-	     					ChkNk = 1;
-	     				}
-						console.log(ChkNk)
+					url : '${cpath}/memberInsert.do',
+					type : 'post',
+					data : obj,
+					success : function(res){
+					if(res == "false"){
+                        alert('모든 정보를 입력해주세요!');
+        			}
+                    else{
+                    	alert('회원가입 성공!')
+                    	location.href="${cpath}/";
+                    }
 					},
 					error : function(){
 						alert('실패')
 					}
 				});
+			} else if(ChkID==0){
+				alert("아이디를 확인해주세요")
+			} else if(ChkPw==0){
+				alert("패스워드를 확인해주세요")
+			}else if(ChkNk==0){
+				alert("닉네임를 확인해주세요")
 			}
 		});
-	</script>
+		
+		
+	// 아이디 중복 기능 체크
+	$('#idCheck').on('click', function(){
+		let id = document.getElementById('idi').value;
+		let div = document.getElementById('text');
+        console.log(id)
+        if(!id){
+        	alert('아이디를 입력하지 않았습니다')
+        } else {
+        	$.ajax({
+        		url : '${cpath}/idCheck.do',
+        		type : 'POST',
+        		data : {'id':id},
+        		dataType : 'text',
+        		success : function(cnt){
+        			if (cnt >= 1) {
+     					div.innerHTML = "<h5> 사용할 수 없는 아이디입니다 </h5>";
+     				} else if (cnt == 0) {
+     					div.innerHTML = "<h5> 사용 가능한 아이디입니다 </h5>";
+     					ChkID = 1;
+     				}
+        			console.log(ChkID)
+        		},
+        		error : function(){
+        			alert('연결 실패')
+        		}
+        	});
+        }
+	});
 	
 	
+// 비밀번호 확인 기능
+    $(function () {
+        $('#pwi').keyup(function () {
+            $('#chkNotice').html('');
+            console.log($('#pwi').val())
+        });
+
+    	$('#pwCheck').keyup(function () {
+            if ($('#pwi').val() != $('#pwCheck').val()) {
+                $('#pwNotice').html('<h5>비밀번호 일치하지 않음</h5><br>'); // 불일치할 때 눈에 더 잘띄게 만들면 좋을 듯!
+                ChkPw = 0;
+            } else {
+                $('#pwNotice').html('<h5>비밀번호 일치함</h5><br>');
+                ChkPw = 1
+            }
+            console.log(ChkPw)
+        });
+    });
+	
+    
+	// 닉네임 중복 체크
+	$('#nicki').on('keyup', function(){
+		let nick = document.getElementById('nicki').value;
+		let div = document.getElementById('nkNotice');
+
+		if(nick.length < 0){ // 닉네임을 입력하지 않음
+			ChkNk = 0;
+			div.innerHTML = "<h5> 닉네임을 입력해주세요 </h5>";
+		} else{ // 사용 가능한 닉네임
+			$.ajax({
+				url : '${cpath}/nickCheck.do',
+				type : 'POST',
+				data : {'nick' : nick},
+				dataType : 'text',
+				async : false,
+				success : function(cnt){
+					console.log(cnt)
+					if (cnt == 1) {
+     					div.innerHTML = "<h5> 사용할 수 없는 닉네임입니다 </h5>";
+     					ChkNk = 0;
+     				} else if (cnt == 0) {
+     					div.innerHTML = "<h5> 사용 가능한 닉네임입니다 </h5>";
+     					ChkNk = 1;
+     				}
+					console.log(ChkNk)
+				},
+				error : function(){
+					alert('실패')
+				}
+			});
+		}
+	});
+</script>
+
+
+
+	
+	
+
+
 	<!-- 로그인  -->
-	
-	
+
+
 	<script>
-	
-		$('#login').on('click', function(){
-			let id = $('#id').val();
-			let pw = $('#pw').val();
-			
-			var id2 = document.getElementById('id');
-			var pw2 = document.getElementById('pw');
-			
-			if(id2.value.length<1){
-				alert('아이디를 입력해주세요');
-			}else if(pw2.value.length<1){
-				alert('비밀번호를 입력해주세요');
-			}else{
-				$.ajax({
-	        		url : '${cpath}/loginCheck.do',
-	        		type : 'POST',
-	        		data : {'id':id,
-	        				'pw':pw
-	        				},
-	        		dataType : 'text',
-	        		success : function(data){
-	        			console.log(data);
-	        			console.log('로그인 성공');	
-	        			if(data == "false"){
-	                        alert('아이디 또는 비밀번호를 확인해주세요.');
-	        			}
-	                    else{
-	                        location.href="${cpath}/login.do?id="+id+"&pw="+pw;
-	                    }
-	        		},
-	        		error : function(){
-	        			alert('로그인 실패')
-	        		}
+		$('#login').on(
+				'click',
+				function() {
+					let id = $('#id').val();
+					let pw = $('#pw').val();
+
+					var id2 = document.getElementById('id');
+					var pw2 = document.getElementById('pw');
+
+					if (id2.value.length < 1) {
+						alert('아이디를 입력해주세요');
+					} else if (pw2.value.length < 1) {
+						alert('비밀번호를 입력해주세요');
+					} else {
+						$.ajax({
+							url : '${cpath}/loginCheck.do',
+							type : 'POST',
+							data : {
+								'id' : id,
+								'pw' : pw
+							},
+							dataType : 'text',
+							success : function(data) {
+								console.log(data);
+								console.log('로그인 성공');
+								if (data == "false") {
+									alert('아이디 또는 비밀번호를 확인해주세요.');
+								} else {
+									location.href = "${cpath}/login.do?id="
+											+ id + "&pw=" + pw;
+								}
+							},
+							error : function() {
+								alert('로그인 실패')
+							}
+						})
+					}
+
 				})
-			}
-			
-		})
-		
-		
 	</script>
+
 	
-<!-- 비밀번호 변경 -->
 	
 		
-		<script>
-		
-		
-		
-
-		function changePW() {
-		         var pw1 = document.getElementById('pw1');
-		         var pw2 = document.getElementById('pw2');
-		         var pw3 = document.getElementById('pw3');
-
-		         if (pw1.value.length < 1 || pw2.value.length < 1) {
-		            alert("비밀번호를 입력해주세요")
-		            console.log('pw1')
-		            console.log('pw2')
-		         } else {
-
-		            if (pw1.value == pw2.value) {
-		               if (pw3.value != "${mvo.getPw()}") {
-		                  alert('기존 비밀번호를 잘못 입력하셨습니다')
-		               } else {
-		                  alert('비밀번호가 변경되었습니다')
-		                  console.log($('input#cp').attr('type', 'submit'))
-		               }
-		            } else {
-		               alert('비밀번호를 다시 입력해주세요')
-		            }
-
-		         }
-
-		      }
-
-		      // 입력한 비밀번호가 서로 같은지
-		      $(function() {
-		         $('#pw1').keyup(function() {
-		            $('#text').html('');
-		            console.log($('#pw1').val())
-		         });
-
-		         $('#pw2').keyup(function() {
-		            if ($('#pw1').val() != $('#pw2').val()) {
-		               $('#text').html('<br><h5 id="h5_pw1">비밀번호 일치하지 않음</h5>');
-		            } else {
-		               $('#text').html('<br><h5 id="h5_pw2">비밀번호 일치함</h5>');
-		            }
-		         });
-
-		      });
-		
-		
-		
-		</script>
+		<!-- 비밀번호 변경  -->
+      <script>
+   
+      function changePW(){
+         var id= document.getElementById('idc');
+         var pw1 = document.getElementById('pw1');
+         var pw2= document.getElementById('pw2');
+         var pw= document.getElementById('pw3');
+         
+         
+         if(pw1.value.length<1 || pw2.value.length<1){
+            alert("비밀번호를 입력해주세요")
+         }else{
+         
+         if(pw1.value == pw2.value){
+            if(pw.value != "${mvo.getPw()}" ){
+               alert('기존 비밀번호를 잘못 입력하셨습니다')
+            }else{
+               console.log(id.value);
+               console.log(pw.value);
+               $.ajax({
+                  url: '${cpath}/changePw.do',
+                  type : 'POST',
+                  data : {
+                        'id' : id.value,
+                        'pw' : pw1.value
+                     },
+                   success : function(data){
+                      console.log(data)
+                      alert('비밀번호가 변경되었습니다')
+                      console.log($('input#cp').prop('type','submit'))
+                      location.href = "${cpath}/"
+                      // 메인페이지로 이동할 수 있게끔 변경 이렇게하면 되나?
+                   }
+                  
+               })
+            }
+            }else{
+              alert('비밀번호를 다시 입력해주세요')
+            }
+         
+         
+         }
+         
+      }
+       
+   </script>
 
 
-<!--  닉네임 변경  -->
-	
+	<!--  닉네임 변경  -->
+
 	<script>
-	
+		function changeNICK() {
+			var nick = document.getElementById('nicki');
 
-	
-	
-	function changeNICK(){
-			var nick= document.getElementById('nick');
-			
-			if(nick.value.length<1 ){
+			if (nick.value.length < 1) {
 				alert("변경할 닉네임을 입력해주세요")
-			}else{
+			} else {
 				alert('닉네임이 변경되었습니다')
-		        console.log($('input#cn').attr('type','submit'))
+				console.log($('input#cn').attr('type', 'submit'))
 			}
 		}
-	
-	
 	</script>
-	
+
 	<!-- 회원 탈퇴  -->
 	<script>
-	
-	
-
-	
-	function inputPW(){
-			var pw = document.getElementById('pw');
-			
-			if(pw.value.length<1){
+		function inputPW() {
+			var pw = document.getElementById('pwpw');
+			console.log(pw.value.length)
+			if (pw.value.length < 1) {
+				console.log(pw)
 				alert("비밀번호를 입력해주세요")
-			}else{
-				if(pw.value != "${mvo.getPw()}" ){
+			} else {
+				if (pw.value != "${mvo.getPw()}") {
 					alert('비밀번호를 잘못 입력하셨습니다')
-				}else{
+				} else {
 					alert('회원 탈퇴 되었습니다')
-		        	console.log($('input#ip').attr('type','submit'))
+					($('input#ip').prop('type', 'submit'))
 				}
 			}
 		}
-	
 	</script>
+	
+	
+
+
+
+
+
+
+					<script type="text/javascript">
+$(function(){
+	
+	$('#send_img_btn').on('click',function(){
+		send_img_ajax();
+	});
+});
+function send_img_ajax(){
+	let form = $('#send_img')[0];
+	let formData = new FormData(form);
+	
+	$.ajax({
+		url : 'http://172.30.1.42:3500',
+		type : 'POST',
+		contentType : false,
+		processData : false,
+		async : false,
+		data : formData,
+		success : answer_bag_name,
+		error : function(){
+			alert('이미지 검색 불가 다른사진을 넣어주세요');
+		}
+	})
+}
+
+function answer_bag_name(res){
+	console.log('flask에서 넘어오는 값',res);
+	$.ajax({
+		url : '${cpath}/search_answer.do',
+		type : 'POST',
+		data : {"bag_name_new":res},
+		success : function(bag_no){
+			location.href='${cpath}/selectimage.do?bag_no='+bag_no;
+		},
+		error : function(){
+			alert('이미지 서칭실패');
+		}
+	})
+}
+
+
+</script>
+
+
+	<!--===============================================================================================-->
+	<script src="resources/js/main1.js"></script>
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/custom.js"></script>
+	<script src="https://kit.fontawesome.com/a7989cf475.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
 	
 	
 	

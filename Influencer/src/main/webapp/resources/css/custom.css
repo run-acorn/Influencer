@@ -449,7 +449,7 @@ input::placeholder {
     top: 28%;
     background: #fff;
     width: 150px;
-    height: 60px;
+    height: 55px;
 }
 
 
@@ -544,8 +544,21 @@ input::placeholder {
 	color: hsl(9, 40%, 60%);
 }
 
+.input-file {
+	
+	right: 32%;
+    position: absolute;
+    display: none;
+    bottom: 46%;
+    width: 40%;
+}
+
 #input-file {
-	display: none;
+	right: 32%;
+    position: absolute;
+    display: none;
+    bottom: 46%;
+    width: 40%;
 }
 #input-file2 {
 	display: none;
@@ -593,12 +606,7 @@ input::placeholder {
 	color: #000000;
 }
 
-.item {
-	width: 110%;
-	height: 90%;
-	border-radius: 30%;
-	flex: 1;
-}
+
 
 .item>img {
 	width: 80%;
@@ -653,7 +661,7 @@ input::placeholder {
 .maininput1 {
 	width: 100%;
     border-radius: 5px;
-    border: 1px solid #d3d3d3;
+    border: 1px solid #000000;
     padding: 10px 12px;
     font-family: SUIT-Medium;
     font-size: 120%;
@@ -751,11 +759,20 @@ input::placeholder {
 
 
 .log-div {
-    
+    bottom: -5%;
     right: 5%;
-	text-align: center; 
+    text-align: center;
     position: absolute;
 }
+
+.log-div2 {
+	
+   bottom: 20%;
+    right: 5%;
+    text-align: center;
+    position: absolute;
+}
+
 
 
 /* 로그인 */
@@ -1115,6 +1132,7 @@ p.comment_p {
 #main-main {
 	height: 130px !important;
 	border-bottom: 2px solid black;
+	top: 0%
 }
 
 
@@ -1156,7 +1174,7 @@ p.comment_p {
 }
 
 #myMainBar2{
-	width:120px;
+	width:169px;
 	height:50px;
 	text-align: center;
 	padding:10px;
@@ -1179,8 +1197,9 @@ p.comment_p {
 
 /* My menu 리스트들*/
 .myBarList{
-	padding:10px;
-	text-align: center;
+	padding: 10px;
+    text-align: center;
+    background-color: white;
 }
 
 .myBarList2{
@@ -1197,7 +1216,8 @@ p.comment_p {
 #myBars{
 	position: absolute;
     width: 100px;
-    right: 150px;
+    right: 100px;
+    top: 5%
 }
 
 

@@ -363,22 +363,7 @@ td.column-2 {
 	</script>
 
 
-	</tbody>
-
-	</table>
-	<div class="col-lg-6 col-sm-12" style="text-align: center;">
-		<button class="btn btn-success float-right">
-			<a href="${cpath}/goboardinsert.do">게시판 글쓰기</a>
-		</button>
-	</div>
-
-	<a href="${cpath}/">메인으로</a>
-	</div>
-
-	</div>
-	</div>
-	</div>
-	</section>
+	
 
 </body>
 </html>

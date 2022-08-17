@@ -68,6 +68,8 @@
 <body class="animsition">
 
 	<div>
+		
+		
 		<!-- Header -->
 		<header class="header-v3">
 			<!-- Header desktop -->
@@ -109,7 +111,7 @@
 
 						<c:if test="${empty mvo}">
 
-							<div class="log-div">
+							<div class="log-div2">
 
 
 								<form action="${cpath}/goboard.do" method="post">
@@ -131,7 +133,7 @@
 
 							<div class="log-div">
 
-								<p class="MainP1 mainnick">${mvo.nick} 님환영합니다!</p>
+								<p class="MainP1 mainnick">${mvo.nick}님 환영합니다!</p>
 
 								<button onclick='location.href="${cpath}/logout.do"'
 									class="logoutbtn mainnick">로그아웃</button>
@@ -274,17 +276,19 @@
 					class="fa-solid fa-circle-xmark close_i"></i>
 				</a>
 				<div class="contents">
-					<div class="upload-box">
+				<div class="upload-box">
 						<div id="drop-file" class="drag-file">
-							<a onclick="jQuery('#input-file').click()">
+							<a onclick="jQuery('.input-file').click()">
 								<p class="message">Drag files to upload</p>
 							</a> <img src="" alt="미리보기 이미지" class="preview">
 						</div>
 
 						<form id="send_img" method="post" enctype="multipart/form-data">
-							<input id="file" type="file" name="file"
+						
+							<input id="file" type="file" name="file" class="input-file"
 								onchange="dropFile.handleFiles(this.files)"
 								accept="image/png, image/jpeg, image/gif"> 
+
 							<button type="button" class="Mo-button" id="send_img_btn">
 							검색</button>
 						</form>
