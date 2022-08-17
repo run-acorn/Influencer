@@ -106,9 +106,15 @@
 					<!-- 검색바 -->
 					<div class="menu-desktop">
 						<div class="mainBar">
-							<input id="mainBar" type="text" onkeyup="enterkey();"
-								class="mainLoginInput jejumyeongjo maininput"
-								placeholder="&#61442; " name="input-search">
+						
+						
+						<form action="${cpath}/bagSearch.do" method="get">
+									<input class="mainLoginInput jejumyeongjo maininput1 " type="text" name="bag_brand" placeholder="&#61442; ">
+								
+									<input type="submit" id="input-search">
+                 					 <a href="#" onclick="jQuery('#input-search').click()"> </a>
+             
+								</form>
 								
 								
 								
