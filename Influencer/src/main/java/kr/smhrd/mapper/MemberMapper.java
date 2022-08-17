@@ -24,9 +24,9 @@ public interface MemberMapper {
 
 	public void deleteMember(MemberVO vo);
 
-	public int idCheck(MemberVO vo);
+	public int idCheck(String id);
 
-	public int nickCheck(MemberVO vo);
+	public int nickCheck(String nick);
 
 	public MemberVO memberInsertCheck(MemberVO vo);
 

@@ -288,48 +288,7 @@
 							<button type="button" class="Mo-button" id="send_img_btn">
 							검색</button>
 						</form>
-					<script type="text/javascript">
-$(function(){
-	
-	$('#send_img_btn').on('click',function(){
-		send_img_ajax();
-	});
-});
-function send_img_ajax(){
-	let form = $('#send_img')[0];
-	let formData = new FormData(form);
-	
-	$.ajax({
-		url : 'http://172.30.1.42:3500',
-		type : 'POST',
-		contentType : false,
-		processData : false,
-		async : false,
-		data : formData,
-		success : answer_bag_name,
-		error : function(){
-			alert('이미지 검색 불가 다른사진을 넣어주세요');
-		}
-	})
-}
 
-function answer_bag_name(res){
-	console.log('flask에서 넘어오는 값',res);
-	$.ajax({
-		url : '${cpath}/search_answer.do',
-		type : 'POST',
-		data : {"bag_name_new":res},
-		success : function(bag_no){
-			location.href='${cpath}/selectimage.do?bag_no='+bag_no;
-		},
-		error : function(){
-			alert('이미지 서칭실패');
-		}
-	})
-}
-
-
-</script>
 						
 
 					</div>
@@ -400,7 +359,7 @@ function answer_bag_name(res){
 					<input type="password" name="pwCheck" id="pwCheck" placeholder="비밀번호를 입력하세요."> <br>
 						<div id=pwNotice></div> <br>
 					<p class="MainP1">닉네임</p>
-					<input type="text" name="nick" placeholder="닉네임을 입력하세요"> 
+					<input type="text" id="nicki" name="nick" placeholder="닉네임을 입력하세요"> 
 					<div id="nkNotice"></div>
 					<br>
 					<button id="btnSubmit"> 회원 가입 </button>
@@ -427,7 +386,7 @@ function answer_bag_name(res){
 
 			<p class="chP">비밀번호 변경</p>
 			<form id="pwUpdateForm">
-				<input type="hidden" name="idc" value="${mvo.getId()}"> <span
+				<input type="hidden" id="idc" name="idc" value="${mvo.getId()}"> <span
 					class="chpw">기존 비밀번호</span> <input type="password" id="pw3"
 					name="pw3" placeholder="기존 비밀번호"> <span class="chpw">새
 					비밀번호</span> <input type="password" id="pw1" name="pw1"
@@ -473,7 +432,7 @@ function answer_bag_name(res){
 					<form action="${cpath}/deleteMember.do" method="post">
 						<p class="chpw">계정 비밀번호</p>
 						<input type="hidden" name="id" value="${mvo.getId()}"> <input
-							type="password" id="pw" name="pw" placeholder="계정 비밀번호">
+							type="password" id="pwpw" name="pw" placeholder="계정 비밀번호">
 						<br>
 						<samp class="chpw"> ※탈퇴 후 개인정보 데이터가 </samp>
 						<samp class="chpw2"> 삭제됩니다. </samp>
@@ -898,9 +857,9 @@ let ChkNk = 0;
 		$('button#btnSubmit').on('click', function(){
 			
 			let obj = {
-					'id' :$('input[name=idi]').val(),
-					'pw':$('#pwi').val(),
-					'nick':$('input[name=nick]').val()
+					'id' :document.getElementById('idi').value,
+					'pw':document.getElementById('pwi').value,
+					'nick':document.getElementById('nicki').value
 			}
 			
 			console.log(obj)
@@ -918,7 +877,7 @@ let ChkNk = 0;
         			}
                     else{
                     	alert('회원가입 성공!')
-                    	location.href="${cpath}/goLogin.do";
+                    	location.href="${cpath}/";
                     }
 					},
 					error : function(){
@@ -937,10 +896,9 @@ let ChkNk = 0;
 		
 	// 아이디 중복 기능 체크
 	$('#idCheck').on('click', function(){
-		let id = $('input[name=idi]').val();
-        let btn = document.getElementById('idCheck')
-        let div = document.getElementById('text')
-        
+		let id = document.getElementById('idi').value;
+		let div = document.getElementById('text');
+        console.log(id)
         if(!id){
         	alert('아이디를 입력하지 않았습니다')
         } else {
@@ -987,9 +945,9 @@ let ChkNk = 0;
 	
     
 	// 닉네임 중복 체크
-	$('#nick').on('keyup', function(){
-		let nick = $('input[name=nick]').val();
-		let div = document.getElementById('nkNotice')
+	$('#nicki').on('keyup', function(){
+		let nick = document.getElementById('nicki').value;
+		let div = document.getElementById('nkNotice');
 
 		if(nick.length < 0){ // 닉네임을 입력하지 않음
 			ChkNk = 0;
@@ -1003,7 +961,7 @@ let ChkNk = 0;
 				async : false,
 				success : function(cnt){
 					console.log(cnt)
-					if (cnt >= 1) {
+					if (cnt == 1) {
      					div.innerHTML = "<h5> 사용할 수 없는 닉네임입니다 </h5>";
      					ChkNk = 0;
      				} else if (cnt == 0) {
@@ -1074,85 +1032,60 @@ let ChkNk = 0;
 	
 	
 		
-		<script>
-		
-		
-		
-
-		function changePW() {
-		         var pw1 = document.getElementById('pw1');
-		         var pw2 = document.getElementById('pw2');
-		         var pw3 = document.getElementById('pw3');
-
-		         if (pw1.value.length < 1 || pw2.value.length < 1) {
-		            alert("비밀번호를 입력해주세요")
-		            console.log('pw1')
-		            console.log('pw2')
-		         } else {
-
-		            if (pw1.value == pw2.value) {
-		               if (pw3.value != "${mvo.getPw()}") {
-		                  alert('기존 비밀번호를 잘못 입력하셨습니다')
-		               } else {
-		                  alert('비밀번호가 변경되었습니다')
-		                  $.ajax({
-							url : '${cpath}/changePw.do',
-							type : 'POST',
-							data : {
-								'id' : id,
-								'pw' : pw3
-							},
-							dataType : 'text',
-							success : function(data) {
-								if(data==0){
-									alert("오류 입니다.");
-									return;
-								}else{
-									if(confirm("변경하시겠씁니까?")){
-										$("#pwUpdateForm").submit();
-									}
-								}
-							},
-							error : function() {
-								alert('로그인 실패')
-							}
-						})
-		               }
-		            } else {
-		               alert('비밀번호를 다시 입력해주세요')
-		            }
-
-		         }
-
-		      }
-
-		      // 입력한 비밀번호가 서로 같은지
-		      $(function() {
-		         $('#pw1').keyup(function() {
-		            $('#text').html('');
-		            console.log($('#pw1').val())
-		         });
-
-		         $('#pw2').keyup(function() {
-		            if ($('#pw1').val() != $('#pw2').val()) {
-		               $('#text').html('<br><h5 id="h5_pw1">비밀번호 일치하지 않음</h5>');
-		            } else {
-		               $('#text').html('<br><h5 id="h5_pw2">비밀번호 일치함</h5>');
-		            }
-		         });
-
-		      });
-		
-		
-		
-		</script> 
+		<!-- 비밀번호 변경  -->
+      <script>
+   
+      function changePW(){
+         var id= document.getElementById('idc');
+         var pw1 = document.getElementById('pw1');
+         var pw2= document.getElementById('pw2');
+         var pw= document.getElementById('pw3');
+         
+         
+         if(pw1.value.length<1 || pw2.value.length<1){
+            alert("비밀번호를 입력해주세요")
+         }else{
+         
+         if(pw1.value == pw2.value){
+            if(pw.value != "${mvo.getPw()}" ){
+               alert('기존 비밀번호를 잘못 입력하셨습니다')
+            }else{
+               console.log(id.value);
+               console.log(pw.value);
+               $.ajax({
+                  url: '${cpath}/changePw.do',
+                  type : 'POST',
+                  data : {
+                        'id' : id.value,
+                        'pw' : pw1.value
+                     },
+                   success : function(data){
+                      console.log(data)
+                      alert('비밀번호가 변경되었습니다')
+                      console.log($('input#cp').prop('type','submit'))
+                      location.href = "${cpath}/"
+                      // 메인페이지로 이동할 수 있게끔 변경 이렇게하면 되나?
+                   }
+                  
+               })
+            }
+            }else{
+              alert('비밀번호를 다시 입력해주세요')
+            }
+         
+         
+         }
+         
+      }
+       
+   </script>
 
 
 	<!--  닉네임 변경  -->
 
 	<script>
 		function changeNICK() {
-			var nick = document.getElementById('nick');
+			var nick = document.getElementById('nicki');
 
 			if (nick.value.length < 1) {
 				alert("변경할 닉네임을 입력해주세요")
@@ -1166,16 +1099,17 @@ let ChkNk = 0;
 	<!-- 회원 탈퇴  -->
 	<script>
 		function inputPW() {
-			var pw = document.getElementById('pw');
-
+			var pw = document.getElementById('pwpw');
+			console.log(pw.value.length)
 			if (pw.value.length < 1) {
+				console.log(pw)
 				alert("비밀번호를 입력해주세요")
 			} else {
 				if (pw.value != "${mvo.getPw()}") {
 					alert('비밀번호를 잘못 입력하셨습니다')
 				} else {
 					alert('회원 탈퇴 되었습니다')
-					console.log($('input#ip').attr('type', 'submit'))
+					($('input#ip').prop('type', 'submit'))
 				}
 			}
 		}
@@ -1186,69 +1120,50 @@ let ChkNk = 0;
 
 
 
-<!-- 비밀번호 변경 테스트 -->
-   <script>
-   
-   $(#cp).on('click',function() {
-	   
-	   let obj = {
-				'id' :$('input[name=idc]').val(),
-				'pw':$('#pw3').val(),
-						}
-	   
-      
-      $('#cp').on("click", function name() {
-         if($("#pw3").val==""){
-            alert("현재 비밀번호를 입력해주세요.");
-            $('#pw3').focus();
-            return false
-         }
-         if($("#pw1").val==""){
-            alert("변경 할 비밀번호를 입력해주세요.");
-            $("#pw1").focus();
-            return false
-         }
-         if($("#pw2").val==""){
-            alert("변경 할 비밀번호를 입력해주세요.")
-            $("#pw2").focus();
-            return false
-            
-         }
-         if($("#pw2").val()!= $("#pw1").val() ){
-         alert("변경 비밀번호가 일치하지 않습니다. ")
-         $("#pw2").focus();
-         
-         $.ajax({
-            url : "${cpath}/changePw.do",
-            type : 'POST',
-            data : $("#pwUpdateForm").serializeArray(),
-            success: function(data) {
-               
-               if(data==0){
-                  alert("패스워드가 틀렸습니다.");
-                  return;
-               }else{
-                  if(confirm("변경하시겠습니까")){
-                     $("#pwUpdateForm").submit();
-                  }
-               }
-               
-            }
-         
-            
-            
-            
-         })
 
-      }   
-      })
-      
-   })
-   
-   
-   
-   </script>
 
+					<script type="text/javascript">
+$(function(){
+	
+	$('#send_img_btn').on('click',function(){
+		send_img_ajax();
+	});
+});
+function send_img_ajax(){
+	let form = $('#send_img')[0];
+	let formData = new FormData(form);
+	
+	$.ajax({
+		url : 'http://172.30.1.42:3500',
+		type : 'POST',
+		contentType : false,
+		processData : false,
+		async : false,
+		data : formData,
+		success : answer_bag_name,
+		error : function(){
+			alert('이미지 검색 불가 다른사진을 넣어주세요');
+		}
+	})
+}
+
+function answer_bag_name(res){
+	console.log('flask에서 넘어오는 값',res);
+	$.ajax({
+		url : '${cpath}/search_answer.do',
+		type : 'POST',
+		data : {"bag_name_new":res},
+		success : function(bag_no){
+			location.href='${cpath}/selectimage.do?bag_no='+bag_no;
+		},
+		error : function(){
+			alert('이미지 서칭실패');
+		}
+	})
+}
+
+
+</script>
 
 
 	<!--===============================================================================================-->
