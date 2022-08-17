@@ -194,21 +194,21 @@ public class MemberController {
 	// 아이디 중복체크
 	@RequestMapping("/idCheck.do")
 	@ResponseBody
-	public int idCheck(MemberVO vo) {
+	public String idCheck(String id) {
 		
-		int result = mapper.idCheck(vo);
+		int result = mapper.idCheck(id);
 		
-		return result;
+		return result+"";
 	}
 	
 	
 	// 닉네임 중복체크
 	@RequestMapping("/nickCheck.do")
 	@ResponseBody
-	public int nickCheck(MemberVO vo) {
+	public String nickCheck(String nick) {
 		
-		int result = mapper.nickCheck(vo);
+		int result = mapper.nickCheck(nick);
 		
-		return result;
+		return result+"";
 	}
 }

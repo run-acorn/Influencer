@@ -116,9 +116,9 @@
 									<button type="submit" class="mainsub">게시판가기</button>
 								</form>
 
-								<button class="logbtn" id="logbtn">로그인</button>
+								<button class="logbtn" id="logbtn">Login</button>
 
-								<button class="joinbtn" id="joinbtn">회원가입</button>
+								<button class="joinbtn" id="joinbtn">Join</button>
 
 
 							</div>
