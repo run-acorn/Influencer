@@ -5,7 +5,11 @@
     <select id="bagSearch" resultType="kr.smhrd.model.BagVO">
         select * from bag where bag_brand=#{bag_brand}
     </select>
-
+	
+    <select id="bagAllList" resultType="kr.smhrd.model.BagVO">
+        select * from bag
+    </select>
+    
     <!-- 쿼리 바꿈 -->
     <select id="new_bag_detail" resultType="kr.smhrd.model.New_BagVO">
         select * from new_bag where bag_no=#{bag_no} order by new_price limit 5;

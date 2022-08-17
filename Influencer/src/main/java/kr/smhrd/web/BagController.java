@@ -59,6 +59,15 @@ public class BagController {
 		return "bag_list";
 	}
 	
+	@RequestMapping("/bagAllList.do")
+	public String bagAllList(Model model) {
+		List<BagVO> list = mapper.bagAllList();
+		
+		model.addAttribute("list",list);
+		
+		return "bag_list";
+	}
+	
 	@RequestMapping("/bagsearch_detail.do")
 	@ResponseBody
 	public List<New_BagVO> new_bag(int bag_no) {

@@ -116,9 +116,9 @@
 									<button type="submit" class="mainsub">게시판가기</button>
 								</form>
 
-								<button class="logbtn" id="logbtn">Login</button>
+								<button class="logbtn" id="logbtn">로그인</button>
 
-								<button class="joinbtn" id="joinbtn">Join</button>
+								<button class="joinbtn" id="joinbtn">회원가입</button>
 
 
 							</div>
@@ -442,6 +442,7 @@ function answer_bag_name(res){
 
 		</div>
 
+
 		<!-- 닉네임 변경 -->
 
 		<div id="Changenick">
@@ -473,7 +474,7 @@ function answer_bag_name(res){
 					<form action="${cpath}/deleteMember.do" method="post">
 						<p class="chpw">계정 비밀번호</p>
 						<input type="hidden" name="id" value="${mvo.getId()}"> <input
-							type="password" id="pw" name="pw" placeholder="계정 비밀번호">
+							type="password" id="pwd" name="pwd" placeholder="계정 비밀번호">
 						<br>
 						<samp class="chpw"> ※탈퇴 후 개인정보 데이터가 </samp>
 						<samp class="chpw2"> 삭제됩니다. </samp>
@@ -486,6 +487,7 @@ function answer_bag_name(res){
 				</div>
 			</div>
 		</div>
+
 
 
 		<!-- 모달  끝  -->
@@ -686,7 +688,7 @@ function answer_bag_name(res){
 					<div class="item-slick1 bg-overlay1"
 						style="background-image: url(resources/images/slide-05.jpg);"
 						data-thumb="resources/images/thumb-01.jpg"
-						data-caption="Women’s Wear">
+						data-caption="GUCCI">
 						<div class="container h-full">
 							<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 								<div class="layer-slick1 animated visible-false"
@@ -703,9 +705,9 @@ function answer_bag_name(res){
 
 								<div class="layer-slick1 animated visible-false"
 									data-appear="zoomIn" data-delay="1600">
-									<a href="${cpath}/bag_list.jsp"
+									<a href="${cpath}/bagAllList.do"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-										Shop Now </a>
+										Bag List </a>
 								</div>
 							</div>
 						</div>
@@ -714,7 +716,7 @@ function answer_bag_name(res){
 					<div class="item-slick1 bg-overlay1"
 						style="background-image: url(resources/images/slide-06.jpg);"
 						data-thumb="resources/images/thumb-02.jpg"
-						data-caption="Men’s Wear">
+						data-caption="PRADA">
 						<div class="container h-full">
 							<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 								<div class="layer-slick1 animated visible-false"
@@ -731,7 +733,7 @@ function answer_bag_name(res){
 
 								<div class="layer-slick1 animated visible-false"
 									data-appear="slideInUp" data-delay="1600">
-									<a href="${cpath}/bag_list.jsp"
+									<a href="${cpath}/bagAllList.do"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
 										Shop Now </a>
 								</div>
@@ -742,7 +744,7 @@ function answer_bag_name(res){
 					<div class="item-slick1 bg-overlay1"
 						style="background-image: url(resources/images/slide-07.jpg);"
 						data-thumb="resources/images/thumb-03.jpg"
-						data-caption="Men’s Wear">
+						data-caption="Burberry">
 						<div class="container h-full">
 							<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 								<div class="layer-slick1 animated visible-false"
@@ -759,7 +761,7 @@ function answer_bag_name(res){
 
 								<div class="layer-slick1 animated visible-false"
 									data-appear="rotateIn" data-delay="1600">
-									<a href="${cpath}/bag_list.jsp"
+									<a href="${cpath}/bagAllList.do"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
 										Shop Now </a>
 								</div>
@@ -1073,100 +1075,12 @@ let ChkNk = 0;
 
 	
 	
-		
-		<script>
-		
-		
-		
 
-		function changePW() {
-		         var pw1 = document.getElementById('pw1');
-		         var pw2 = document.getElementById('pw2');
-		         var pw3 = document.getElementById('pw3');
-
-		         if (pw1.value.length < 1 || pw2.value.length < 1) {
-		            alert("비밀번호를 입력해주세요")
-		            console.log('pw1')
-		            console.log('pw2')
-		         } else {
-
-		            if (pw1.value == pw2.value) {
-		               if (pw3.value != "${mvo.getPw()}") {
-		                  alert('기존 비밀번호를 잘못 입력하셨습니다')
-		               } else {
-		                  alert('비밀번호가 변경되었습니다')
-		                  $.ajax({
-							url : '${cpath}/changePw.do',
-							type : 'POST',
-							data : {
-								'id' : id,
-								'pw' : pw3
-							},
-							dataType : 'text',
-							success : function(data) {
-								if(data==0){
-									alert("오류 입니다.");
-									return;
-								}else{
-									if(confirm("변경하시겠씁니까?")){
-										$("#pwUpdateForm").submit();
-									}
-								}
-							},
-							error : function() {
-								alert('로그인 실패')
-							}
-						})
-		               }
-		            } else {
-		               alert('비밀번호를 다시 입력해주세요')
-		            }
-
-		         }
-
-		      }
-
-		      // 입력한 비밀번호가 서로 같은지
-		      $(function() {
-		         $('#pw1').keyup(function() {
-		            $('#text').html('');
-		            console.log($('#pw1').val())
-		         });
-
-		         $('#pw2').keyup(function() {
-		            if ($('#pw1').val() != $('#pw2').val()) {
-		               $('#text').html('<br><h5 id="h5_pw1">비밀번호 일치하지 않음</h5>');
-		            } else {
-		               $('#text').html('<br><h5 id="h5_pw2">비밀번호 일치함</h5>');
-		            }
-		         });
-
-		      });
-		
-		
-		
-		</script> 
-
-
-	<!--  닉네임 변경  -->
-
-	<script>
-		function changeNICK() {
-			var nick = document.getElementById('nick');
-
-			if (nick.value.length < 1) {
-				alert("변경할 닉네임을 입력해주세요")
-			} else {
-				alert('닉네임이 변경되었습니다')
-				console.log($('input#cn').attr('type', 'submit'))
-			}
-		}
-	</script>
 
 	<!-- 회원 탈퇴  -->
 	<script>
 		function inputPW() {
-			var pw = document.getElementById('pw');
+			var pw = document.getElementById('pwd');
 
 			if (pw.value.length < 1) {
 				alert("비밀번호를 입력해주세요")
@@ -1186,10 +1100,10 @@ let ChkNk = 0;
 
 
 
-<!-- 비밀번호 변경 테스트 -->
+<!-- 비밀번호 변경 테스트 
    <script>
    
-   $(#cp).on('click',function() {
+   $('#cp').on('click',function() {
 	   
 	   let obj = {
 				'id' :$('input[name=idc]').val(),
@@ -1249,7 +1163,7 @@ let ChkNk = 0;
    
    </script>
 
-
+-->
 
 	<!--===============================================================================================-->
 	<script src="resources/js/main1.js"></script>

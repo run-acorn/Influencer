@@ -46,5 +46,7 @@ public interface BagMapper {
 
 	public int search_answer(String bag_name_new);
 
+	public List<BagVO> bagAllList();
+
 
 }
