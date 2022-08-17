@@ -54,10 +54,9 @@
  	    select * from used_bag where used_bag_no = #{used_bag_no}; 	    
  	</select>
  	
- 	
  	<!-- 리뷰들 가져오기 -->
  	<select id="review" resultType="kr.smhrd.model.Review">
- 	    select * from review where bag_no=#{bag_no};
+ 	    select * from review where bag_no=#{bag_no}
  	</select>
  	
  	<!-- 리뷰 이미지 들고오기 -->

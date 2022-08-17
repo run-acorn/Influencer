@@ -337,12 +337,6 @@ function answer_bag_name(res){
 			</div>
 
 
-
-
-
-
-
-
 		</div>
 
 
@@ -1095,75 +1089,6 @@ let ChkNk = 0;
 		}
 	</script>
 	
-	
-
-
-
-
-<!-- 비밀번호 변경 테스트 
-   <script>
-   
-   $('#cp').on('click',function() {
-	   
-	   let obj = {
-				'id' :$('input[name=idc]').val(),
-				'pw':$('#pw3').val(),
-						}
-	   
-      
-      $('#cp').on("click", function name() {
-         if($("#pw3").val==""){
-            alert("현재 비밀번호를 입력해주세요.");
-            $('#pw3').focus();
-            return false
-         }
-         if($("#pw1").val==""){
-            alert("변경 할 비밀번호를 입력해주세요.");
-            $("#pw1").focus();
-            return false
-         }
-         if($("#pw2").val==""){
-            alert("변경 할 비밀번호를 입력해주세요.")
-            $("#pw2").focus();
-            return false
-            
-         }
-         if($("#pw2").val()!= $("#pw1").val() ){
-         alert("변경 비밀번호가 일치하지 않습니다. ")
-         $("#pw2").focus();
-         
-         $.ajax({
-            url : "${cpath}/changePw.do",
-            type : 'POST',
-            data : $("#pwUpdateForm").serializeArray(),
-            success: function(data) {
-               
-               if(data==0){
-                  alert("패스워드가 틀렸습니다.");
-                  return;
-               }else{
-                  if(confirm("변경하시겠습니까")){
-                     $("#pwUpdateForm").submit();
-                  }
-               }
-               
-            }
-         
-            
-            
-            
-         })
-
-      }   
-      })
-      
-   })
-   
-   
-   
-   </script>
-
--->
 
 	<!--===============================================================================================-->
 	<script src="resources/js/main1.js"></script>
