@@ -2,6 +2,7 @@ package kr.smhrd.web;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +44,6 @@ public class BagController {
 	// DB 쿼리문을 수행 할 수 있는 인터페이스 생성
 	@Autowired // DI기법 사용, 자동 연결
 	private BagMapper mapper;
-	@Autowired
 
 	// 글쓰기 페이지로 이동만 하는 메소드
 	@RequestMapping("/") // 동일한 url이지만 다른 전송방식을 사용하면 다음과 같이
@@ -132,119 +132,119 @@ public class BagController {
 		}
 		
 		// 목록페이지 이미지 들고오기
-					@RequestMapping("/getByteAllImage.do")
-					public ResponseEntity<byte[]> getByteAllImage(int bag_no){
-																			
-						BagVO vo = mapper.selectallimage(bag_no);
-						final HttpHeaders headers = new HttpHeaders();
-						headers.setContentType(MediaType.IMAGE_PNG);// 리뷰 이미지 byte로 바꾸기
-						return new ResponseEntity<byte[]>(vo.getBag_img(), headers, HttpStatus.OK);
-					}
-					
-					// Ajax 새상품 상세보기목록
-					
-							@RequestMapping("/new_bag_detailAjax.do")
-							public @ResponseBody List<New_BagVO> new_bag_detailAjax(int bag_no) {
-								// 응답제어권 클라이언트로 양도
-								List<New_BagVO> list = mapper.new_bag_detail(bag_no);
-								
-								return list;
-								
-							}
+		@RequestMapping("/getByteAllImage.do")
+		public ResponseEntity<byte[]> getByteAllImage(int bag_no){
+																
+			BagVO vo = mapper.selectallimage(bag_no);
+			final HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_PNG);// 리뷰 이미지 byte로 바꾸기
+			return new ResponseEntity<byte[]>(vo.getBag_img(), headers, HttpStatus.OK);
+		}
+		
+		// Ajax 새상품 상세보기목록
+		@RequestMapping("/new_bag_detailAjax.do")
+		public @ResponseBody List<New_BagVO> new_bag_detailAjax(int bag_no) {
+			// 응답제어권 클라이언트로 양도
+			List<New_BagVO> list = mapper.new_bag_detail(bag_no);
+			
+			return list;
+			
+		}
+			
+		// Ajax 중고상품 상세페이지 목록
+		@RequestMapping("/used_bag_detailAjax.do")
+		public @ResponseBody List<Used_BagVO> used_bag_detailAjax(int bag_no) {
+			// 응답제어권 클라이언트로 양도
+			List<Used_BagVO> list = mapper.used_bag_detail(bag_no);
+			
+			return list;
+			
+		}
+			
+		// main 처음 이미지 가져오기
+		// blob to  image형태로 변환을 도와주는 controller
+		@RequestMapping("/getByteMainImage.do")
+		public ResponseEntity<byte[]> getByteMainImage(int bag_no){
+			
+			// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
+			// https://~~~~~?bt=[B@
+			
+			BagVO vo = mapper.selectmainimage(bag_no);
+			final HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_PNG);
+			return new ResponseEntity<byte[]>(vo.getBag_img(), headers, HttpStatus.OK);
+		}
+		
+		// new mall 처음 이미지 가져오기
+		// blob to  image형태로 변환을 도와주는 controller
+		@RequestMapping("/getByteMallImage.do")
+		public ResponseEntity<byte[]> getByteMallImage(int new_bag_no){
+				
+			// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
+			// https://~~~~~?bt=[B@
+						
+			New_BagVO vo = mapper.selectmallimage(new_bag_no);
+			final HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_PNG);
+			return new ResponseEntity<byte[]>(vo.getNew_img(), headers, HttpStatus.OK);
+		}
+		
+		// used mall 처음 이미지 가져오기
+		// blob to  image형태로 변환을 도와주는 controller
+		@RequestMapping("/getByteUsedMallImage.do")
+		public ResponseEntity<byte[]> getByteUsedMallImage(int used_bag_no){
 							
-						// Ajax 중고상품 상세페이지 목록
-							@RequestMapping("/used_bag_detailAjax.do")
-							public @ResponseBody List<Used_BagVO> used_bag_detailAjax(int bag_no) {
-								// 응답제어권 클라이언트로 양도
-								List<Used_BagVO> list = mapper.used_bag_detail(bag_no);
-								
-								return list;
-								
-							}
-							
-							// main 처음 이미지 가져오기
-							// blob to  image형태로 변환을 도와주는 controller
-							@RequestMapping("/getByteMainImage.do")
-							public ResponseEntity<byte[]> getByteMainImage(int bag_no){
-								
-								// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
-								// https://~~~~~?bt=[B@
-								
-								BagVO vo = mapper.selectmainimage(bag_no);
-								final HttpHeaders headers = new HttpHeaders();
-								headers.setContentType(MediaType.IMAGE_PNG);
-								return new ResponseEntity<byte[]>(vo.getBag_img(), headers, HttpStatus.OK);
-							}
-							
-							// new mall 처음 이미지 가져오기
-							// blob to  image형태로 변환을 도와주는 controller
-							@RequestMapping("/getByteMallImage.do")
-							public ResponseEntity<byte[]> getByteMallImage(int new_bag_no){
+			// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
+						// https://~~~~~?bt=[B@
 									
-								// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
-								// https://~~~~~?bt=[B@
-											
-								New_BagVO vo = mapper.selectmallimage(new_bag_no);
-								final HttpHeaders headers = new HttpHeaders();
-								headers.setContentType(MediaType.IMAGE_PNG);
-								return new ResponseEntity<byte[]>(vo.getNew_img(), headers, HttpStatus.OK);
-							}
+			Used_BagVO vo = mapper.selectusdemallimage(used_bag_no);
+			final HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_PNG);
+			return new ResponseEntity<byte[]>(vo.getUsed_mall(), headers, HttpStatus.OK);
+		}
+		
+		// used div 클릭시 이미지 가져오기
+		// blob to  image형태로 변환을 도와주는 controller
+		@RequestMapping("//getByteUsedImage.do")
+		public ResponseEntity<byte[]> getByteUsedImage(int used_bag_no){
 							
-							// used mall 처음 이미지 가져오기
-							// blob to  image형태로 변환을 도와주는 controller
-							@RequestMapping("/getByteUsedMallImage.do")
-							public ResponseEntity<byte[]> getByteUsedMallImage(int used_bag_no){
-												
-								// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
-											// https://~~~~~?bt=[B@
-														
-								Used_BagVO vo = mapper.selectusdemallimage(used_bag_no);
-								final HttpHeaders headers = new HttpHeaders();
-								headers.setContentType(MediaType.IMAGE_PNG);
-								return new ResponseEntity<byte[]>(vo.getUsed_mall(), headers, HttpStatus.OK);
-							}
-							
-							// used div 클릭시 이미지 가져오기
-							// blob to  image형태로 변환을 도와주는 controller
-							@RequestMapping("//getByteUsedImage.do")
-							public ResponseEntity<byte[]> getByteUsedImage(int used_bag_no){
-												
-								// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
-								// https://~~~~~?bt=[B@
-														
-								Used_BagVO vo = mapper.selectusedimage(used_bag_no);
-								final HttpHeaders headers = new HttpHeaders();
-								headers.setContentType(MediaType.IMAGE_PNG);
-								return new ResponseEntity<byte[]>(vo.getUsed_img(), headers, HttpStatus.OK);
-										}
-							
-							// bag_name가져오기
-							@RequestMapping("/bagName.do")
-							public @ResponseBody List<BagVO> bagName(int bag_no) {
-								// 응답제어권 클라이언트로 양도
-								List<BagVO> list = mapper.bagname(bag_no);
-										
-								return list;
-										
-									}
-							
-							// Ajax 리뷰가져오기
-							
-							@RequestMapping("/reviewAjax.do")
-							public @ResponseBody List<Review> reviewAjax(int bag_no) {
-								// 응답제어권 클라이언트로 양도
-								List<Review> list = mapper.review(bag_no);
-										
-								return list;
-										
-									}
-							
-							@RequestMapping("/search_answer.do")
-							@ResponseBody
-							public String search_answer(String bag_name_new) {
-								int bag_no = mapper.search_answer(bag_name_new);
-								return bag_no+"";
-							}
+			// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
+			// https://~~~~~?bt=[B@
+									
+			Used_BagVO vo = mapper.selectusedimage(used_bag_no);
+			final HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_PNG);
+			return new ResponseEntity<byte[]>(vo.getUsed_img(), headers, HttpStatus.OK);
+					}
+			
+		// bag_name가져오기
+		@RequestMapping("/bagName.do")
+		public @ResponseBody List<BagVO> bagName(int bag_no) {
+			// 응답제어권 클라이언트로 양도
+			List<BagVO> list = mapper.bagname(bag_no);
+					
+			return list;
+					
+				}
+		
+		// Ajax 리뷰가져오기
+		
+		@RequestMapping("/reviewAjax.do")
+		public @ResponseBody List<Review> reviewAjax(int bag_no) {
+			// 응답제어권 클라이언트로 양도
+			List<Review> list = mapper.review(bag_no);
+					
+			return list;
+					
+		}
+
+		
+		@RequestMapping("/search_answer.do")
+		@ResponseBody
+		public String search_answer(String bag_name_new) {
+			int bag_no = mapper.search_answer(bag_name_new);
+			return bag_no+"";
+		}
 		
 
 	}

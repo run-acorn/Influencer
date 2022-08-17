@@ -13,5 +13,5 @@ public class Review {
 	private String review_date;
 	private String review_id;
 	private String review_text;
-
+	
 }

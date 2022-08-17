@@ -675,25 +675,25 @@ td.column-2 {
 
 			$('#boardBody').html("")
 
-			$
-					.each(
-							data.list,
-							function(index, board) {
-								blist += "<tr class='table_row'>"
-								blist += "<td class='column-1'>"
-										+ board.board_no + "</td>"
-								blist += "<td class='column-2'><a class='link link-title' href='${cpath}/boardView.do?board_no="
-										+ board.board_no
-										+ "'>"
-										+ board.board_title + "</a></td>"
-								blist += "<td class='column-4'>"
-										+ board.board_head + "</td>"
-								blist += "<td class='column-5'>" + board.nick
-										+ "</td>"
-								blist += "<td class='column-6'>"
-										+ board.board_date + "</td>"
-								blist += "</tr>"
-							})
+			
+			$.each(
+					data.list,
+					function(index, board) {
+						blist += "<tr class='table_row'>"
+						blist += "<td class='column-1'>"
+								+ board.board_no + "</td>"
+						blist += "<td class='column-2'><a class='link link-title' href='${cpath}/boardView.do?board_no="
+								+ board.board_no
+								+ "'>"
+								+ board.board_title + "</a></td>"
+						blist += "<td class='column-4'>"
+								+ board.board_head + "</td>"
+						blist += "<td class='column-5'>" + board.nick
+								+ "</td>"
+						blist += "<td class='column-6'>"
+								+ board.board_date + "</td>"
+						blist += "</tr>"
+					})
 
 			blist += "<tr><td colspan=6 align='center'>"
 			if (data.pageMake.prev) {

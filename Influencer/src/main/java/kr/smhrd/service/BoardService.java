@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.smhrd.model.BoardVO;
 import kr.smhrd.model.Criteria;
 import kr.smhrd.model.MemberVO;
+import kr.smhrd.model.Review;
 
 @Service
 public interface BoardService {
@@ -23,6 +24,6 @@ public interface BoardService {
 	
 	// 내 게시글 총 개수
 	public int getMyTotal(String nick);
-
+	
 	
 }
