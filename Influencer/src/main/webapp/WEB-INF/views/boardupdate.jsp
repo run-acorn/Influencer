@@ -555,6 +555,7 @@
 													<label class="label" for="email">머리글</label> <select
 														name="board_head" class="selectpicker"
 														data-style="btn btn-success">
+														<option value="자유">${vo.board_head}</option>
 														<option value="자유">자유</option>
 														<option value="질문">질문</option>
 														<option value="리뷰">리뷰</option>
@@ -565,7 +566,7 @@
 												<div class="form-group">
 													<label class="label" for="name">제목</label> <input 
 														type="text" name="board_title"
-														id="board_title" placeholder="제목을 입력하세요">
+														id="board_title" value="${vo.board_title}">
 														<label class="label" for="name">닉네임</label> <input
 														type="text" name="nick" id="nick"
 														placeholder="Subject" value="${mvo.nick}" readonly>
@@ -591,7 +592,7 @@
 													<label class="label" for="#">글내용</label>
 													<textarea name="board_content" class="form-control"
 														id="board_content" cols="30" rows="10"
-														placeholder="내용을 입력하세요"></textarea>
+														>${vo.board_content}</textarea>
 												</div>
 
 						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">

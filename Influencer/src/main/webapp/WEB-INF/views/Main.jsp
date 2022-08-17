@@ -282,15 +282,54 @@
 						</div>
 
 						<form id="send_img" method="post" enctype="multipart/form-data">
-						
 							<input id="file" type="file" name="file"
 								onchange="dropFile.handleFiles(this.files)"
 								accept="image/png, image/jpeg, image/gif"> 
-
 							<button type="button" class="Mo-button" id="send_img_btn">
 							검색</button>
 						</form>
+					<script type="text/javascript">
+$(function(){
+	
+	$('#send_img_btn').on('click',function(){
+		send_img_ajax();
+	});
+});
+function send_img_ajax(){
+	let form = $('#send_img')[0];
+	let formData = new FormData(form);
+	
+	$.ajax({
+		url : 'http://172.30.1.42:3500',
+		type : 'POST',
+		contentType : false,
+		processData : false,
+		async : false,
+		data : formData,
+		success : answer_bag_name,
+		error : function(){
+			alert('이미지 검색 불가 다른사진을 넣어주세요');
+		}
+	})
+}
 
+function answer_bag_name(res){
+	console.log('flask에서 넘어오는 값',res);
+	$.ajax({
+		url : '${cpath}/search_answer.do',
+		type : 'POST',
+		data : {"bag_name_new":res},
+		success : function(bag_no){
+			location.href='${cpath}/selectimage.do?bag_no='+bag_no;
+		},
+		error : function(){
+			alert('이미지 서칭실패');
+		}
+	})
+}
+
+
+</script>
 						
 
 					</div>
@@ -1144,51 +1183,7 @@ let ChkNk = 0;
 	
 	
 
-<script type="text/javascript">
-$(function(){
-	
-	$('#send_img_btn').on('click',function(){
-		send_img_ajax();
-	});
-});
 
-function send_img_ajax(){
-	let form = $('#send_img')[0];
-	let formData = new FormData(form);
-	
-	$.ajax({
-		url : 'http://172.30.1.42:3500',
-		type : 'POST',
-		contentType : false,
-		processData : false,
-		async : false,
-		data : formData,
-		success : answer_bag_name,
-		error : function(){
-			alert('이미지 검색 불가 다른사진을 넣어주세요');
-		}
-	})
-	
-}
-
-function answer_bag_name(res){
-	console.log('flask에서 넘어오는 값',res);
-	$.ajax({
-		url : '${cpath}/search_answer.do',
-		type : 'POST',
-		data : {"bag_name_new":res},
-		success : function(bag_no){
-			location.href='${cpath}/selectimage.do?bag_no='+bag_no;
-		},
-		error : function(){
-			alert('이미지 서칭실패');
-		}
-	})
-}
-
-
-
-</script>
 
 
 <!-- 비밀번호 변경 테스트 -->

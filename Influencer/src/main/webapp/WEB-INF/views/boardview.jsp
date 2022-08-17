@@ -485,7 +485,12 @@
 															class="form-control">${list.board_date}</span>
 														<div class="form-group">
 													<label class="label" for="subject">이미지</label>
+														<c:if test="${!empty list.board_uploadPath}">
 														<span><img src='${cpath}/img_display?fileName=${list.board_uploadPath}/${list.board_fileName}'></span>
+														</c:if>
+														<c:if test="${empty list.board_uploadPath}">
+														<span></span>
+														</c:if>
 													<div id="uploadResult">
 													
 													</div>
