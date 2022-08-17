@@ -639,12 +639,12 @@
 					<div class="item-slick1 bg-overlay1"
 						style="background-image: url(resources/images/slide-05.jpg);"
 						data-thumb="resources/images/thumb-01.jpg"
-						data-caption="Women’s Wear">
+						data-caption="GUCCI">
 						<div class="container h-full">
 							<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 								<div class="layer-slick1 animated visible-false"
 									data-appear="fadeInDown" data-delay="0">
-									<span class="ltext-202 txt-center cl0 respon2"> Women
+									<span class="ltext-202 txt-center cl0 respon2"> Bag
 										Collection 2022 </span>
 								</div>
 
@@ -656,7 +656,7 @@
 
 								<div class="layer-slick1 animated visible-false"
 									data-appear="zoomIn" data-delay="1600">
-									<a href="${cpath}/bag_list.jsp"
+									<a href="${cpath}/bagAllList.do"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
 										Shop Now </a>
 								</div>
@@ -667,24 +667,24 @@
 					<div class="item-slick1 bg-overlay1"
 						style="background-image: url(resources/images/slide-06.jpg);"
 						data-thumb="resources/images/thumb-02.jpg"
-						data-caption="Men’s Wear">
+						data-caption="PRADA">
 						<div class="container h-full">
 							<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 								<div class="layer-slick1 animated visible-false"
 									data-appear="rollIn" data-delay="0">
-									<span class="ltext-202 txt-center cl0 respon2"> Men
+									<span class="ltext-202 txt-center cl0 respon2"> Bag
 										New-Season </span>
 								</div>
 
 								<div class="layer-slick1 animated visible-false"
 									data-appear="lightSpeedIn" data-delay="800">
 									<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-										Jackets & Coats</h2>
+										New & Used</h2>
 								</div>
 
 								<div class="layer-slick1 animated visible-false"
 									data-appear="slideInUp" data-delay="1600">
-									<a href="${cpath}/bag_list.jsp"
+									<a href="${cpath}/bagAllList.do"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
 										Shop Now </a>
 								</div>
@@ -695,13 +695,13 @@
 					<div class="item-slick1 bg-overlay1"
 						style="background-image: url(resources/images/slide-07.jpg);"
 						data-thumb="resources/images/thumb-03.jpg"
-						data-caption="Men’s Wear">
+						data-caption="BURBERRY">
 						<div class="container h-full">
 							<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 								<div class="layer-slick1 animated visible-false"
 									data-appear="rotateInDownLeft" data-delay="0">
-									<span class="ltext-202 txt-center cl0 respon2"> Men
-										Collection 2018 </span>
+									<span class="ltext-202 txt-center cl0 respon2"> Bag
+										Collection 2022 </span>
 								</div>
 
 								<div class="layer-slick1 animated visible-false"
@@ -712,7 +712,7 @@
 
 								<div class="layer-slick1 animated visible-false"
 									data-appear="rotateIn" data-delay="1600">
-									<a href="${cpath}/bag_list.jsp"
+									<a href="${cpath}/bagAllList.do"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
 										Shop Now </a>
 								</div>
