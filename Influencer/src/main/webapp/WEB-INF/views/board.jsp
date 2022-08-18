@@ -224,6 +224,13 @@ td.column-2 {
 	color:#f5f5f5!important;
 }
 
+#main-main{
+	background-image:url(resources/images/bag_list_title.jpg);
+	background-size:100%;
+	background-repeat:no-repeat;
+	background-position:40% 30%;
+}
+
 </style>
 
 
@@ -238,7 +245,7 @@ td.column-2 {
 			<!-- Topbar -->
 			
 
-			<div id="main-main" class="wrap-menu-desktop how-shadow1">
+			<div id="main-main" class="wrap-menu-desktop how-shadow1 bg-overlay1">
 				<nav class="limiter-menu-desktop p-l-45">
 
 					<!-- Logo desktop -->

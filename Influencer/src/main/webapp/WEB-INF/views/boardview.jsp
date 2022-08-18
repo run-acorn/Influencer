@@ -70,6 +70,15 @@
 <!--  jq -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
+
+<style type="text/css">
+#main-main{
+	background-image:url(resources/images/bag_list_title.jpg);
+	background-size:100%;
+	background-repeat:no-repeat;
+	background-position:40% 30%;
+}
+</style>
 </head>
 <body>
 
@@ -83,7 +92,7 @@
 			<!-- Topbar -->
 			
 
-			<div id="main-main" class="wrap-menu-desktop how-shadow1">
+			<div id="main-main" class="wrap-menu-desktop how-shadow1 bg-overlay1">
 				<nav class="limiter-menu-desktop p-l-45">
 
 					<!-- Logo desktop -->
