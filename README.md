@@ -8,7 +8,7 @@ LuxuryBag
 <br>
 
 ## 프로젝트 기간
-2022.06.13 ~ 2022.06.18 (2주)
+2022.07.25 ~ 2022.08.22 (4주)
 <br>
 <br>
 ## 주요기능 
@@ -45,3 +45,7 @@ LuxuryBag
 
 ## ER 다이어그램
 ![image](https://user-images.githubusercontent.com/81237809/185447784-b6bfb374-2a98-4c0a-a132-e12e618f99bf.PNG)
+
+## 화면 설계서
+[화면설계서.pptx](https://github.com/2022-SMHRD-KDT-BigData-6/Influencer/files/9375798/default.pptx)
+
