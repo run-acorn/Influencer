@@ -111,7 +111,7 @@
 
 						<c:if test="${empty mvo}">
 
-							<div class="log-div2">
+							<div class="log-div">
 
 
 								<form action="${cpath}/goboard.do" method="post">
@@ -131,12 +131,12 @@
 
 						<c:if test="${!empty mvo}">
 
-							<div class="log-div">
+							<div class="log-div-main">
 
 								<p class="MainP1 mainnick">${mvo.nick}님 환영합니다!</p>
 
 								<button onclick='location.href="${cpath}/logout.do"'
-									class="logoutbtn mainnick">로그아웃</button>
+									class="logoutbtn mainnick" >로그아웃</button>
 									
 									<button onclick='location.href="${cpath}/goboard.do"'
 									class="logoutbtn mainnick3">게시판</button>
@@ -279,16 +279,22 @@
 					class="fa-solid fa-circle-xmark close_i"></i>
 				</a>
 				<div class="contents">
+				
+					
 				<div class="upload-box">
-						<div id="drop-file" class="drag-file">
+				
+				<i class="fa-solid fa-image-polaroid main-image"></i>
+						<div id="drop-file" class="drag-file" onclick="file_upload()">
+						<i class="fa-solid fa-image image-upload"></i>
+						
 							<a onclick="jQuery('.input-file').click()">
-								<p class="message">Drag files to upload</p>
+							<p class="message">클릭해주세요.</p>
 							</a> <img src="" alt="미리보기 이미지" class="preview">
 						</div>
 
 						<form id="send_img" method="post" enctype="multipart/form-data">
 						
-							<input id="file" type="file" name="file" class="input-file"
+							<input id="file input-file" type="file" name="file" class="input-file"
 								onchange="dropFile.handleFiles(this.files)"
 								accept="image/png, image/jpeg, image/gif"> 
 
