@@ -282,7 +282,7 @@
 				<div class="upload-box">
 						<div id="drop-file" class="drag-file">
 							<a onclick="jQuery('.input-file').click()">
-								<p class="message">Drag files to upload</p>
+								<p class="message">클릭해서 사진을 올려주세요</p>
 							</a> <img src="" alt="미리보기 이미지" class="preview">
 						</div>
 
