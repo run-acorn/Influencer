@@ -1,3 +1,11 @@
+
+function file_upload(id) {
+         $('.input-file').click();
+         console.log("파일업로드 버튼을 눌렀어!");
+}
+
+
+
 // 사진 첨부 모달 창 
 
 function modal(id) {
