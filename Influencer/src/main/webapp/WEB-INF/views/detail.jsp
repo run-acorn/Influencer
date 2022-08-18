@@ -343,17 +343,21 @@ input::placeholder {
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo"> <img
+					<a href="${cpath}/" class="logo"> <img
 						src="resources/images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- 검색바 -->
 					<div class="menu-desktop">
 						<div class="mainBar">
-							<input id="mainBar" type="text" onkeyup="enterkey();"
-								class="mainLoginInput jejumyeongjo maininput"
-								placeholder="&#61442; " name="input-search">
+							
+							<form action="${cpath}/bagSearch.do" method="get">
+									<input class="mainLoginInput jejumyeongjo maininput1 " type="text" name="bag_brand" placeholder="&#61442; ">
 								
+									<input type="submit" id="input-search">
+                 					 <a href="#" onclick="jQuery('#input-search').click()"> </a>
+             
+								</form>
 								
 								
 						</div>
@@ -403,11 +407,14 @@ input::placeholder {
 						<p class="nick_board mainnick2">${mvo.nick}님 환영합니다!</p>
 
 								<button onclick='location.href="${cpath}/logout.do"'
-									class="logoutbtn2 mainnick2">로그아웃</button>
+									class="logoutbtn2 mainnick2 ">로그아웃</button>
+									
+									<button onclick='location.href="${cpath}/goboard.do"'
+									class="logoutbtn2 mainnick2 board_bar">게시판</button>
 									
 									</div>
 						
-						<div class="dropdown">
+						<div class="dropdown2">
 							<div id=myMainBar class="dropbtn">My Menu</div>
 							<ul class="dropdown-content">
 							
@@ -426,6 +433,8 @@ input::placeholder {
 								<li class="myBarList">
 									<a href="#delete_Member" rel="modal:open"  class="myBar"> 회원탈퇴  </a>
 								</li>
+								
+								
 								
 								<li class="myBarList">
 									<a class="myBar" href="${cpath}/">메인으로</a>

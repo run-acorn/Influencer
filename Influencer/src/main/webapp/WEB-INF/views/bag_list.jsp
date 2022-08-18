@@ -77,7 +77,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo"> <img
+					<a href="${cpath}/" class="logo"> <img
 						src="resources/images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
@@ -145,9 +145,13 @@
 								<button onclick='location.href="${cpath}/logout.do"'
 									class="logoutbtn2 mainnick2">로그아웃</button>
 									
+									<button onclick='location.href="${cpath}/goboard.do"'
+									class="logoutbtn2 mainnick2 board_bar">게시판</button>
+									
+									
 									</div>
 						
-						<div class="dropdown">
+						<div class="dropdown2">
 							<div id=myMainBar class="dropbtn">My Menu</div>
 							<ul class="dropdown-content">
 							
@@ -168,8 +172,13 @@
 								</li>
 								
 								<li class="myBarList">
+									<a class="myBar" href="${cpath}/goboard.do">게시판</a>
+								</li>
+								
+								<li class="myBarList">
 									<a class="myBar" href="${cpath}/">메인으로</a>
 								</li>
+								
 								
 							</ul>
 							
