@@ -665,6 +665,7 @@ input::placeholder {
     padding: 10px 12px;
     font-family: SUIT-Medium;
     font-size: 120%;
+    color: black;
 }
 
 #fix {
@@ -773,6 +774,16 @@ input::placeholder {
     position: absolute;
 }
 
+.log-div3 {
+	
+  top: 35px;
+    bottom: 20%;
+    right: 5%;
+    text-align: center;
+    position: absolute;
+}
+
+
 
 
 /* 로그인 */
@@ -790,6 +801,11 @@ input::placeholder {
     top: 32px;
 }
 
+
+button.logoutbtn.mainnick3 {
+    position: relative;
+    left: 10%;
+}
 
 
 /* 비밀번호 변경 */
@@ -974,9 +990,13 @@ label.label {
 	
 	font-family: 'S-CoreDream-2ExtraLight';
     font-size: 14px;
+    left: 2%;
 	
 }
 
+button.logoutbtn2.mainnick2.board_bar {
+    left: -8%;
+}
 
 /*게시판 상세보기 */
 
@@ -1139,6 +1159,7 @@ p.comment_p {
 /* 내정보 드롭다운 */
 
 .dropdown {
+
 	position: relative;
 	display: inline-block;
 	width: 120px;
@@ -1146,6 +1167,17 @@ p.comment_p {
 	text-align: center;
 }
 
+.dropdown2 {
+	left: 80%;
+	position: relative;
+	display: inline-block;
+	width: 120px;
+	height:50px;
+	text-align: center;
+}
+
+
+/*메인쪽*/
 .dropdown-content {
 	display: none;
 	position: absolute;
@@ -1163,6 +1195,26 @@ p.comment_p {
 .dropdown-content {
 	width: 120px !important;
 }
+
+/* 게시판쪽 */
+.dropdown2-content {
+	display: none;
+	position: absolute;
+	z-index: 1; /*다른 요소들보다 앞에 배치*/
+}
+
+.dropdown2-content a {
+	display: block;
+}
+
+.dropdown2:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown2-content {
+	width: 120px !important;
+}
+
 
 /* My Menu 상자*/
 #myMainBar{
@@ -1214,10 +1266,10 @@ p.comment_p {
 }
 
 #myBars{
-	position: absolute;
+	    position: absolute;
     width: 100px;
     right: 100px;
-    top: 5%
+    top: 10%;
 }
 
 

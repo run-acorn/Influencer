@@ -80,7 +80,7 @@
    position: fixed;
    right: 50%;
    top: 200px;
-   margin-right: -950px;
+   margin-right: -900px;
    text-align: center;
    width: 180px;
    height: 600px;
@@ -131,12 +131,26 @@
    border: none;
 }
 
-.item {
+.itemDiv {
    border: 1px solid #dcdcdc;
-   height: 332px;
+   height: 450px;
    overflow-y:hidden;
    overflow-x:hidden;
    border-bottom:none:
+}
+
+#info{
+	font-weight:bold;
+	font-family: Poppins-SemiBold;
+}
+
+.mtext-106.cl2{
+	font-size:25px;
+}
+
+.mtext-105.cl2.js-name-detail.p-b-14{
+	font-size:30px;
+	font-weight:bold;
 }
 
 /* 검색창 돋보기 모양 */
@@ -204,12 +218,15 @@ input::placeholder {
 .col-2.review-img{
    width:100px;
    height:200px;
+   border:1px solid #dcdcdc;
+   padding-left:0px;
 }
 
 /* 리뷰 이미지 */
 .reviewImg{
-   width:150px;
+   width:200px;
    height:200px;
+   border:1px solid #dcdcdc;
    
 }
 
@@ -219,19 +236,45 @@ input::placeholder {
    padding-top:10px;
    font-family: 'Noto Sans KR', sans-serif !important;
    font-size:15px;
-   font-weight:30px;
+   font-weight:bold!important;
    color:black;
    
 }
 
+.col-2.gra{
+	text-align:center;
+}
+
+.graBtn{
+	border:1px solid #dcdcdc;
+	width:230px;
+	height:40px;
+}
+
 .list.row{
-   height:56px;
+   height:80px;
    border:none;
    border-bottom:1px solid #dcdcdc;
 }
 
 .contents-new.col-sm-6{
+   padding-top:28px;
+   padding-left:50px;
+   padding-right:0px;
+   font-weight:bold;
+   color:black;
+}
+
+.contents-new.col-sm-6.img{
    padding-top:10px;
+   padding-left:0px;
+}
+
+.bayBtn{
+	text-decoration:none;
+	color:#800080;
+	font-size:10px;
+	font-weight:bold!important;
 }
 
 #usedBtn, #newBtn{
@@ -242,6 +285,11 @@ input::placeholder {
 .siteImg{
    height:25px;
    width:75px;
+}
+
+.usedImg{
+	height:65px;
+    width:75px
 }
 
 /*별 점*/
@@ -295,17 +343,21 @@ input::placeholder {
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo"> <img
+					<a href="${cpath}/" class="logo"> <img
 						src="resources/images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- 검색바 -->
 					<div class="menu-desktop">
 						<div class="mainBar">
-							<input id="mainBar" type="text" onkeyup="enterkey();"
-								class="mainLoginInput jejumyeongjo maininput"
-								placeholder="&#61442; " name="input-search">
+							
+							<form action="${cpath}/bagSearch.do" method="get">
+									<input class="mainLoginInput jejumyeongjo maininput1 " type="text" name="bag_brand" placeholder="&#61442; ">
 								
+									<input type="submit" id="input-search">
+                 					 <a href="#" onclick="jQuery('#input-search').click()"> </a>
+             
+								</form>
 								
 								
 						</div>
@@ -355,11 +407,14 @@ input::placeholder {
 						<p class="nick_board mainnick2">${mvo.nick}님 환영합니다!</p>
 
 								<button onclick='location.href="${cpath}/logout.do"'
-									class="logoutbtn2 mainnick2">로그아웃</button>
+									class="logoutbtn2 mainnick2 ">로그아웃</button>
+									
+									<button onclick='location.href="${cpath}/goboard.do"'
+									class="logoutbtn2 mainnick2 board_bar">게시판</button>
 									
 									</div>
 						
-						<div class="dropdown">
+						<div class="dropdown2">
 							<div id=myMainBar class="dropbtn">My Menu</div>
 							<ul class="dropdown-content">
 							
@@ -378,6 +433,8 @@ input::placeholder {
 								<li class="myBarList">
 									<a href="#delete_Member" rel="modal:open"  class="myBar"> 회원탈퇴  </a>
 								</li>
+								
+								
 								
 								<li class="myBarList">
 									<a class="myBar" href="${cpath}/">메인으로</a>
@@ -704,7 +761,7 @@ input::placeholder {
                </div>
             </div>
 
-            <div class="col-md-6 col-lg-5 p-b-30">
+            <div id="info" class="col-md-6 col-lg-5 p-b-30">
                <div class="p-r-50 p-t-5 p-lr-0-lg">
                
                <!-- 모델명 -->
@@ -719,42 +776,12 @@ input::placeholder {
 
                   <!--  -->
                   <div class="p-t-33">
-                     <div class="flex-w flex-r-m p-b-10">
-                        <div class="size-203 flex-c-m respon6">Size</div>
+                    
 
-                        <div class="size-204 respon6-next">
-                           <div class="rs1-select2 bor8 bg0">
-                              <select class="js-select2" name="time">
-                                 <option>Choose an option</option>
-                                 <option>Size S</option>
-                                 <option>Size M</option>
-                                 <option>Size L</option>
-                                 <option>Size XL</option>
-                              </select>
-                              <div class="dropDownSelect2"></div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="flex-w flex-r-m p-b-10">
-                        <div class="size-203 flex-c-m respon6">Color</div>
-
-                        <div class="size-204 respon6-next">
-                           <div class="rs1-select2 bor8 bg0">
-                              <select class="js-select2" name="time">
-                                 <option>Choose an option</option>
-                                 <option>Red</option>
-                                 <option>Blue</option>
-                                 <option>White</option>
-                                 <option>Grey</option>
-                              </select>
-                              <div class="dropDownSelect2"></div>
-                           </div>
-                        </div>
-                     </div>
+                  
 
                      <!-- 새상품 중고상품 리스트 보여주기 -->
-                     <div class="item">
+                     <div class="itemDiv">
                         <div class="container listBtn">                     
                            <div class="row listView">
                            
@@ -772,51 +799,11 @@ input::placeholder {
 
                      </div>
 
-                     <div class="flex-w flex-r-m p-b-10">
-                        <div class="size-204 flex-w flex-m respon6-next">
-                           <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                              <div
-                                 class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                 <i class="fs-16 zmdi zmdi-minus"></i>
-                              </div>
-
-                              <input class="mtext-104 cl3 txt-center num-product"
-                                 type="number" name="num-product" value="1">
-
-                              <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                 <i class="fs-16 zmdi zmdi-plus"></i>
-                              </div>
-                           </div>
-
-                           <button
-                              class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                              Add to cart</button>
-                        </div>
-                     </div>
+                   
                   </div>
 
                   <!--  -->
-                  <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                     <div class="flex-m bor9 p-r-10 m-r-11">
-                        <a href="#"
-                           class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                           data-tooltip="Add to Wishlist"> <i
-                           class="zmdi zmdi-favorite"></i>
-                        </a>
-                     </div>
-<div>
-                     <a href="#"
-                        class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                        data-tooltip="Facebook"> <i class="fa fa-facebook"></i>
-                     </a> <a href="#"
-                        class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                        data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
-                     </a> <a href="#"
-                        class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                        data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
-                     </a>
-                  </div>
-               </div>
+                 
             </div>
          </div>
       </div>
@@ -830,6 +817,16 @@ input::placeholder {
       <div class="container">
          <div class="p-b-45">
             <h3 id="review-section-title" class="ltext-106 cl5 txt-center">상품평</h3>
+            <div class="row">
+            <div class="col-2 gra"><button class="graBtn" type="button">전체</button></div>
+            <div class="col-2 gra"><button class="graBtn" type="button">5점</button></div>
+            <div class="col-2 gra"><button class="graBtn" type="button">4점</button></div>
+            <div class="col-2 gra"><button class="graBtn" type="button">3점</button></div>
+            <div class="col-2 gra"><button class="graBtn" type="button">2점</button></div>
+            <div class="col-2 gra"><button class="graBtn" type="button" style="width:200px">1점</button></div>
+            
+            
+            </div>
          </div>
 
          <!-- 리뷰 목록 ajax로 바꿀 예정 -->
@@ -1025,7 +1022,7 @@ input::placeholder {
                         
    
                   blist += "<div id='inn" + vo.new_bag_no + "' class='list row' onclick='price(" + vo.new_price+"); border("+vo.new_bag_no+");'>"
-                  blist += "<div class='contents-new col-sm-6' ><span>"
+                  blist += "<div class='contents-new col-sm-6' ><span class='spanFont'>"
                         + pri + "원</span></div>"
                   blist += "<div class='contents-new col-sm-6'><button class='btn-5 contents-new col-sm-12'><a href='"+vo.new_link+"'><img class='siteImg' src='${cpath}/getByteMallImage.do?new_bag_no="+vo.new_bag_no+"'></a></button>"
                   blist += "</div>"
@@ -1040,7 +1037,7 @@ input::placeholder {
          $('#listcon').after(blist);
          $('#mainPrice').remove();
 
-         $('#new').css('background-color', '#ffffff').css('color', 'black');
+         $('#new').css('background-color', '#ffffff').css('color', 'black').css('font-weight','bold');
          $('#used').css('background-color', '#e6e6fa').css('color','#696969');
          
          
@@ -1092,10 +1089,10 @@ input::placeholder {
                         var pri = vo.used_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         
                         
-                        blist += "<div id='inn" + vo.used_bag_no + "'  class='list row' onclick='price(" + vo.used_price+"); border("+vo.used_bag_no+"); imgChange("+vo.used_bag_no+");'>"
+                        blist += "<div id='inn" + vo.used_bag_no + "'  class='list row' onclick='price(" + vo.used_price+"); border("+vo.used_bag_no+"); imgChange("+vo.used_img+");'>"
                         blist += "<div class='contents-new col-sm-6' ><span>"
                               + pri + "원</span></div>"
-                        blist += "<div class='contents-new col-sm-6'><button class='btn-5 contents-new col-sm-12'><a href='"+vo.new_link+"'><img class='siteImg' src='${cpath}/getByteUsedMallImage.do?used_bag_no="+vo.used_bag_no+"'></a></button>"
+                        blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a class='bayBtn' href='"+vo.used_link+"'><img class='usedImg' src='"+vo.used_img+"'>사러가기</a></button>"
                         blist += "</div>"
                         blist += "</div>"
                      
@@ -1107,7 +1104,7 @@ input::placeholder {
          $('#listcon').after(blist);
 
          $('#new').css('background-color', '#e6e6fa').css('color', '#696969').css('padding','0px!important');
-         $('#used').css('background-color', '#ffffff').css('color', 'black').css('padding','0px!important');
+         $('#used').css('background-color', '#ffffff').css('color', 'black').css('padding','0px!important').css('font-weight','bold');
          
          
       }
@@ -1131,7 +1128,7 @@ input::placeholder {
       
       // div 클릭시 이미지 변경하기
       function imgChange(used_bag_no){
-         $('#mainImg').html('<img src=${cpath}/getByteUsedImage.do?used_bag_no='+used_bag_no+'>')
+         $('#mainImg').html('<img src='+used_bag_no+'>')
       }
       
       function enterkey() {
@@ -1246,7 +1243,7 @@ input::placeholder {
          $('#modelName').html('<h4 class="mtext-105 cl2 js-name-detail p-b-14">'+data[0].bag_brand+'</h4>')
          
          // 화면시작시 백 이름 가져오기
-         $('#bagName').html('<p>'+data[0].bag_name+'</p>')
+         $('#bagName').html('<p>'+data[0].bag_name_new+'</p>')
          // bag 들어가서  bagno에 맞는 이름 가져오는 컨트롤러 만들기
       }
       

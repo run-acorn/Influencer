@@ -78,7 +78,7 @@
 					<nav class="limiter-menu-desktop p-l-45">
 
 						<!-- Logo desktop -->
-						<a href="#" class="logo"> <img
+						<a href="${cpath}/" class="logo"> <img
 							src="resources/images/icons/logo-02.png" alt="IMG-LOGO">
 
 						</a>
@@ -137,6 +137,11 @@
 
 								<button onclick='location.href="${cpath}/logout.do"'
 									class="logoutbtn mainnick">로그아웃</button>
+									
+									<button onclick='location.href="${cpath}/goboard.do"'
+									class="logoutbtn mainnick3">게시판</button>
+									
+									
 
 								<div class="dropdown">
 							<div id=myMainBar2 class="dropbtn">My Menu</div>
@@ -158,9 +163,7 @@
 									<a href="#delete_Member" rel="modal:open"  class="myBar"> 회원탈퇴  </a>
 								</li>
 								
-								<li class="myBarList2">
-									<a class="myBar" href="${cpath}/goboard.do">게시판</a>
-								</li>
+								
 								
 							</ul>
 							

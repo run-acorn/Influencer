@@ -77,7 +77,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo"> <img
+					<a href="${cpath}/" class="logo"> <img
 						src="resources/images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
@@ -117,16 +117,16 @@
 						
 						<c:if test="${empty mvo}">
 
-							<div class="log-div">
+							<div class="log-div3">
 
 								
 								<form action="${cpath}/goboard.do" method="post">
 									<button type="submit">게시판가기</button>
 								</form>
 								
-								<button class="logbtn2" id="logbtn2" >Login</button>
+								<button class="logbtn2" id="logbtn" >Login</button>
 
-								<button class="joinbtn2" id="joinbtn2">Join</button>
+								<button class="joinbtn2" id="joinbtn">Join</button>
 								
 
 							</div>
@@ -145,9 +145,13 @@
 								<button onclick='location.href="${cpath}/logout.do"'
 									class="logoutbtn2 mainnick2">로그아웃</button>
 									
+									<button onclick='location.href="${cpath}/goboard.do"'
+									class="logoutbtn2 mainnick2 board_bar">게시판</button>
+									
+									
 									</div>
 						
-						<div class="dropdown">
+						<div class="dropdown2">
 							<div id=myMainBar class="dropbtn">My Menu</div>
 							<ul class="dropdown-content">
 							
@@ -168,8 +172,13 @@
 								</li>
 								
 								<li class="myBarList">
+									<a class="myBar" href="${cpath}/goboard.do">게시판</a>
+								</li>
+								
+								<li class="myBarList">
 									<a class="myBar" href="${cpath}/">메인으로</a>
 								</li>
+								
 								
 							</ul>
 							
@@ -416,46 +425,9 @@
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
-					</button>
+			
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
-					</button>
-				</div>
-
-				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
-					</div>
-
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Search
-					</div>
-				</div>
-				
+								
 				<!-- Search product -->
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
 					<div class="bor8 dis-flex p-l-15">
