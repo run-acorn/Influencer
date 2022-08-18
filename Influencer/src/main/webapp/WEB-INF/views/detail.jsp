@@ -791,16 +791,7 @@ input::placeholder {
       <div class="container">
          <div class="p-b-45">
             <h3 id="review-section-title" class="ltext-106 cl5 txt-center">상품평</h3>
-            <div class="row">
-            <div class="col-2 gra"><button class="graBtn" type="button">전체</button></div>
-            <div class="col-2 gra"><button class="graBtn" type="button">5점</button></div>
-            <div class="col-2 gra"><button class="graBtn" type="button">4점</button></div>
-            <div class="col-2 gra"><button class="graBtn" type="button">3점</button></div>
-            <div class="col-2 gra"><button class="graBtn" type="button">2점</button></div>
-            <div class="col-2 gra"><button class="graBtn" type="button" style="width:200px">1점</button></div>
-            
-            
-            </div>
+          
          </div>
 
          <!-- 리뷰 목록 ajax로 바꿀 예정 -->
@@ -1048,7 +1039,7 @@ input::placeholder {
          })
       }
 
-      // 3. 화면에 보여주는 함수 생성
+   // 3. 화면에 보여주는 함수 생성
       function usedList(data) {
          //내가 화면에 출력해줄 tr 태그들의 모음
          var blist = "";
@@ -1061,12 +1052,10 @@ input::placeholder {
                         // function(인덱스번호, data안에 들어있는 각각의 값들을 어떤 변수로 받아줄 건지)
                         // 순서가 중요하지 이름이 중요하진 않다.
                         var pri = vo.used_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                        
-                        
-                        blist += "<div id='inn" + vo.used_bag_no + "'  class='list row' onclick='price(" + vo.used_price+"); border("+vo.used_bag_no+"); imgChange("+vo.used_img+");'>"
+                        blist += "<div id='inn" + vo.used_bag_no + "'  class='list row' onclick='price(" + vo.used_price+"); border("+vo.used_bag_no+");imgChange("+vo.used_bag_no+")'>"
                         blist += "<div class='contents-new col-sm-6' ><span>"
                               + pri + "원</span></div>"
-                        blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a class='bayBtn' href='"+vo.used_link+"'><img class='usedImg' src='"+vo.used_img+"'>사러가기</a></button>"
+                        blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a class='bayBtn' href='"+vo.used_link+"'><img style='display:none;' class='usedImg' src='"+vo.used_img+"'>사러가기</a></button>"
                         blist += "</div>"
                         blist += "</div>"
                      
@@ -1102,7 +1091,7 @@ input::placeholder {
       
       // div 클릭시 이미지 변경하기
       function imgChange(used_bag_no){
-         $('#mainImg').html('<img src='+used_bag_no+'>')
+         $('#mainImg').html('<img src='+$('#inn'+used_bag_no+' .usedImg').attr('src')+'>')
       }
       
       function enterkey() {
