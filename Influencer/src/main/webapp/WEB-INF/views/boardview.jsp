@@ -29,7 +29,7 @@
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="resources/insertform/css/style.css">
-
+<link rel="stylesheet" type="text/css" href="resources/css/custom.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -77,26 +77,14 @@
 	
 	
 	<!-- Header -->
-	<header class="header-v4">
+<header class="header-v4">
 		<!-- Header desktop -->
-		<div class="container-menu-desktop">
+		<div class="container-menu-desktop trans-03">
 			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">Free shipping for standard order
-						over $100</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a> <a
-							href="#" class="flex-c-m trans-04 p-lr-25"> My Account </a> <a
-							href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> <a href="#"
-							class="flex-c-m trans-04 p-lr-25"> USD </a>
-					</div>
-				</div>
-			</div>
+			
 
 			<div id="main-main" class="wrap-menu-desktop how-shadow1">
-				<nav class="limiter-menu-desktop container">
+				<nav class="limiter-menu-desktop p-l-45">
 
 					<!-- Logo desktop -->
 					<a href="${cpath}/" class="logo"> <img
@@ -105,51 +93,47 @@
 
 					<!-- 검색바 -->
 					<div class="menu-desktop">
-						<div class="mainBar">
-						
-						
-						<form action="${cpath}/bagSearch.do" method="get">
+
+
+
+
+							<div class="search ">
+								
+								<form action="${cpath}/bagSearch.do" method="get">
 									<input class="mainLoginInput jejumyeongjo maininput1 " type="text" name="bag_brand" placeholder="&#61442; ">
 								
 									<input type="submit" id="input-search">
                  					 <a href="#" onclick="jQuery('#input-search').click()"> </a>
              
 								</form>
-								
-								
-								
-						</div>
-						
-						<div>
-						<button id="popup_open_btn"
+
+							</div>
+							<button id="popup_open_btn"
 								class="file-import2 w-btn-outline w-btn-skin-outline hover-1">
 								사진으로 검색!</button>
-						
+
+
+
+
 						</div>
-						
-						
-						
-						
-					</div>
-					
 					
 
 					<!-- 내정보 친구들 -->
-					<div id=myBars>
+					
 						
 						<c:if test="${empty mvo}">
 
 							<div class="log-div">
 
-								
-								<form action="${cpath}/goboard.do" method="post">
-									<button type="submit">게시판가기</button>
-								</form>
-								
-								<button class="logbtn2" id="logbtn2" >Login</button>
 
-								<button class="joinbtn2" id="joinbtn2">Join</button>
-								
+								<form action="${cpath}/" method="post">
+									<button type="submit">메인으로</button>
+								</form>
+
+								<button class="logbtn2" id="logbtn">Login</button>
+
+								<button class="joinbtn2" id="joinbtn">Join</button>
+
 
 							</div>
 
@@ -160,19 +144,21 @@
 						<!-- 내정보 메뉴 -->
 						
 						<c:if test="${!empty mvo}">
-						
-						<div class="My_info">
-						<p class="nick_board mainnick2">${mvo.nick}님 환영합니다!</p>
+
+							<div class="log-div-main">
+
+								<p class="MainP1 mainnick3">${mvo.nick}님 환영합니다!</p>
 
 								<button onclick='location.href="${cpath}/logout.do"'
-									class="logoutbtn2 mainnick2">로그아웃</button>
+									class="logoutbtn mainnick1" >로그아웃</button>
 									
-									<button onclick='location.href="${cpath}/goboard.do"'
-									class="logoutbtn2 mainnick2 board_bar">게시판</button>
-									</div>
-						
-						<div class="dropdown2">
-							<div id=myMainBar class="dropbtn">My Menu</div>
+									<button onclick='location.href="${cpath}/"'
+									class="logoutbtn mainnick4">메인</button>
+									
+									
+
+								<div class="dropdown">
+							<div id=myMainBar3 class="dropbtn">My Menu</div>
 							<ul class="dropdown-content">
 							
 								<li class="myBarList">
@@ -191,19 +177,24 @@
 									<a href="#delete_Member" rel="modal:open"  class="myBar"> 회원탈퇴  </a>
 								</li>
 								
-								<li class="myBarList">
-									<a class="myBar" href="${cpath}/">메인으로</a>
-								</li>
+								
 								
 							</ul>
 							
 						</div>
-						
+							</div>
+
+
+
+
+
+
+
 						</c:if>
 						
 						
 						
-					</div>
+					
 				</nav>
 			</div>
 		</div>
@@ -243,27 +234,7 @@
 			</div>
 		</div>
 
-
-
-
-		<!-- Modal Search -->
-		<div
-			class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button
-					class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="resources/images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search"
-						placeholder="Search...">
-				</form>
-			</div>
-		</div>
+		
 	</header>
 	
 	
@@ -282,16 +253,22 @@
 					class="fa-solid fa-circle-xmark close_i"></i>
 				</a>
 				<div class="contents">
-					<div class="upload-box">
-						<div id="drop-file" class="drag-file">
+				
+					
+				<div class="upload-box">
+				
+				<i class="fa-solid fa-image-polaroid main-image"></i>
+						<div id="drop-file" class="drag-file" onclick="file_upload()">
+						<i class="fa-solid fa-image image-upload"></i>
+						
 							<a onclick="jQuery('.input-file').click()">
-								<p class="message">Drag files to upload</p>
+							<p class="message">클릭해주세요.</p>
 							</a> <img src="" alt="미리보기 이미지" class="preview">
 						</div>
 
 						<form id="send_img" method="post" enctype="multipart/form-data">
 						
-							<input id="file" type="file" name="file" class="input-file"
+							<input id="file input-file" type="file" name="file" class="input-file"
 								onchange="dropFile.handleFiles(this.files)"
 								accept="image/png, image/jpeg, image/gif"> 
 
@@ -304,8 +281,6 @@
 					</div>
 				</div>
 			</div>
-
-
 
 
 		</div>
