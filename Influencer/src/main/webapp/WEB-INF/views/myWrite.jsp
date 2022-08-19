@@ -289,13 +289,11 @@ td.column-2 {
 							<div class="log-div">
 
 
-								<form action="${cpath}/" method="post">
-									<button type="submit">메인으로</button>
-								</form>
+							    <div class="log-div-in1"> <button class="logbtn"> <a class="logbtn" href="${cpath}/"> Main </a> </button> </div>
 
-								<button class="logbtn2" id="logbtn">Login</button>
+								<div class="log-div-in2" > <button class="logbtn" id="logbtn">Login</button> </div>
 
-								<button class="joinbtn2" id="joinbtn">Join</button>
+								<div class="log-div-in3" > <button class="joinbtn" id="joinbtn">Join</button> </div>
 
 
 							</div>
@@ -310,18 +308,18 @@ td.column-2 {
 
 							<div class="log-div-main">
 
-								<p class="MainP1 mainnick3">${mvo.nick}님 환영합니다!</p>
+								<p class="MainP1 mainnick"> Welcome to ${mvo.nick}</p>
 
 								<button onclick='location.href="${cpath}/logout.do"'
-									class="logoutbtn mainnick1" >로그아웃</button>
+									class="logoutbtn mainnick" > Logout </button>
 									
 									<button onclick='location.href="${cpath}/"'
-									class="logoutbtn mainnick4">메인</button>
+									class="logoutbtn mainnick4"> Main </button>
 									
 									
 
 								<div class="dropdown">
-							<div id=myMainBar3 class="dropbtn">My Menu</div>
+							<div id=myMainBar2 class="dropbtn">My Menu</div>
 							<ul class="dropdown-content">
 							
 								<li class="myBarList">
