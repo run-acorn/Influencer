@@ -315,7 +315,7 @@ input::placeholder {
 }
 
 #main-main{
-	background-image:url(resources/images/bag_list_title.jpg);
+	background-image:url(resources/images/detail_title.jpg);
 	background-size:100%;
 	background-repeat:no-repeat;
 	background-position:40% 30%;
@@ -691,24 +691,24 @@ input::placeholder {
          <span id="barName" class="siteBar">제휴 사이트</span>
       </div>
       <div class="siteIcon">
-         <img class="siteBar" src="resources/images/tradit.jpg"><a
-            href="https://www.trenbe.com/"></a>
+         <a
+            href="https://www.trenbe.com/"><img class="siteBar" src="resources/images/tradit.jpg"></a>
       </div>
       <div class="siteIcon">
-         <img class="siteBar" src="resources/images/ballan.jpg"><a
-            href="https://www.trenbe.com/"></a>
+         <a
+            href="https://www.balaan.co.kr/shop/main/index.php"><img class="siteBar" src="resources/images/ballan.jpg"></a>
       </div>
       <div class="siteIcon">
-         <img class="siteBar" src="resources/images/feelway.jpg"><a
-            href="https://www.trenbe.com/"></a>
+         <a
+            href="https://www.feelway.com/"><img class="siteBar" src="resources/images/feelway.jpg"></a>
       </div>
       <div class="siteIcon">
-         <img class="siteBar" src="resources/images/musinsa.jpg"><a
-            href="https://www.trenbe.com/"></a>
+         <a
+            href="https://www.musinsa.com/app/"><img class="siteBar" src="resources/images/musinsa.jpg"></a>
       </div>
       <div class="siteIcon">
-         <img class="siteBar" src="resources/images/mustit.jpg"><a
-            href="https://www.trenbe.com/"></a>
+         <a
+            href="https://m.mustit.co.kr/?gclid=Cj0KCQjwxveXBhDDARIsAI0Q0x3SZCMv3N-J35pmgZ13_p6yIWkvYM_OTfk4fXBkcx-jSnyhAT7c6tQaAhvKEALw_wcB"><img class="siteBar" src="resources/images/mustit.jpg"></a>
       </div>
    </div>
 
@@ -1010,7 +1010,8 @@ input::placeholder {
          
          
          // 화면시작시 첫번째 가격 보여주기
-         $('#modelName').after(innerHTML = "<div id='mainPrice'><span class='mtext-106 cl2'>"+ mainPri +"원</span></div>")
+           $('#modelName').after(innerHTML = "<div id='mainPrice'><span class='mtext-106 cl2' style='15px;'>"+ mainPri +"원</span></div>")
+
          
          // 화면시작시 첫번째 이미지 가져오기
          $('#mainImg').html('<img src=${cpath}/getByteMainImage.do?bag_no='+data[0].bag_no +'>')
@@ -1204,14 +1205,13 @@ input::placeholder {
       
       function bagname(data){
          
-         // 화면시작시 첫번째 브랜드 가져오기
-         $('#modelName').html('<h4 class="mtext-105 cl2 js-name-detail p-b-14">'+data[0].bag_brand+'</h4>')
-         
-         // 화면시작시 백 이름 가져오기
-         $('#bagName').html('<p>'+data[0].bag_name_new+'</p>')
-         // bag 들어가서  bagno에 맞는 이름 가져오는 컨트롤러 만들기
-      }
-      
+    	  // 화면시작시 첫번째 브랜드 가져오기
+          $('#bagName').html('<p class="mtext-105 cl2 js-name-detail p-b-8" style="font-size:20px; border-bottom:1px solid black;">'+data[0].bag_brand+'</p>')
+          
+          // 화면시작시 백 이름 가져오기
+          $('#modelName').html('<h4 style="padding-bottom:30px; color:black; ">'+data[0].bag_name_new+'</h4>')
+          // bag 들어가서  bagno에 맞는 이름 가져오는 컨트롤러 만들기
+       }
       
          
       

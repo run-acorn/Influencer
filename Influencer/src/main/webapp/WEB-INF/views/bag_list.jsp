@@ -57,6 +57,43 @@
 <!--===============================================================================================-->
 
 <style type="text/css">
+
+/* 사이드 사이트 바 div */
+.quickmenu {
+   position: fixed;
+   right: 50%;
+   top: 200px;
+   margin-right: -900px;
+   text-align: center;
+   width: 180px;
+   height: 600px;
+   box-shadow: 2px 2px 10px 5px #dcdcdc;
+   border-radius: 10px;
+}
+/* 사이드 사이트 이미지 div */
+.siteIcon {
+   position: relative;
+   top: 20px;
+   margin-top: 30px;
+}
+
+/* 사이드 사이트 이미지, 링크 */
+.siteBar {
+   font-family: 'Noto Sans KR', sans-serif !important;
+   width: 70px;
+   height: 60px;
+   border-radius: 10px;
+   font-size: 20px;
+   font-weight: 10px;
+   color: black;
+   box-shadow: 2px 2px 10px 5px #dcdcdc;
+   
+}
+
+#barName{
+   box-shadow:none;
+}
+
 .stext-1044.cl3{
 	font
 }
@@ -71,7 +108,32 @@
 
 </head>
 <body class="animsition">
-	
+	<!-- 사이드바 div -->
+   <div class="quickmenu">
+      <div class="siteIcon">
+         <span id="barName" class="siteBar">제휴 사이트</span>
+      </div>
+      <div class="siteIcon">
+         <a
+            href="https://www.trenbe.com/"><img class="siteBar" src="resources/images/tradit.jpg"></a>
+      </div>
+      <div class="siteIcon">
+         <a
+            href="https://www.balaan.co.kr/shop/main/index.php"><img class="siteBar" src="resources/images/ballan.jpg"></a>
+      </div>
+      <div class="siteIcon">
+         <a
+            href="https://www.feelway.com/"><img class="siteBar" src="resources/images/feelway.jpg"></a>
+      </div>
+      <div class="siteIcon">
+         <a
+            href="https://www.musinsa.com/app/"><img class="siteBar" src="resources/images/musinsa.jpg"></a>
+      </div>
+      <div class="siteIcon">
+         <a
+            href="https://m.mustit.co.kr/?gclid=Cj0KCQjwxveXBhDDARIsAI0Q0x3SZCMv3N-J35pmgZ13_p6yIWkvYM_OTfk4fXBkcx-jSnyhAT7c6tQaAhvKEALw_wcB"><img class="siteBar" src="resources/images/mustit.jpg"></a>
+      </div>
+   </div>
 	<!-- Header -->
 <header class="header-v4">
 		<!-- Header desktop -->
