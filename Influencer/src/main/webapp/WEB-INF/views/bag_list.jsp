@@ -635,6 +635,7 @@
 			<div class="row isotope-grid">
 			
 			<!-- 상품 한개 -->
+			<c:if test="${!empty list}">
 			
 			<c:forEach var="vo" items="${list}">
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35n">
@@ -669,12 +670,24 @@
 				</div>
 				
 				</c:forEach>
-<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45 p-b-50">
-				<a href="${cpath}/" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					메인으로
-				</a>
+				</c:if>
+				<c:if test="${empty list}">
+				<div style="width:50px; height:100px;"></div>
+				<div class="flex-c-m flex-w w-full p-t-45 p-b-50">
+				<span style="font-size:50px; color:black; border-bottom:3px solid black; padding-bottom:40px;">
+					검색한 상품에 대한 결과 가 없습니다.
+				</span>
+				
+				<br>
+				
+				
 			</div>
+			<div class="flex-c-m flex-w w-full p-t-45 p-b-50">
+				<span style="font-size:30px; color:black;"> 정확한 브랜드명을 입력해 주세요</span>
+				</div>
+				</c:if>
+<!-- Load more -->
+			
 			<br><br>
 		</div>
 	</div>
