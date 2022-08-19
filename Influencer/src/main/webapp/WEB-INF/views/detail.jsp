@@ -1058,7 +1058,7 @@ input::placeholder {
                         blist += "<div id='inn" + vo.used_bag_no + "'  class='list row' onclick='price(" + vo.used_price+"); border("+vo.used_bag_no+");imgChange("+vo.used_bag_no+")'>"
                         blist += "<div class='contents-new col-sm-6' ><span>"
                               + pri + "원</span></div>"
-                        blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a class='bayBtn' href='"+vo.used_link+"'><img style='display:none;' class='usedImg' src='"+vo.used_img+"'>사러가기</a></button>"
+                        blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a class='bayBtn' href='"+vo.used_link+"'><img style='display:none;' class='usedImg' src='"+vo.used_img+"'><img src='"+vo.used_url_img+"'></a></button>"
                         blist += "</div>"
                         blist += "</div>"
                      
