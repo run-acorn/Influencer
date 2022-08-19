@@ -527,8 +527,8 @@
 			<div class="flex-w flex-tr">
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 				
-					<form action="${cpath}/boardinsert.do" method="POST"
-										id="boardinsert" name="boardinsert" class="contactForm">
+					<form action="${cpath}/boardUpdate.do?board_no=${vo.board_no}" method="POST"
+										id="boardUpdate" name="boardUpdate" class="contactForm">
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
 						게시판 글 쓰기 
 						</h4>
@@ -580,7 +580,7 @@
 												</div>
 
 						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-							글 쓰기
+							글 수정
 						</button>
 					</form>
 					<div class="a_tag_ceter">
