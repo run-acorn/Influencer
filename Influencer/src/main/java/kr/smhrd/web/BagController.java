@@ -189,19 +189,7 @@ public class BagController {
 			return new ResponseEntity<byte[]>(vo.getNew_img(), headers, HttpStatus.OK);
 		}
 		
-		// used mall 처음 이미지 가져오기
-		// blob to  image형태로 변환을 도와주는 controller
-		@RequestMapping("/getByteUsedMallImage.do")
-		public ResponseEntity<byte[]> getByteUsedMallImage(int used_bag_no){
-							
-			// url안에다가 blob를 자체를 넣어서 넘기는건 url 규칙에 위배
-						// https://~~~~~?bt=[B@
-									
-			Used_BagVO vo = mapper.selectusdemallimage(used_bag_no);
-			final HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.IMAGE_PNG);
-			return new ResponseEntity<byte[]>(vo.getUsed_mall(), headers, HttpStatus.OK);
-		}
+		
 		
 	
 			

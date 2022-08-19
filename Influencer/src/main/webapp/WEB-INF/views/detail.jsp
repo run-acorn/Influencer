@@ -283,8 +283,8 @@ input::placeholder {
 }
 
 .siteImg{
-   height:25px;
-   width:75px;
+   height:40px;
+    width:85px
 }
 
 .usedImg{
@@ -991,7 +991,7 @@ input::placeholder {
                   blist += "<div id='inn" + vo.new_bag_no + "' class='list row' onclick='price(" + vo.new_price+"); border("+vo.new_bag_no+");'>"
                   blist += "<div class='contents-new col-sm-6' ><span class='spanFont'>"
                         + pri + "원</span></div>"
-                  blist += "<div class='contents-new col-sm-6'><button class='btn-5 contents-new col-sm-12'><a href='"+vo.new_link+"'><img class='siteImg' src='${cpath}/getByteMallImage.do?new_bag_no="+vo.new_bag_no+"'></a></button>"
+                  blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a href='"+vo.new_link+"'><img class='siteImg' src='${cpath}/getByteMallImage.do?new_bag_no="+vo.new_bag_no+"'></a></button>"
                   blist += "</div>"
                   blist += "</div>"
                   
@@ -1049,7 +1049,7 @@ input::placeholder {
 
          // for-each문을 사용하는 방법
          // $each(어떤 데이터를 가지고 반복, 어떤 함수로 처리해줄 건지)
-
+console.log(data);
          $.each(data,function(index, vo) {
                         // 배열data에 있는 {}객체 를빼서 board에 넣는다 그리고 board.idx 이런식으로 가져오기 
                         // function(인덱스번호, data안에 들어있는 각각의 값들을 어떤 변수로 받아줄 건지)
@@ -1058,7 +1058,7 @@ input::placeholder {
                         blist += "<div id='inn" + vo.used_bag_no + "'  class='list row' onclick='price(" + vo.used_price+"); border("+vo.used_bag_no+");imgChange("+vo.used_bag_no+")'>"
                         blist += "<div class='contents-new col-sm-6' ><span>"
                               + pri + "원</span></div>"
-                        blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a class='bayBtn' href='"+vo.used_link+"'><img style='display:none;' class='usedImg' src='"+vo.used_img+"'><img src='"+vo.used_url_img+"'></a></button>"
+                        blist += "<div class='contents-new col-sm-6 img'><button class='btn-5 contents-new col-sm-12'><a class='bayBtn' href='"+vo.used_link+"'><img style='display:none;' class='usedImg' src='"+vo.used_img+"'><img style='width:80px; height:60px;' src='"+vo.used_url_img+"'></a></button>"
                         blist += "</div>"
                         blist += "</div>"
                      

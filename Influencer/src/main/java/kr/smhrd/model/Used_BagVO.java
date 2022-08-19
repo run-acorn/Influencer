@@ -9,6 +9,6 @@ public class Used_BagVO {
 	   private int bag_no;
 	   private String used_img;
 	   private int used_price;
-	   private byte[] used_mall;
+	   private String used_url_img;
 	   private String used_link;
 }
