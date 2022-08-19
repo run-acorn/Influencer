@@ -191,7 +191,7 @@
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="index.html"><img
-						src="resources/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+						src="resources/images/icons/logo-02.png" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
@@ -1159,6 +1159,7 @@ function answer_bag_name(res){
 		},
 		error : function(){
 			alert('이미지 서칭실패');
+			location.href='${cpath}//bagAllList.do'
 		}
 	})
 }

@@ -250,7 +250,7 @@ td.column-2 {
 
 					<!-- Logo desktop -->
 					<a href="${cpath}/" class="logo"> <img
-						src="resources/images/icons/logo-01.png" alt="IMG-LOGO">
+						src="resources/images/icons/logo-02.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- 검색바 -->
