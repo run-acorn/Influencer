@@ -701,7 +701,7 @@ input::placeholder {
 
 
 .logbtn {
-	color: #fff;
+	color: #fff !important;
 	background: #0000;
 	border: none;
 	font-family: S-CoreDream-2ExtraLight
@@ -789,7 +789,7 @@ input::placeholder {
 
 
 .log-div{
-	 bottom: 30%;
+	 bottom: 38%;
     right: 5%;
     text-align: center;
     position: absolute;
@@ -814,6 +814,30 @@ input::placeholder {
 }
 
 
+.log-div-in1 {
+    right: 90px;
+    position: relative;
+    top: 52px;
+}
+
+.log-div-in1-main {
+    right: 114px;
+    position: relative;
+    top: 52px;
+}
+
+
+.log-div-in2 {
+    right: 28px;
+    position: relative;
+    top: 28px;
+}
+
+.log-div-in3 {
+    right: -31px;
+    position: relative;
+    top: 6px;
+}
 
 
 /* 로그인 */
@@ -848,8 +872,9 @@ button.logoutbtn.mainnick3 {
 
 button.logoutbtn.mainnick4 {
     position: relative;
-    left: 10%;
-    color: black;
+    left: 11%;
+    color: white;
+    
 }
 
 

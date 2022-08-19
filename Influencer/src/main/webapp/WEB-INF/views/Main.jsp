@@ -102,7 +102,7 @@
 							</div>
 							<button id="popup_open_btn"
 								class="file-import w-btn-outline w-btn-skin-outline hover-1">
-								사진으로 검색!</button>
+								Image search </button>
 
 
 
@@ -114,13 +114,11 @@
 							<div class="log-div">
 
 
-								<form action="${cpath}/goboard.do" method="post">
-									<button type="submit" class="mainsub">게시판가기</button>
-								</form>
+							    <div class="log-div-in1-main"> <button class="logbtn"> <a class="logbtn" href="${cpath}/goboard.do"> community </a> </button> </div>
 
-								<button class="logbtn" id="logbtn">Login</button>
+								<div class="log-div-in2" > <button class="logbtn" id="logbtn">Login</button> </div>
 
-								<button class="joinbtn" id="joinbtn">Join</button>
+								<div class="log-div-in3" > <button class="joinbtn" id="joinbtn">Join</button> </div>
 
 
 							</div>
@@ -133,13 +131,13 @@
 
 							<div class="log-div-main">
 
-								<p class="MainP1 mainnick">${mvo.nick}님 환영합니다!</p>
+								<p class="MainP1 mainnick"> Welcome to ${mvo.nick} </p>
 
 								<button onclick='location.href="${cpath}/logout.do"'
-									class="logoutbtn mainnick" >로그아웃</button>
+									class="logoutbtn mainnick" > Logout </button>
 									
 									<button onclick='location.href="${cpath}/goboard.do"'
-									class="logoutbtn mainnick3">게시판</button>
+									class="logoutbtn mainnick3"> community </button>
 									
 									
 
